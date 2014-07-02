@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush Color="Transparent" x:Key="BG0" />
+    <SolidColorBrush Color="#000000" x:Key="BG1" />
+    <SolidColorBrush Color="#202020" x:Key="BG2" />
+    <SolidColorBrush Color="#303030" x:Key="BG3" />
+    <SolidColorBrush Color="#333333" x:Key="BG4" />
+    <SolidColorBrush Color="#454545" x:Key="BG5" />
+    <SolidColorBrush Color="#606060" x:Key="BG6" />
+    <SolidColorBrush Color="#757575" x:Key="BG7" />
+    <SolidColorBrush Color="#AAAAAA" x:Key="BG8" />
+    <SolidColorBrush Color="White" x:Key="FG1" />
+    <LinearGradientBrush x:Key="MenuBG" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#303030" Offset="0" />
+        <GradientStop Color="#000000" Offset="1" />
+    </LinearGradientBrush>
+    
+    <Style TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="{DynamicResource BG1}" />
+    </Style>
+    <Style TargetType="{x:Type ToolBarTray}" x:Key="toolbartraymainstyle">
+        <Setter Property="Background" Value="{DynamicResource BG1}" />
+    </Style>
+    <Style TargetType="{x:Type ToolBarTray}" BasedOn="{StaticResource toolbartraymainstyle}" x:Key="toolbartraysd">
+        <Setter Property="Background" Value="{DynamicResource BG5}" />
+    </Style>
+
+    <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource {x:Type Menu}}">
+        <Setter Property="Background" Value="{DynamicResource MenuBG}" />
+    </Style>
+    <Style TargetType="{x:Type Rectangle}" x:Key="editorrect" >
+        <Setter Property="Fill" Value="{DynamicResource BG3}" />
+    </Style>
+    
+    <Style TargetType="{x:Type TextBlock}" x:Key="cjtextblock">
+        <Setter Property="Foreground" Value="{DynamicResource FG1}" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="cjsuffixtextblock">
+        <Setter Property="Foreground" Value="{DynamicResource BG7}" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="cjbrighttextblock">
+        <Setter Property="Foreground" Value="{DynamicResource BG8}" />
+    </Style>
+    <Style TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="{DynamicResource BG0}" />
+    </Style>
+    <Style TargetType="{x:Type Grid}" x:Key="transparentgridstyle">
+        <Setter Property="Background" Value="{DynamicResource BG5}" />
+    </Style>
+    <Style TargetType="{x:Type Grid}" x:Key="configgridstyle">
+        <Setter Property="Background" Value="{DynamicResource BG1}" />
+    </Style>
+    <Style TargetType="{x:Type GridSplitter}">
+        <Setter Property="Background" Value="{DynamicResource BG7}" />
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="ButtonHyperlinkStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock Cursor="Hand" Text="{TemplateBinding Content}" Foreground="#00BBBB" TextDecorations="Underline" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Grid}" x:Key="warninggridstyle">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#55B22222" Offset="0" />
+                    <GradientStop Color="#99B22222" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
