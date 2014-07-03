@@ -29,7 +29,7 @@ namespace Monotone
         {
             InitializeComponent ();
             //ConsoleManager.Show ();
-            theme_Checked(null, null);
+            //theme_Checked(null, null);
         }
 
 

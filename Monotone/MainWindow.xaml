@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Monotone.MainWindow"
-        Title="MainWindow" Height="690" Width="629" Background="#444">
+        Title="MainWindow" Height="690" Width="1000" Background="#444">
     <Window.Resources>
         <!--<Style TargetType="{x:Type ContextMenu}">
             <Setter Property="Background" Value="{StaticResource BaseBrush}" />
@@ -41,6 +41,7 @@
             <TabItem Header="Misc">
                 <Grid>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
@@ -109,21 +110,51 @@
                             </MenuItem>
                         </Menu>
 
-                        <ToolBarTray Margin="5">
-                            <ToolBar Band="0">
-                                <ToggleButton>
-                                    <ToggleButton.Content>
-                                        <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
-                                    </ToggleButton.Content>
-                                </ToggleButton>
-                                <Separator />
-                                <Button>
-                                    <Button.Content>
-                                        <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
-                                    </Button.Content>
-                                </Button>
-                            </ToolBar>
-                        </ToolBarTray>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <ToolBarTray Margin="5" IsLocked="False" Orientation="Horizontal">
+                                <ToolBar Band="0">
+                                    <ToggleButton>
+                                        <ToggleButton.Content>
+                                            <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
+                                        </ToggleButton.Content>
+                                    </ToggleButton>
+                                    <Separator />
+                                    <Button>
+                                        <Button.Content>
+                                            <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
+                                        </Button.Content>
+                                    </Button>
+                                </ToolBar>
+                                <ToolBar Band="1">
+                                    <Button>Button</Button>
+                                    <Button>Another Button</Button>
+                                </ToolBar>
+                            </ToolBarTray>
+                            <ToolBarTray Grid.Column="1" Margin="5" IsLocked="False" Orientation="Vertical">
+                                <ToolBar Band="0">
+                                    <ToggleButton>
+                                        <ToggleButton.Content>
+                                            <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
+                                        </ToggleButton.Content>
+                                    </ToggleButton>
+                                    <Separator />
+                                    <Button>
+                                        <Button.Content>
+                                            <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
+                                        </Button.Content>
+                                    </Button>
+                                </ToolBar>
+                                <ToolBar Band="1">
+                                    <Button>Button</Button>
+                                    <Button>Another Button</Button>
+                                </ToolBar>
+                            </ToolBarTray>
+                        </Grid>
+                        
                         <Separator Width="50" Height="10" Margin="5"  />
                         <Button Content="Button"  Margin="5"   />
                         <ToggleButton Content="Toggle Button" Margin="5" />
@@ -165,7 +196,7 @@
                     
                     <StackPanel Grid.Column="1">
                         <Calendar  Margin="5" />
-                        <ListView IsEnabled="True" Height="100" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <ListView IsEnabled="True" Height="100" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
                             <ListView.View>
                                 <GridView >
                                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Header}" />
@@ -177,28 +208,7 @@
                             <Separator />
                             <MenuItem IsCheckable="True" IsChecked="True" Header="Item" Name="Checked" />
                         </ListView>
-                        <Expander Header="expander1" Margin="5" ExpandDirection="Right" Height="100"
-                                  IsExpanded="True">
-                            <Grid>
-                                <TextBox Margin="10" />
-                            </Grid>
-                        </Expander>
-                        <Expander Header="expander1" Margin="5" ExpandDirection="Left" Height="100" IsExpanded="True">
-                            <Grid>
-                                <TextBox Margin="10" />
-                            </Grid>
-                        </Expander>
-                        <Expander Header="expander1" Margin="5" ExpandDirection="Up" IsExpanded="True">
-                            <Grid>
-                                <TextBox Margin="10" />
-                            </Grid>
-                        </Expander>
-                        <Expander Header="expander1" Margin="5" ExpandDirection="Down" IsExpanded="True">
-                            <Grid>
-                                <TextBox Margin="10" />
-                            </Grid>
-                        </Expander>
-                        <ProgressBar Margin="5" Value="50" />
+                        
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
@@ -232,8 +242,34 @@
                         </TreeView>
 
                     </StackPanel>
-                                     
-                    
+
+                    <StackPanel Grid.Column="2">
+
+                        <ProgressBar Margin="5" Value="50" />
+
+                        <ProgressBar Margin="5" Value="50" Orientation="Vertical"  HorizontalAlignment="Center" Height="100" Width="20"/>
+                        <Expander Header="expander1" HorizontalAlignment="Left" Margin="5" ExpandDirection="Right" Height="100"
+                                  IsExpanded="True">
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>
+                        <Expander HorizontalAlignment="Right" Header="expander1" Margin="5" ExpandDirection="Left" Height="100" IsExpanded="True">
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>
+                        <Expander Header="expander1" Margin="5" ExpandDirection="Up" >
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>
+                        <Expander Header="expander1" Margin="5" ExpandDirection="Down" >
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>
+                    </StackPanel>
                    
                     
                     
