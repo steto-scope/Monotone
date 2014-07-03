@@ -1,18 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	
-		<Color x:Key="BaseColor">#444</Color>
-		<Color x:Key="Base+1Color">#555</Color>
-		<Color x:Key="Base+2Color">#666</Color>
-		<Color x:Key="Base+3Color">#777</Color>
-        <Color x:Key="Base+3TColor">#77777777</Color>
-		<Color x:Key="Base+4Color">#888</Color>
-        <Color x:Key="Base+6Color">#CCC</Color>
-		<Color x:Key="Base-1Color">#333</Color>
-		<Color x:Key="Base-2Color">#222</Color>
-        <Color x:Key="Base-2TColor">#22222222</Color>
-		<Color x:Key="TextColor">#fff</Color>
-    <Color x:Key="SelectedColor">Lime</Color>
-    <Color x:Key="DarkerSelectedColor">Green</Color>
+		<Color x:Key="BaseColor">#222</Color>
+		<Color x:Key="Base+1Color">#444</Color>
+		<Color x:Key="Base+2Color">#555</Color>
+		<Color x:Key="Base+3Color">#666</Color>
+        <Color x:Key="Base+3TColor">#77666666</Color>
+        <Color x:Key="Base+5Color">#999</Color>
+        <Color x:Key="Base+4Color">#777</Color>
+        <Color x:Key="Base+6Color">#BBB</Color>
+		<Color x:Key="Base-1Color">#222</Color>
+		<Color x:Key="Base-2Color">#111</Color>
+        <Color x:Key="Base-2TColor">#22111111</Color>
+		<Color x:Key="TextColor">#CCC</Color>
+    <Color x:Key="SelectedColor">#f22222</Color>
+    <Color x:Key="DarkerSelectedColor">#b22222</Color>
 
 
     <SolidColorBrush x:Key="TestBrush" Color="Yellow" />
@@ -47,7 +48,9 @@
 		</LinearGradientBrush>
 		<SolidColorBrush Color="{StaticResource SelectedColor}" x:Key="SelectedColorBrush" />
 		<SolidColorBrush Color="{StaticResource DarkerSelectedColor}" x:Key="DarkerSelectedColorBrush" />
-		<SolidColorBrush Color="Transparent" x:Key="TransparentBrush" />
+    <SolidColorBrush x:Key="SelectedTabColorBrush" Color="{StaticResource Base+5Color}" />
+    <SolidColorBrush x:Key="HoverTabColorBrush" Color="{StaticResource Base+6Color}" />
+    <SolidColorBrush Color="Transparent" x:Key="TransparentBrush" />
 		<SolidColorBrush Color="{StaticResource TextColor}" x:Key="GlyphBrush" />
 
 		<!--<LinearGradientBrush x:Key="DisabledBrush" EndPoint="0,0" StartPoint="6,6" MappingMode="Absolute" SpreadMethod="Repeat">
@@ -59,13 +62,13 @@
     <SolidColorBrush x:Key="DisabledBrush" Color="{StaticResource Base+3Color}" />
     <SolidColorBrush x:Key="SelectedTabItemHeaderBrush" Color="{DynamicResource BaseColor}" />
     <!--<SolidColorBrush x:Key="TabItemHeaderBrush" Color="{StaticResource Base+1Color}" />-->
-    <SolidColorBrush x:Key="SelectedTabColorBrush" Color="{StaticResource DarkerSelectedColor}" />
+    
     <Geometry x:Key="Checkmark">M 0,5.1 L 1.7,5.2 L 3.4,7.1 L 8,0.4 L 9.2,0 L 3.3,10.8 Z</Geometry>
     <Geometry x:Key="UpArrow">M 0,4 L 3.5,0 L 7,4 Z</Geometry>
     <Geometry x:Key="DownArrow">M 0,0 L 3.5,4 L 7,0 Z</Geometry>
     <Geometry x:Key="RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
     <MenuScrollingVisibilityConverter x:Key="MenuScrollingVisibilityConverter"/>
-    <SolidColorBrush x:Key="MenuHoverBrush" Color="#55ffffff" />
+    <SolidColorBrush x:Key="MenuHoverBrush" Color="#33ffffff" />
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" x:Key="ProgressbarAnimationBrush">
         <GradientStop Color="Transparent" Offset="0" />
         <GradientStop Color="#88FFFFFF" Offset="0.5" />
@@ -413,7 +416,6 @@
     </Style>
 
 
-    <!-- todo: Selection-Border-->
     <Style TargetType="{x:Type TextBox}">
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
         <Setter Property="Background" Value="{StaticResource DarkerBaseBrush}"/>
@@ -439,7 +441,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style TargetType="{x:Type PasswordBox}">
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
         <Setter Property="Background" Value="{StaticResource DarkerBaseBrush}"/>
@@ -466,11 +467,12 @@
         </Setter>
     </Style>
 
-    <!-- todo: disabled brush at tabheader -->
+    <!-- Tab stuff-->
     <Style TargetType="{x:Type TabControl}">
         <Setter Property="Padding" Value="4,4,4,4"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource BaseBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -484,7 +486,7 @@
                             <RowDefinition x:Name="RowDefinition1" Height="*"/>
                         </Grid.RowDefinitions>
                         <TabPanel x:Name="HeaderPanel" Grid.Column="0" IsItemsHost="true" Margin="0,0,0,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Background="{StaticResource TransparentBrush}" Panel.ZIndex="1"/>
-                        <Border Margin="0,-1,0,0" x:Name="ContentPanel" Grid.Column="0" BorderBrush="{StaticResource SelectedTabColorBrush}" BorderThickness="1" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                        <Border Background="{TemplateBinding Background}" Margin="0,-1,0,0" x:Name="ContentPanel" Grid.Column="0" BorderBrush="{StaticResource SelectedTabColorBrush}" BorderThickness="1" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
                             <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                     </Grid>
@@ -530,7 +532,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style TargetType="{x:Type TabItem}">
         <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
         <Setter Property="Template">
@@ -547,12 +548,12 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource HoverTabColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Panel.ZIndex" Value="1"/>
                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource SelectedTabItemHeaderBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource SelectedTabItemHeaderBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource SelectedTabColorBrush}"/>
                             <Setter Property="BorderThickness" TargetName="linebd" Value="1,1,1,0" />
                         </Trigger>
                         <MultiTrigger>
@@ -580,7 +581,7 @@
                                 <Condition Property="TabStripPlacement" Value="Top"/>
                             </MultiTrigger.Conditions>
                             <Setter Property="BorderThickness" TargetName="linebd" Value="1,1,1,0" />
-                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource DarkerSelectedColorBrush}" />
+                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource SelectedTabColorBrush}" />
                             <Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
                         </MultiTrigger>
@@ -591,7 +592,7 @@
                                 <Condition Property="TabStripPlacement" Value="Bottom"/>
                             </MultiTrigger.Conditions>
                             <Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
-                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource DarkerSelectedColorBrush}" />
+                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource SelectedTabColorBrush}" />
                             <Setter Property="BorderThickness" TargetName="linebd" Value="1,0,1,1" />
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
                         </MultiTrigger>
@@ -601,7 +602,7 @@
                                 <Condition Property="IsSelected" Value="True"/>
                                 <Condition Property="TabStripPlacement" Value="Left"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource DarkerSelectedColorBrush}" />
+                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource SelectedTabColorBrush}" />
                             <Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
                             <Setter Property="BorderThickness" TargetName="linebd" Value="1,1,0,1" />
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
@@ -612,7 +613,7 @@
                                 <Condition Property="IsEnabled" Value="True" />
                                 <Condition Property="TabStripPlacement" Value="Right"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource DarkerSelectedColorBrush}" />
+                            <Setter Property="BorderBrush" TargetName="linebd" Value="{StaticResource SelectedTabColorBrush}" />
                             <Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
                             <Setter Property="BorderThickness" TargetName="linebd" Value="0,1,1,1" />
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
@@ -652,7 +653,7 @@
                             <Setter TargetName="Border" Property="Background" Value="{StaticResource ButtonBackgroundPressedBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="BorderBrush"  Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{StaticResource BaseBrush}" />
@@ -667,6 +668,7 @@
     </Style>
     <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Background" Value="{StaticResource DarkerBaseBrush}" />
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="MinWidth" Value="0"/>
         <Setter Property="MinHeight" Value="0"/>
@@ -701,9 +703,11 @@
                     </Border>
                 </Border>
             </Popup>
-            <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{StaticResource DarkerBaseBrush}" Grid.ColumnSpan="2" />
+            <Border Background="{StaticResource DarkerBaseBrush}" />
             <TextBox CaretBrush="{StaticResource TextBrush}" x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
             <ToggleButton Grid.Column="1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
+            <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"  Grid.ColumnSpan="2" />
+
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsKeyboardFocusWithin" Value="true">
@@ -723,6 +727,7 @@
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" TargetName="Placement" Value="{StaticResource  SelectedColorBrush}" />
+                <Setter Property="BorderBrush" TargetName="Border" Value="{StaticResource  SelectedColorBrush}" />
             </Trigger>
             <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
                 <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
@@ -1327,7 +1332,7 @@
                 <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource SelectedColorBrush}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource DisabledBrush}"/>
                 <Setter Property="Background" TargetName="GlyphPanel" Value="Transparent"/>
                 <Setter Property="BorderBrush" TargetName="GlyphPanel" Value="Transparent"/>
                 <Setter Property="Fill" TargetName="Glyph" Value="{StaticResource BaseBrush}"/>
@@ -1404,8 +1409,8 @@
                 <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource SelectedColorBrush}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
-                <Setter Property="Fill" TargetName="GlyphPanel" Value="#848589"/>
+                <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource DisabledBrush}" />
+                <Setter Property="Fill" TargetName="GlyphPanel" Value="{StaticResource BaseBorderBrush}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

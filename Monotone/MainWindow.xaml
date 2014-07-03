@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Monotone.MainWindow"
-        Title="MainWindow" Height="690" Width="1000" Background="#444">
+        Title="MainWindow" Height="690" Width="1000" Background="#000">
     <Window.Resources>
         <!--<Style TargetType="{x:Type ContextMenu}">
             <Setter Property="Background" Value="{StaticResource BaseBrush}" />
@@ -104,7 +104,9 @@
                                 <Separator/>
                                 <MenuItem Header="End" IsEnabled="False" Command="Copy" />
                             </MenuItem>
-                            <MenuItem Header="Bearbeiten" IsEnabled="False" />
+                            <MenuItem Header="Bearbeiten" IsEnabled="False">
+                                <MenuItem />
+                            </MenuItem>
                             <MenuItem Header="Ansicht" >
                                 <MenuItem Header="HHHH" />
                             </MenuItem>
