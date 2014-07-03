@@ -29,6 +29,9 @@
             </Setter>
         </Style>
 -->
+        
+           
+        
 
     </Window.Resources>
     <Grid>
@@ -119,21 +122,6 @@
                                         <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
                                     </Button.Content>
                                 </Button>
-                                <Button IsEnabled="False">
-                                    <Button.Content>
-                                        <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
-                                    </Button.Content>
-                                </Button>
-                                <Button>
-                                    <Button.Content>
-                                        <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
-                                    </Button.Content>
-                                </Button>
-                                <Button>
-                                    <Button.Content>
-                                        <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
-                                    </Button.Content>
-                                </Button>
                             </ToolBar>
                         </ToolBarTray>
                         <Separator Width="50" Height="10" Margin="5"  />
@@ -189,7 +177,23 @@
                             <Separator />
                             <MenuItem IsCheckable="True" IsChecked="True" Header="Item" Name="Checked" />
                         </ListView>
-                        <Expander Header="expander1" Margin="5">
+                        <Expander Header="expander1" Margin="5" ExpandDirection="Right" Height="100"
+                                  IsExpanded="True">
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>
+                        <Expander Header="expander1" Margin="5" ExpandDirection="Left" Height="100" IsExpanded="True">
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>
+                        <Expander Header="expander1" Margin="5" ExpandDirection="Up" IsExpanded="True">
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>
+                        <Expander Header="expander1" Margin="5" ExpandDirection="Down" IsExpanded="True">
                             <Grid>
                                 <TextBox Margin="10" />
                             </Grid>
@@ -216,7 +220,16 @@
                             <Slider Margin="5" Orientation="Vertical" Grid.Row="1" Grid.Column="3" Height="60" HorizontalAlignment="Center" TickPlacement="Both" />
 
                         </Grid>
-                        <TreeView  Height="60" Margin="5" />
+                        <TreeView  Height="60" Margin="5">
+                            <TreeViewItem Header="Item 1" IsExpanded="True">
+                                <TreeViewItem Header="Subitem 1" />
+                                <TreeViewItem Header="Subitem 2" IsEnabled="False" />
+                                <TreeViewItem Header="Subitem 3">
+                                    <TreeViewItem Header="Subsubitem" />
+                                </TreeViewItem>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Item 2" />
+                        </TreeView>
 
                     </StackPanel>
                                      
