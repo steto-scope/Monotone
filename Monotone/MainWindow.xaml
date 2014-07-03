@@ -37,7 +37,7 @@
     <Grid>
         
         
-        <TabControl Name="tab" Margin="10">
+        <TabControl Name="tab" Margin="10" > 
             <TabItem Header="Misc">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -322,7 +322,7 @@
             </TabItem>
         </TabControl>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <CheckBox IsChecked="{Binding Path=IsEnabled, ElementName=tab}" Content="Enable Controls" Margin="0,0,10,0"  />
+            <CheckBox IsChecked="{Binding Path=IsEnabled, ElementName=tab, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Enable Controls" Margin="0,0,10,0" Name="enabledcontrols" />
         <CheckBox Name="theme" Checked="theme_Checked" Unchecked="theme_Unchecked" Content="Apply Theme" IsChecked="True"  /> 
 
         </StackPanel>
