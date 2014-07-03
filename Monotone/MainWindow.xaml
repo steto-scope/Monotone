@@ -160,7 +160,7 @@
                         <Separator Width="50" Height="10" Margin="5"  />
                         <Button Content="Button"  Margin="5"   />
                         <ToggleButton Content="Toggle Button" Margin="5" />
-                        <CheckBox Content="CheckBox" Margin="5"/>
+                        <CheckBox Content="CheckBox" Margin="5"/>                       
                         <RadioButton Content="RadioButton"  Margin="5"/>
                         <ComboBox  Margin="5">
                             <ComboBoxItem Content="Item 1"/>

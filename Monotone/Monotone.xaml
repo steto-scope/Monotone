@@ -240,6 +240,8 @@
           <Trigger Property="IsMouseOver" Value="true">
             <Setter TargetName="outerborder" Property="BorderThickness" Value="1" />
             <Setter TargetName="CheckMark" Property="Margin" Value="-1,-1,0,0" />
+            <Setter Property="Foreground" Value="{StaticResource SelectedColorBrush}"/>
+              
           </Trigger>
           <Trigger Property="IsPressed" Value="true">
             <Setter TargetName="outerborder" Property="Background" Value="{StaticResource ButtonBackgroundPressedBrush}" />
@@ -248,7 +250,7 @@
           <Trigger Property="IsEnabled" Value="false">
             <Setter TargetName="outerborder" Property="Background" Value="{StaticResource BaseBrush}" />
             <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource BaseBorderBrush}" />
-                            <Setter TargetName="CheckMark" Property="Stroke" Value="{StaticResource SemiTransparentBaseBorderBrush}" />
+            <Setter TargetName="CheckMark" Property="Stroke" Value="{StaticResource SemiTransparentBaseBorderBrush}" />
             <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
           </Trigger>
         </ControlTemplate.Triggers>
@@ -280,6 +282,8 @@
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="Border" Property="Fill" Value="{StaticResource ButtonBackgroundPressedBrush}" />
                             <Setter TargetName="Border" Property="Stroke" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource SelectedColorBrush}"/>
+
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter TargetName="Border" Property="Fill" Value="{StaticResource ButtonBackgroundPressedBrush}" />
@@ -749,10 +753,9 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="true">
-                            <Setter Property="Background" Value="{StaticResource LighterBaseBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
-                            <Setter Property="BorderThickness" Value="1" />
-                            <Setter Property="BorderBrush"  Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Background" Value="{StaticResource MenuHoverBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="BorderBrush"  Value="{StaticResource MenuHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled"  Value="false">
                             <Setter Property="Foreground" Value="{StaticResource DisabledBrush}" />
@@ -1230,7 +1233,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{StaticResource LighterBaseBrush}" />
-                            <Setter Property="BorderBrush" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -1238,7 +1241,7 @@
                                 <Condition Property="IsEnabled" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" Value="{StaticResource LighterBaseBrush}" />
-                            <Setter Property="BorderBrush" Value="{StaticResource DarkerSelectedColorBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource DarkerSelectedColorBrush}" />
                         </MultiTrigger>                        
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -1247,7 +1250,7 @@
                                 <Condition Property="Selector.IsSelectionActive" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" Value="{StaticResource LighterBaseBrush}" />
-                            <Setter Property="BorderBrush" Value="{StaticResource DarkerSelectedColorBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource DarkerSelectedColorBrush}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -1255,7 +1258,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                                 <Condition Property="IsEnabled" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource SelectedColorBrush}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource DisabledBrush}" />
@@ -1326,7 +1329,7 @@
             </Trigger>
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter Property="Fill" TargetName="Bg" Value="{StaticResource MenuHoverBrush}"/>
-                <Setter Property="Stroke" TargetName="Bg" Value="{StaticResource SelectedColorBrush}"/>
+                <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource SelectedColorBrush}"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource SelectedColorBrush}" />
@@ -1512,7 +1515,7 @@
             </Trigger>
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter Property="Fill" TargetName="Bg" Value="{StaticResource MenuHoverBrush}"/>
-                <Setter Property="Stroke" TargetName="Bg" Value="{StaticResource SelectedColorBrush}"/>
+                <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource SelectedColorBrush}"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="TextElement.Foreground" TargetName="header" Value="{StaticResource SelectedColorBrush}" />
@@ -1870,7 +1873,9 @@
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="Background" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="InnerBorder" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
@@ -1908,7 +1913,9 @@
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="Background" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="InnerBorder" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
@@ -1957,7 +1964,9 @@
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="Background" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="InnerBorder" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
 
@@ -2002,7 +2011,9 @@
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="Background" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="InnerBorder" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
@@ -2046,7 +2057,9 @@
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="Background" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="InnerBorder" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
@@ -2089,7 +2102,9 @@
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="Background" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="InnerBorder" Value="{StaticResource SelectedColorBrush}" />
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
@@ -2271,14 +2286,14 @@
         </Setter>
     </Style>
     <Style TargetType="ListBoxItem">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{StaticResource DarkerBaseBrush}" />
         <Setter Property="Padding" Value="5,2" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    
+                    <Border Background="{TemplateBinding Background}">
                     <Border x:Name="LayoutRoot"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -2309,18 +2324,19 @@
                                    StrokeDashOffset="1.5" />
                         </Grid>
                     </Border>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="true" />
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="LayoutRoot" Value="{StaticResource DarkerSelectedColorBrush}" />
-                            <Setter Property="Background" TargetName="LayoutRoot" Value="{StaticResource LighterBaseBrush}" />
+                            <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="{StaticResource DarkerSelectedColorBrush}" />
+                            <Setter Property="Background" TargetName="LayoutRoot" Value="{StaticResource MenuHoverBrush}" />
                         </MultiTrigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" TargetName="LayoutRoot" Value="{StaticResource SelectedColorBrush}" />
-                            <Setter Property="Background" TargetName="LayoutRoot" Value="{StaticResource LighterBaseBrush}" />
+                            <Setter Property="Background" TargetName="LayoutRoot" Value="{StaticResource MenuHoverBrush}" />
+                            <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" Value="Transparent" TargetName="LayoutRoot" />
@@ -2439,8 +2455,7 @@
                                 <Condition Property="IsSelected" Value="true"/>
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource LighterBaseBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DarkerSelectedColorBrush}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -2448,8 +2463,7 @@
                                 <Condition Property="IsSelectionActive" Value="false"/>
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource LighterBaseBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Foreground"  Value="{StaticResource DarkerSelectedColorBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
@@ -2515,20 +2529,6 @@
             <ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
         </Grid>
     </ControlTemplate>
-
-<!--
-    <Style TargetType="ScrollViewer">
-        <Setter Property="Background" Value="{StaticResource DarkerBaseBrush}" />
-        <Setter Property="Template" Value="{StaticResource ScrollViewerControlTemplate1}" />
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Background" Value="{StaticResource BaseBrush}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    
--->
-   
 
 
     <!-- expander stuff-->
@@ -2793,8 +2793,6 @@
     
     
     <!-- Calendar stuff-->
-
-
     <Style TargetType="{x:Type CalendarDayButton}" x:Key="CalendarDayButtonStyle">
         <Setter Property="MinWidth" Value="5"/>
         <Setter Property="Background" Value="Transparent" />
@@ -2903,14 +2901,20 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Rectangle x:Name="TodayBackground" Fill="{StaticResource SemiTransparentBaseBorderBrush}" Opacity="0" RadiusY="1" RadiusX="1"/>
-                        <Rectangle x:Name="SelectedBackground" Fill="{StaticResource LighterBaseBrush}" Opacity="0" RadiusY="1" Stroke="{StaticResource SelectedColorBrush}" StrokeThickness="1" RadiusX="1"/>
+                        <Rectangle x:Name="SelectedBackground" Fill="{StaticResource MenuHoverBrush}" Opacity="0" RadiusY="1" RadiusX="1"/>
                         <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
-                        <Rectangle x:Name="HighlightBackground" Fill="{StaticResource LighterBaseBrush}" Opacity="0" RadiusY="1" RadiusX="1" Stroke="{StaticResource SelectedColorBrush}" StrokeThickness="1"/>
+                        <Rectangle x:Name="HighlightBackground" Fill="{StaticResource MenuHoverBrush}" Opacity="0" RadiusY="1" RadiusX="1" />
                         <ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="5,1,5,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Path x:Name="Blackout" Data="M8.1772461,11.029181 L10.433105,11.029181 L11.700684,12.801641 L12.973633,11.029181 L15.191895,11.029181 L12.844727,13.999395 L15.21875,17.060919 L12.962891,17.060919 L11.673828,15.256231 L10.352539,17.060919 L8.1396484,17.060919 L10.519043,14.042364 z" Fill="Yellow" HorizontalAlignment="Stretch" Margin="3" Opacity="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" VerticalAlignment="Stretch"/>
-                        <Rectangle x:Name="DayButtonFocusVisual" IsHitTestVisible="false" RadiusY="1" RadiusX="1" Stroke="{StaticResource DarkerSelectedColorBrush}" Visibility="Collapsed"/>
+                        <Rectangle x:Name="DayButtonFocusVisual" IsHitTestVisible="false" RadiusY="1" RadiusX="1"  Visibility="Collapsed"/>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="TextElement.Foreground" TargetName="NormalText" Value="{StaticResource SelectedColorBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="TextElement.Foreground" TargetName="NormalText" Value="{StaticResource SelectedColorBrush}" />
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="TodayBackground" Value="Transparent"/>
                             <Setter Property="Fill" TargetName="SelectedBackground" Value="Transparent"/>
@@ -3002,14 +3006,17 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Rectangle x:Name="SelectedBackground" Fill="{StaticResource LighterBaseBrush}" Stroke="{StaticResource DarkerSelectedColorBrush}" StrokeThickness="1" Opacity="0" RadiusY="1" RadiusX="1"/>
-                        <Rectangle x:Name="Background" Fill="{StaticResource LighterBaseBrush}" Stroke="{StaticResource SelectedColorBrush}" StrokeThickness="1" Opacity="0" RadiusY="1" RadiusX="1"/>
+                        <Rectangle x:Name="SelectedBackground" Fill="{StaticResource MenuHoverBrush}"  Opacity="0" RadiusY="1" RadiusX="1"/>
+                        <Rectangle x:Name="Background" Fill="{StaticResource MenuHoverBrush}" Opacity="0" RadiusY="1" RadiusX="1"/>
                         <ContentPresenter x:Name="NormalText"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,0,1,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Rectangle x:Name="CalendarButtonFocusVisual" IsHitTestVisible="false" RadiusY="1" RadiusX="1"  Visibility="Collapsed"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter Property="Visibility" TargetName="CalendarButtonFocusVisual" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="TextElement.Foreground" TargetName="NormalText" Value="{StaticResource SelectedColorBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="SelectedBackground" Value="Transparent" />
