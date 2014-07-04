@@ -177,7 +177,7 @@
                                         </avalonDockControls:ContextMenuEx.ItemContainerStyle>
                                     </avalonDockControls:ContextMenuEx>
                                 </avalonDockControls:DropDownButton.DropDownContextMenu>
-                                <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{StaticResource TextBrush}" />
+                                <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{DynamicResource TextBrush}" />
                             </avalonDockControls:DropDownButton>
                         </Grid>
                         <Border x:Name="ContentPanel" 
@@ -193,7 +193,7 @@
                                 KeyboardNavigation.TabNavigation="Cycle"
                                 CornerRadius="3"
                                 Padding="1,1,1,1">
-                            <Border Background="{StaticResource BaseBrush}">
+                            <Border Background="{DynamicResource BaseBrush}">
                             <ContentPresenter x:Name="PART_SelectedContentHost" 
                                               ContentSource="SelectedContent" 
                                               Margin="0,2,0,2"
@@ -205,7 +205,7 @@
                         <Trigger Property="IsMouseOver" SourceName="MenuDropDownButton" Value="True">
                             <Setter Property="Content" TargetName="MenuDropDownButton">
                                 <Setter.Value>
-                                    <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{StaticResource SelectedColorBrush}" />
+                                    <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{DynamicResource SelectedBrush}" />
 
                                 </Setter.Value>
                             </Setter>
@@ -213,7 +213,7 @@
                         <Trigger Property="IsChecked" SourceName="MenuDropDownButton" Value="True">
                             <Setter Property="Content" TargetName="MenuDropDownButton">
                                 <Setter.Value>
-                                    <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{StaticResource DarkerSelectedColorBrush}" />
+                                    <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{DynamicResource DarkerSelectedBrush}" />
 
                                 </Setter.Value>
                             </Setter>
@@ -221,7 +221,7 @@
                         <Trigger Property="IsEnabled" SourceName="MenuDropDownButton" Value="False">
                             <Setter Property="Content" TargetName="MenuDropDownButton">
                                 <Setter.Value>
-                                    <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{StaticResource BaseBorderBrush}" />
+                                    <Path Data="M 2,2 L10,2 L10,4 L2,4 Z M2,6 L10,6 L6,10" Fill="{DynamicResource BaseBorderBrush}" />
 
                                 </Setter.Value>
                             </Setter>
@@ -243,8 +243,8 @@
 									        Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor30}" />
                         </MultiDataTrigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
-                            <Setter Property="Background" Value="{StaticResource BaseBorderBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource BaseBorderBrush}" />
                         </Trigger>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}" Value="0">
                             <Setter Property="Visibility" Value="Collapsed" TargetName="MenuDropDownButton" />
@@ -371,7 +371,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor30}" />
         <Setter Property="Foreground" Value="{Binding Model.Root.Manager.Foreground, RelativeSource={RelativeSource Self}}"/>
-        <Setter Property="Background" Value="{StaticResource BaseBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BaseBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorablePaneControl}">
@@ -400,8 +400,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
-                            <Setter Property="BorderBrush" Value="{StaticResource BaseBorderBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
                         </Trigger>
                         <DataTrigger Binding="{Binding Items.Count, RelativeSource={RelativeSource Self}}" Value="1">
                             <Setter Property="Margin" Value="0" TargetName="HeaderPanel"/>
@@ -466,7 +466,7 @@
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor13}"/>
                                         <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor9}"/>
-                                        <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -515,10 +515,10 @@
                 <Setter Property="BorderBrush"  Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor30}" />
             </MultiDataTrigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" Value="{StaticResource SelectedColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
             </Trigger>
             <Trigger Property="Selector.IsSelected" Value="true">
-                <Setter Property="BorderBrush" Value="{StaticResource DarkerSelectedColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
             </Trigger>-->
         </Style.Triggers>
     </Style>
@@ -561,7 +561,7 @@
                                 DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                 DropDownContextMenuDataContext="{Binding Path=LayoutItem, RelativeSource={RelativeSource TemplatedParent}}"
                                 ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}">
-                                <Path Data="M2,6 L10,6 L6,10"  Name="PART_MenuPinPath" SnapsToDevicePixels="True" Fill="{StaticResource TextBrush}"  />
+                                <Path Data="M2,6 L10,6 L6,10"  Name="PART_MenuPinPath" SnapsToDevicePixels="True" Fill="{DynamicResource TextBrush}"  />
                             </avalonDockControls:DropDownButton>
 
                             <Button x:Name="PART_AutoHidePin" 
@@ -574,7 +574,7 @@
                                 Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
                                 ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnAutoHide_Hint}"
                                     >
-                                <Path x:Name="PART_AutoHidePinPath" SnapsToDevicePixels="True" Fill="{StaticResource TextBrush}" >
+                                <Path x:Name="PART_AutoHidePinPath" SnapsToDevicePixels="True" Fill="{DynamicResource TextBrush}" >
                                     <Path.Data>
                                         <CombinedGeometry GeometryCombineMode="Xor">
                                             <CombinedGeometry.Geometry1>
@@ -601,7 +601,7 @@
                                 Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
                                 ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnClose_Hint}"
                                     >
-                                <Path Fill="{StaticResource TextBrush}" x:Name="PART_ClosePinPath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   SnapsToDevicePixels="True">
+                                <Path Fill="{DynamicResource TextBrush}" x:Name="PART_ClosePinPath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   SnapsToDevicePixels="True">
                                   
                                 </Path>
                             </Button>
@@ -623,27 +623,27 @@
                         <DataTrigger Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True">
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" SourceName="MenuDropDownButton" Value="True">
-                            <Setter Property="Fill" TargetName="PART_MenuPinPath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_MenuPinPath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" SourceName="MenuDropDownButton" Value="True">
-                            <Setter Property="Fill" TargetName="PART_MenuPinPath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_MenuPinPath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_AutoHidePin" Value="True">
-                            <Setter Property="Fill" TargetName="PART_AutoHidePinPath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_AutoHidePinPath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_HidePin" Value="True">
-                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_HidePin" Value="True">
-                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_AutoHidePin" Value="True">
-                            <Setter Property="Fill" TargetName="PART_AutoHidePinPath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_AutoHidePinPath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" SourceName="MenuDropDownButton" Value="false">
-                            <Setter Property="Fill" TargetName="PART_MenuPinPath" Value="{StaticResource BaseBorderBrush}"/>
-                            <Setter Property="Background" Value="{StaticResource BaseBrush}"/>
-                            <Setter Property="TextElement.Foreground" Value="{StaticResource DisabledBrush}" TargetName="Header"/>
+                            <Setter Property="Fill" TargetName="PART_MenuPinPath" Value="{DynamicResource BaseBorderBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource BaseBrush}"/>
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource DisabledBrush}" TargetName="Header"/>
 
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -714,7 +714,7 @@
                 <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor6}" TargetName="Bd"/>
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="BorderBrush" Value="{StaticResource BaseBorderBrush}" TargetName="Bd"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" TargetName="Bd"/>
                 <Setter Property="Background" Value="{DynamicResource BaseBrush}" TargetName="Bd"/>
             </Trigger>
         </ControlTemplate.Triggers>
@@ -1041,7 +1041,7 @@
                                     Visibility="Hidden" 
                                     Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}">
-                                    <Path Fill="{StaticResource TextBrush}" x:Name="PART_ClosePinPath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   >
+                                    <Path Fill="{DynamicResource TextBrush}" x:Name="PART_ClosePinPath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   >
                                       
                                     </Path>
                                 </Button>
@@ -1065,13 +1065,13 @@
                             <Setter Property="Visibility" Value="Collapsed" TargetName="DocumentCloseButton"  />
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" SourceName="DocumentCloseButton" Value="True">
-                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="DocumentCloseButton" Value="True">
-                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{StaticResource DisabledBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_ClosePinPath" Value="{DynamicResource DisabledBrush}"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
@@ -1206,7 +1206,7 @@
                                             DropDownContextMenu="{Binding Model.Root.Manager.DocumentContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                             DropDownContextMenuDataContext="{Binding Path=RootDocumentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Document_CxMenu_Hint}">
-                                            <Path Data="M2,6 L10,6 L6,10"  Name="PART_PinMenuPath" Fill="{StaticResource TextBrush}" />
+                                            <Path Data="M2,6 L10,6 L6,10"  Name="PART_PinMenuPath" Fill="{DynamicResource TextBrush}" />
                                         </avalonDockControls:DropDownButton>
 
                                         <Button 
@@ -1219,7 +1219,7 @@
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
                                             Grid.Column="2">
-                                            <Path Name="PART_PinMaximizePath" Fill="{StaticResource TextBrush}">
+                                            <Path Name="PART_PinMaximizePath" Fill="{DynamicResource TextBrush}">
                                                 <Path.Data>
                                                     <CombinedGeometry GeometryCombineMode="Xor">
                                                         <CombinedGeometry.Geometry1>
@@ -1243,7 +1243,7 @@
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Restore}"
                                             Grid.Column="2">
-                                            <Path Name="PART_PinRestorePath" Fill="{StaticResource TextBrush}">
+                                            <Path Name="PART_PinRestorePath" Fill="{DynamicResource TextBrush}">
                                                 <Path.Data>
                                                     <CombinedGeometry GeometryCombineMode="Union">
                                                         <CombinedGeometry.Geometry1>
@@ -1280,7 +1280,7 @@
                                             Command="{Binding Path=RootDocumentLayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
                                             Grid.Column="3">
-                                            <Path Fill="{StaticResource TextBrush}" x:Name="PART_PinClosePath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   SnapsToDevicePixels="True">
+                                            <Path Fill="{DynamicResource TextBrush}" x:Name="PART_PinClosePath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   SnapsToDevicePixels="True">
                                             
                                             </Path>
                                         </Button>
@@ -1324,28 +1324,28 @@
 									        Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor3}" TargetName="Header"/>
                         </MultiDataTrigger>
                         <Trigger Property="IsMouseOver" SourceName="ContextMenuDropdownButton" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" SourceName="ContextMenuDropdownButton" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_PinMaximize" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_PinMaximize" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_PinRestore" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_PinRestore" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_PinClose" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_PinClose" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1418,7 +1418,7 @@
                                             DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                             DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}">
-                                            <Path Data="M2,6 L10,6 L6,10"  Name="PART_PinMenuPath" Fill="{StaticResource TextBrush}" />
+                                            <Path Data="M2,6 L10,6 L6,10"  Name="PART_PinMenuPath" Fill="{DynamicResource TextBrush}" />
                                         </avalonDockControls:DropDownButton>
 
                                         <Button 
@@ -1435,7 +1435,7 @@
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
                                             Grid.Column="2">
-                                            <Path Name="PART_PinMaximizePath" Fill="{StaticResource TextBrush}">
+                                            <Path Name="PART_PinMaximizePath" Fill="{DynamicResource TextBrush}">
                                                 <Path.Data>
                                                     <CombinedGeometry GeometryCombineMode="Xor">
                                                         <CombinedGeometry.Geometry1>
@@ -1461,7 +1461,7 @@
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Restore}"
                                             Grid.Column="2">
-                                            <Path Name="PART_PinRestorePath" Fill="{StaticResource TextBrush}">
+                                            <Path Name="PART_PinRestorePath" Fill="{DynamicResource TextBrush}">
                                                 <Path.Data>
                                                     <CombinedGeometry GeometryCombineMode="Union">
                                                         <CombinedGeometry.Geometry1>
@@ -1500,7 +1500,7 @@
                                             Command="{Binding HideWindowCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnClose_Hint}"
                                             Grid.Column="3">
-                                            <Path Fill="{StaticResource TextBrush}" x:Name="PART_PinClosePath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   SnapsToDevicePixels="True">
+                                            <Path Fill="{DynamicResource TextBrush}" x:Name="PART_PinClosePath"  Data="M 1,3 L3,1 L6,5 L9,1 L11,3 L7,6 L11,9 L9,11 L6,7 L3,11 L1,9 L5,6 Z"   SnapsToDevicePixels="True">
 
                                             </Path>
                                         </Button>
@@ -1520,28 +1520,28 @@
                             <Setter Property="TextElement.Foreground" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor3}" TargetName="Header"/>
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" SourceName="SinglePaneContextMenu" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" SourceName="SinglePaneContextMenu" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMenuPath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_PinMaximize" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_PinMaximize" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinMaximizePath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_PinRestore" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_PinRestore" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinRestorePath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" SourceName="PART_PinClose" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{StaticResource SelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{DynamicResource SelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_PinClose" Value="True">
-                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{StaticResource DarkerSelectedColorBrush}"/>
+                            <Setter Property="Fill" TargetName="PART_PinClosePath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
