@@ -10,9 +10,10 @@
     mc:Ignorable="d" x:Class="Monotone.MainWindow"
         Title="MainWindow" Height="690" Width="1000" Background="#000">
     <Window.Resources>
-       
-           
+
         
+
+
 
     </Window.Resources>
     <Grid>
@@ -268,7 +269,7 @@
                     
                 </Grid>
             </TabItem>
-            <TabItem Header="Tab Control Variants">
+            <TabItem Header="Tab Control Variants">               
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -417,8 +418,7 @@
         </TabControl>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
             <CheckBox IsChecked="{Binding Path=IsEnabled, ElementName=tab, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}" Content="Enable Controls" Margin="0,0,10,0" Name="enabledcontrols" />
-        <CheckBox Name="theme" Checked="theme_Checked" Unchecked="theme_Unchecked" Content="Apply Theme" IsChecked="True"  /> 
-
+            <CheckBox Name="theme" Checked="theme_Checked" Unchecked="theme_Unchecked" Content="Use System Preferences"  />
         </StackPanel>
 
     </Grid>
