@@ -10,31 +10,7 @@
     mc:Ignorable="d" x:Class="Monotone.MainWindow"
         Title="MainWindow" Height="690" Width="1000" Background="#000">
     <Window.Resources>
-        <!--<Style TargetType="{x:Type ContextMenu}">
-            <Setter Property="Background" Value="{StaticResource BaseBrush}" />
-            <Setter Property="BorderBrush" Value="{StaticResource BaseBorderBrush}" />
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
-            <Setter Property="HasDropShadow" Value="True"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ContextMenu}">
-                        <Border  Name="Border" Background="{StaticResource BaseBrush}" BorderBrush="{StaticResource BaseBorderBrush}"  BorderThickness="1" >
-                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="HasDropShadow" Value="true">
-                                <Setter TargetName="Border" Property="Padding" Value="0,0,0,0"/>
-                                <Setter TargetName="Border" Property="CornerRadius" Value="1"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
--->
-        
+       
            
         
 
@@ -163,9 +139,18 @@
                         </Grid>
                         
                         <Separator Width="50" Height="10" Margin="5"  />
-                        <Button Content="Button"  Margin="5"   />
+                        <Button Content="Button"  Margin="5"  >
+                        </Button>
                         <ToggleButton Content="Toggle Button" Margin="5" />
-                        <CheckBox Content="CheckBox" Margin="5"/>                       
+                        <CheckBox Content="CheckBox" Margin="5">
+                            <CheckBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Item 1" />
+                                    <MenuItem IsEnabled="False" Header="Item 2" />
+                                    <MenuItem Header="Item 3" />
+                                </ContextMenu>
+                            </CheckBox.ContextMenu>
+                        </CheckBox>
                         <RadioButton Content="RadioButton"  Margin="5"/>
                         <ComboBox  Margin="5">
                             <ComboBoxItem Content="Item 1"/>
