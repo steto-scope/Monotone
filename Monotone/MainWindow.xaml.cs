@@ -30,6 +30,33 @@ namespace Monotone
             InitializeComponent ();
             //ConsoleManager.Show ();
             //theme_Checked(null, null);
+            var ad = tab.Items[2] as TabItem;
+            if(ad!=null)
+            {
+                ad.DataContext = Workspace.This;
+
+                //this.Loaded += new RoutedEventHandler(MainWindow_Loaded);
+                //this.Unloaded += new RoutedEventHandler(MainWindow_Unloaded);
+            }
+            
+        }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var serializer = new Xceed.Wpf.AvalonDock.Layout.Serialization.XmlLayoutSerializer(dockManager);
+            serializer.LayoutSerializationCallback += (s, args) =>
+            {
+                args.Content = args.Content;
+            };
+
+            if (File.Exists(@".\AvalonDock.config"))
+                serializer.Deserialize(@".\AvalonDock.config");
+        }
+
+        void MainWindow_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var serializer = new Xceed.Wpf.AvalonDock.Layout.Serialization.XmlLayoutSerializer(dockManager);
+            serializer.Serialize(@".\AvalonDock.config");
         }
 
 

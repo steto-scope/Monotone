@@ -12,7 +12,7 @@
 		<Color x:Key="Base-2Color">#111</Color>
         <Color x:Key="Base-2TColor">#22111111</Color>
 		<Color x:Key="TextColor">#CCC</Color>
-    <Color x:Key="SelectedColor">#f22222</Color>
+    <Color x:Key="SelectedColor">#f88888</Color>
     <Color x:Key="DarkerSelectedColor">#b22222</Color>
 
 
