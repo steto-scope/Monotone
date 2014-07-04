@@ -1,0 +1,121 @@
+﻿<!--***********************************************************************************
+
+   AvalonDock
+
+   Copyright (C) 2007-2013 Xceed Software Inc.
+
+   This program is provided to you under the terms of the New BSD
+   License (BSD) as published at http://avalondock.codeplex.com/license 
+
+   For more features, controls, and fast professional support,
+   pick up AvalonDock in Extended WPF Toolkit Plus at http://xceed.com/wpf_toolkit
+
+   Stay informed: follow @datagrid on Twitter or Like facebook.com/datagrids
+
+  **********************************************************************************-->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush Color="{StaticResource Base-2Color}" x:Key="AvalonDock_ThemeMonotone_BaseColor1" />
+
+    <!-- inactive anchorable header text-->
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor2" 
+                     Color="{StaticResource Base+6Color}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor3" 
+                     Color="{StaticResource TextColor}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor4" 
+                     Color="Transparent"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor5" 
+                     Color="{StaticResource BaseColor}"/>
+
+    <!-- anchorable item header hover brush-->
+    <LinearGradientBrush x:Key="AvalonDock_ThemeMonotone_BaseColor6"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#50444444" Offset="0" />
+            <GradientStop Color="#50333333" Offset="1" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="AvalonDock_ThemeMonotone_BaseColor7"
+                         StartPoint="0,1"
+                         EndPoint="0,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FF22BB22" Offset="0" />
+            <GradientStop Color="#FF333333" Offset="0.1" />
+            <GradientStop Color="#FF222222" Offset="0.5" />
+            <GradientStop Color="#FF3BB333" Offset="1" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor8"
+                     Color="{StaticResource DarkerSelectedColor}"/>
+
+    <!-- disabled color-->
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor9"
+                     Color="{StaticResource BaseColor}"/>
+
+    <!-- inactive document pane header text-->
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor10" 
+                     Color="{StaticResource Base+4Color}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor11" 
+                     Color="Cyan" />
+
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor13"
+                     Color="{StaticResource Base+2Color}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor14"
+                     Color="{StaticResource SelectedColor}"/>
+
+    <!-- active anchorable header background -->
+    <LinearGradientBrush x:Key="AvalonDock_ThemeMonotone_BaseColor15"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <GradientStop Color="{StaticResource Base+2Color}" Offset="0" />
+        <GradientStop Color="{StaticResource Base+1Color}" Offset="1" />
+    </LinearGradientBrush>
+
+
+    <!-- inactive anchorable header background-->
+    <LinearGradientBrush x:Key="AvalonDock_ThemeMonotone_BaseColor16"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <GradientStop Color="{StaticResource BaseColor}" Offset="0" />
+        <GradientStop Color="{StaticResource BaseColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- inactive document header background-->
+    <LinearGradientBrush x:Key="AvalonDock_ThemeMonotone_BaseColor24" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{StaticResource BaseColor}" Offset="0" />
+        <GradientStop Color="{StaticResource BaseColor}" Offset="0.5" />
+        <GradientStop Color="{StaticResource BaseColor}" Offset="0.5" />
+        <GradientStop Color="{StaticResource BaseColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- selected document header background-->
+    <LinearGradientBrush x:Key="AvalonDock_ThemeMonotone_BaseColor25" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{StaticResource BaseColor}" Offset="0" />
+        <GradientStop Color="{StaticResource BaseColor}" Offset="1" />
+    </LinearGradientBrush>
+
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor28"
+                         Color="White"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor30" 
+        Color="{StaticResource Base+5Color}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor31" 
+        Color="{StaticResource DarkerSelectedColor}"/>
+
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor33"
+        Color="{StaticResource BaseColor}"/>
+</ResourceDictionary>
