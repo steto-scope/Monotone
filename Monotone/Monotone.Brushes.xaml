@@ -9,6 +9,7 @@
     <SolidColorBrush Color="{StaticResource TextColor}" x:Key="TextBrush" />
     <SolidColorBrush Color="{DynamicResource Base3Color}" x:Key="BaseBorderBrush" />
     <SolidColorBrush Color="{DynamicResource Base3TColor}" x:Key="SemiTransparentBaseBorderBrush" />
+    <SolidColorBrush Color="{DynamicResource ErrorColor}" x:Key="ErrorBrush" />
     <SolidColorBrush Color="{DynamicResource BaseM2TColor}" x:Key="SemiTransparentDarkerBaseBrush" />
 
     <LinearGradientBrush x:Key="ButtonBackgroundBrush" StartPoint="0,0" EndPoint="0,1">

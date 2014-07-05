@@ -14,5 +14,7 @@
     <Color x:Key="TextColor">#CCC</Color>
     <Color x:Key="SelectedColor">#f88888</Color>
     <Color x:Key="DarkerSelectedColor">#b22222</Color>
+    <Color x:Key="ErrorColor">#ff8888</Color>
+    <Color x:Key="DarkErrorColor">#aa4444</Color>
 
 </ResourceDictionary>

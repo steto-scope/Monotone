@@ -41,7 +41,7 @@ namespace Monotone
 
         public FileViewModel()
         {
-            IsDirty = false;
+            IsDirty = true;
             Title = FileName;
         }
 

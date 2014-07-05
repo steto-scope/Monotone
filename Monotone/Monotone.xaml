@@ -1187,10 +1187,11 @@
     </Style>
     <Style TargetType="{x:Type Menu}">
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Menu}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                 </ControlTemplate>
@@ -1204,9 +1205,9 @@
     </Style>
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true">
-            <Rectangle x:Name="Bg" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+            <Rectangle x:Name="Bg" Height="26" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
             <Rectangle x:Name="InnerBorder" Margin="1" RadiusY="0" RadiusX="0"/>
-            <Grid >
+            <Grid Height="24" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition MinWidth="24" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
                     <ColumnDefinition Width="4"/>
@@ -1215,7 +1216,7 @@
                     <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
                     <ColumnDefinition Width="17"/>
                 </Grid.ColumnDefinitions>
-                <ContentPresenter x:Name="Icon" ContentSource="Icon" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                <ContentPresenter Width="16" x:Name="Icon" ContentSource="Icon" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                 <Border x:Name="GlyphPanel" BorderBrush="#22ffffff" BorderThickness="1" CornerRadius="1" Margin="1" Visibility="Hidden" >
                     <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="{StaticResource GlyphBrush}" FlowDirection="LeftToRight" Height="11" Width="9"/>
                 </Border>
@@ -1257,7 +1258,7 @@
         </Border>
     </ControlTemplate>
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
-        <Grid SnapsToDevicePixels="true" Height="20"  >
+        <Grid SnapsToDevicePixels="true" Height="22"  >
             <Rectangle x:Name="OuterBorder" RadiusY="0" RadiusX="0"/>
             <Rectangle x:Name="Bg" Fill="{TemplateBinding Background}" Margin="1" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0"/>
             <Rectangle x:Name="InnerBorder" Margin="2"/>
@@ -1365,9 +1366,9 @@
     </ControlTemplate>
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true">
-            <Rectangle x:Name="Bg" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+            <Rectangle x:Name="Bg" Height="26" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
             <Rectangle x:Name="InnerBorder" Margin="1" RadiusY="2" RadiusX="2" Stroke="Transparent" StrokeThickness="1"/>
-            <Grid>
+            <Grid Height="24">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition MinWidth="24" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
                     <ColumnDefinition Width="4"/>
@@ -1376,7 +1377,7 @@
                     <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
                     <ColumnDefinition Width="17"/>
                 </Grid.ColumnDefinitions>
-                <ContentPresenter x:Name="Icon" ContentSource="Icon" Margin="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                <ContentPresenter x:Name="Icon" Width="16" ContentSource="Icon" Margin="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                 <Border x:Name="GlyphPanel" BorderBrush="#CDD3E6" BorderThickness="1" Background="#E6EFF4" CornerRadius="3" Height="22" Margin="1" Visibility="Hidden" Width="22">
                     <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="{StaticResource GlyphBrush}" FlowDirection="LeftToRight" Height="11" Width="9"/>
                 </Border>
@@ -1442,7 +1443,7 @@
         <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}"/>
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
-                <Setter Property="Padding" Value="7,2,8,3"/>
+                <Setter Property="Padding" Value="15,3,15,3"/>
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}"/>
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
@@ -1580,6 +1581,7 @@
     </Style>
     <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" BasedOn="{StaticResource ToolBarButtonBaseStyle}" TargetType="{x:Type Button}" />
     <Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" BasedOn="{StaticResource ToolBarToggleButtonBaseStyle}" TargetType="{x:Type ToggleButton}" />
+    <Style x:Key="{x:Static ToolBar.ComboBoxStyleKey}" BasedOn="{StaticResource {x:Type ComboBox}}" TargetType="ComboBox" />
     <Style x:Key="ToolBarVerticalOverflowButtonStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="MinWidth" Value="0"/>
@@ -1708,7 +1710,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToolBar}">
                     <Border Margin="3,1,1,1" CornerRadius="1"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                    <Grid x:Name="Grid" SnapsToDevicePixels="true">
+                    <Grid x:Name="Grid" SnapsToDevicePixels="true" >
                         <Grid x:Name="OverflowGrid" HorizontalAlignment="Right">
                             <ToggleButton x:Name="OverflowButton" ClickMode="Press" FocusVisualStyle="{x:Null}" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" Style="{StaticResource ToolBarHorizontalOverflowButtonStyle}" >
 
@@ -1766,6 +1768,9 @@
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
+                    <ControlTemplate.Resources>
+                       
+                    </ControlTemplate.Resources>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -2215,7 +2220,7 @@
         </Setter>
     </Style>
     <Style TargetType="ListBoxItem">
-        <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="5,2" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="BorderThickness" Value="1" />

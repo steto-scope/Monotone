@@ -10,11 +10,10 @@
     mc:Ignorable="d" x:Class="Monotone.MainWindow"
         Title="MainWindow" Height="690" Width="1000" Background="#000">
     <Window.Resources>
-
-        
-
-
-
+        <Style TargetType="ToolBar" BasedOn="{StaticResource {x:Type ToolBar}}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Red" />
+        </Style>
     </Window.Resources>
     <Grid>
         
@@ -112,6 +111,13 @@
                                             <Image Source="D:/Bilder/mandel.png" Width="16"  	/>
                                         </Button.Content>
                                     </Button>
+                                    <ComboBox  Margin="5" Width="60" IsEditable="True">
+                                        <ComboBoxItem Content="Item 1"/>
+                                        <ComboBoxItem Content="Item 2" IsEnabled="False"/>
+                                        <ComboBoxItem Content="Item 3"/>
+                                        <Separator />
+                                        <ComboBoxItem Content="Item 4"/>
+                                    </ComboBox>
                                 </ToolBar>
                                 <ToolBar Band="1">
                                     <Button>Button</Button>
@@ -352,7 +358,7 @@
             <TabItem Header="Avalon Dock" IsSelected="True">
                 <TabItem.Resources>
                     <local:ActiveDocumentConverter x:Key="ActiveDocumentConverter"/>
-                    <ad:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+                    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
                 </TabItem.Resources>
                 <ad:DockingManager x:Name="dockManager" AnchorablesSource="{Binding Tools}" 
                                    DocumentsSource="{Binding Files}"

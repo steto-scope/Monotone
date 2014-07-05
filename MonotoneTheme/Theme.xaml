@@ -325,6 +325,22 @@
                                         <Setter Property="Panel.ZIndex" 
                                             Value="1" />
                                     </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsActive}" Value="true"/>
+                                            <Condition Binding="{Binding Content.IsDirty}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor34}"/>
+                                        <Setter Property="FontStyle" Value="Italic" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsActive}" Value="false"/>
+                                            <Condition Binding="{Binding Content.IsDirty}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor35}"/>
+                                        <Setter Property="FontStyle" Value="Italic" />
+                                    </MultiDataTrigger>
 
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
@@ -338,7 +354,7 @@
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor13}"/>
                                         <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor9}"/>
-                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -930,7 +946,7 @@
 
     <!--DockingManager-->
     <Style x:Key="{x:Type avalonDock:DockingManager}" TargetType="{x:Type avalonDock:DockingManager}">
-        <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMonotone_BaseColor1}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="DocumentPaneControlStyle" Value="{StaticResource AvalonDock_ThemeMonotone_DocumentPaneControlStyle}"/>
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource AvalonDock_ThemeMonotone_AnchorablePaneControlStyle}"/>
         <Setter Property="AnchorSideTemplate" Value="{StaticResource AvalonDock_ThemeMonotone_AnchorSideTemplate}"/>
@@ -1554,6 +1570,7 @@
     </Style>
 
 
+    
     <Style x:Key="AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -1580,87 +1597,18 @@
         <GradientStop Color="#FFC9EDFD" Offset="1"/>
     </LinearGradientBrush>
 
-    <Style x:Key="AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemStyle" TargetType="ListBoxItem">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemFocusVisual}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="5,0,5,0"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ListBoxItem">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}" 
-                            Background="{TemplateBinding Background}" 
-                            CornerRadius="2" SnapsToDevicePixels="true">
-                        <Border x:Name="InnerBorder" BorderThickness="1" CornerRadius="1">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition MaxHeight="11"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Rectangle x:Name="UpperHighlight" Fill="#75FFFFFF" Visibility="Collapsed"/>
-                                <ContentPresenter Grid.RowSpan="2" 
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            </Grid>
-                        </Border>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{StaticResource AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemSelectedFill}"/>
-                            <Setter Property="BorderBrush" Value="#FF98DDFB"/>
-                            <Setter Property="BorderBrush" TargetName="InnerBorder" Value="#80FFFFFF"/>
-                            <Setter Property="Visibility" TargetName="UpperHighlight" Value="Visible"/>
-                            <Setter Property="Fill" TargetName="UpperHighlight" Value="#40FFFFFF"/>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Background" Value="{StaticResource AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemSelectedFill}"/>
-                            <Setter Property="BorderBrush" Value="#FF98DDFB"/>
-                            <Setter Property="BorderBrush" TargetName="InnerBorder" Value="#80FFFFFF"/>
-                            <Setter Property="Visibility" TargetName="UpperHighlight" Value="Visible"/>
-                            <Setter Property="Fill" TargetName="UpperHighlight" Value="#40FFFFFF"/>
-                        </Trigger>
-                        <!--<MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="IsMouseOver" Value="true"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="{StaticResource AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemSelectedHoverFill}"/>
-                            <Setter Property="BorderBrush" Value="#FF98DDFB"/>
-                        </MultiTrigger>-->
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style x:Key="{x:Type avalonDockControls:NavigatorWindow}" TargetType="{x:Type avalonDockControls:NavigatorWindow}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-        <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        <Setter Property="Background" Value="{DynamicResource BaseColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="ResizeMode" Value="NoResize"/>
-        <Setter Property="shell:WindowChrome.WindowChrome">
-            <Setter.Value>
-                <shell:WindowChrome
-                    ResizeBorderThickness="10"
-                    CaptionHeight="16"
-                    CornerRadius="3,3,3,3"
-                    GlassFrameThickness="4"/>
-            </Setter.Value>
-        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:NavigatorWindow}">
                     <Grid>
                         <Border x:Name="WindowBorder" BorderThickness="1"
-                                CornerRadius="3"
-                                Background="{DynamicResource AvalonDock_ThemeMonotone_BaseColor2}"
-                                BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+                                CornerRadius="1"
+                                Background="{DynamicResource BaseBrush}"
+                                BorderBrush="{DynamicResource BaseBorderBrush}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="54"/>
@@ -1684,7 +1632,7 @@
                                             Visibility="{Binding SelectedDocument.LayoutElement.IconSource, Converter={StaticResource BoolToVisibilityConverter} }"/>
                                         <TextBlock Text="{Binding SelectedDocument.LayoutElement.Title}" TextTrimming="CharacterEllipsis" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" Margin="4,0,0,0"/>
                                     </Grid>
-                                    <TextBlock Text="{Binding SelectedDocument.LayoutElement.Description}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                                    <TextBlock  Text="{Binding SelectedDocument.LayoutElement.Description}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
                                 </Grid>
 
                                 <Border Grid.Row="1" 
@@ -1705,8 +1653,7 @@
                                             <TextBlock Text="Active Tool Windows" FontWeight="Bold" Margin="0,3,0,4"/>
                                             <ListBox Grid.Row="1" 
                                                      ItemsSource="{Binding Anchorables}"
-                                                     SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}" 
-                                                     ItemContainerStyle="{StaticResource AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemStyle}"
+                                                     SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}"                                                      
                                                      Background="Transparent" 
                                                      BorderThickness="0"
                                                      MaxHeight="400">
@@ -1734,8 +1681,7 @@
                                                 Grid.Row="1" 
                                                 ItemsSource="{Binding Documents}" 
                                                 SelectedItem="{Binding SelectedDocument, Mode=TwoWay}" 
-                                                ItemContainerStyle="{StaticResource AvalonDock_ThemeMonotone_NavigatorWindowListBoxItemStyle}"
-                                                Background="Transparent" 
+                                                Background="Transparent"
                                                 BorderThickness="0" 
                                                 MaxHeight="400">
                                                 <ListBox.ItemTemplate>

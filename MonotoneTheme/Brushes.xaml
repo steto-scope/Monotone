@@ -46,10 +46,10 @@
                          StartPoint="0,1"
                          EndPoint="0,0">
         <LinearGradientBrush.GradientStops>
-            <GradientStop Color="#FF22BB22" Offset="0" />
-            <GradientStop Color="#FF333333" Offset="0.1" />
-            <GradientStop Color="#FF222222" Offset="0.5" />
-            <GradientStop Color="#FF3BB333" Offset="1" />
+            <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
+            <GradientStop Color="{DynamicResource Base1Color}" Offset="0.1" />
+            <GradientStop Color="{DynamicResource Base1Color}" Offset="0.5" />
+            <GradientStop Color="{DynamicResource Base1Color}" Offset="1" />
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
@@ -64,8 +64,9 @@
     <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor10" 
                      Color="{DynamicResource Base4Color}"/>
 
+    <!-- navigator border-->
     <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor11" 
-                     Color="Cyan" />
+                     Color="{DynamicResource Base3Color}" />
 
 
     <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor13"
@@ -118,4 +119,9 @@
 
     <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor33"
         Color="{DynamicResource BaseColor}"/>
+
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor34"
+        Color="{DynamicResource ErrorColor}"/>
+    <SolidColorBrush x:Key="AvalonDock_ThemeMonotone_BaseColor35"
+        Color="{DynamicResource DarkErrorColor}"/>
 </ResourceDictionary>
