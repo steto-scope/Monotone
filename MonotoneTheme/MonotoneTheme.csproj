@@ -77,11 +77,7 @@
     <Resource Include="Images\VTabGroup.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Brushes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Theme.xaml">
+    <Page Include="Monotone.AvalonDock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -10,6 +10,7 @@
     <SolidColorBrush Color="{DynamicResource Base3Color}" x:Key="BaseBorderBrush" />
     <SolidColorBrush Color="{DynamicResource Base3TColor}" x:Key="SemiTransparentBaseBorderBrush" />
     <SolidColorBrush Color="{DynamicResource ErrorColor}" x:Key="ErrorBrush" />
+    <SolidColorBrush Color="{DynamicResource DarkErrorColor}" x:Key="DarkerErrorBrush" />
     <SolidColorBrush Color="{DynamicResource BaseM2TColor}" x:Key="SemiTransparentDarkerBaseBrush" />
 
     <LinearGradientBrush x:Key="ButtonBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
@@ -31,6 +32,28 @@
     <LinearGradientBrush x:Key="ButtonBackgroundPressedBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="{DynamicResource Base1Color}" Offset="0" />
         <GradientStop Color="{DynamicResource BaseColor}" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="LighterBaseGradientBrush" StartPoint="0,1" EndPoint="0,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
+            <GradientStop Color="{DynamicResource Base1Color}" Offset="0.1" />
+            <GradientStop Color="{DynamicResource Base1Color}" Offset="0.5" />
+            <GradientStop Color="{DynamicResource Base1Color}" Offset="1" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="LighterBaseGradientHoverBrush"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#50444444" Offset="0" />
+            <GradientStop Color="#50333333" Offset="1" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="LighterBaseGradientBrush2"
+                         StartPoint="0,0"
+                         EndPoint="0,1">
+        <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
+        <GradientStop Color="{DynamicResource Base1Color}" Offset="1" />
     </LinearGradientBrush>
     <SolidColorBrush Color="{DynamicResource SelectedColor}" x:Key="SelectedBrush" />
     <SolidColorBrush Color="{DynamicResource DarkerSelectedColor}" x:Key="DarkerSelectedBrush" />

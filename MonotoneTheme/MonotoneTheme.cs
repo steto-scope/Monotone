@@ -27,7 +27,7 @@ namespace MonotoneTheme
         public override Uri GetResourceUri()
         {
             return new Uri(
-                "/MonotoneTheme;component/Theme.xaml", 
+                "/MonotoneTheme;component/Monotone.AvalonDock.xaml", 
                 UriKind.Relative);  
         }
     }
