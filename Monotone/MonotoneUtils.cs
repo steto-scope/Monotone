@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -16,7 +17,7 @@ namespace Monotone
     /// <summary>
     /// Util-Class for Monotone
     /// </summary>
-    public class ThemeUpdater
+    public class MonotoneUtils
     {
         #region Updater
 
@@ -26,16 +27,7 @@ namespace Monotone
         public static void Update()
         {
             if (UseSystemPreferences)
-                Update(GetSystemColor().H);
-        }
-
-        /// <summary>
-        /// Updates the applied Monotone-Theme to a new color-scheme.
-        /// </summary>
-        /// <param name="hue">New color</param>
-        public static void Update(double hue)
-        {
-            Update(RootDictionary, hue, BrushesDictionary);
+                Update(GetSystemColor());
         }
 
         /// <summary>
@@ -47,59 +39,28 @@ namespace Monotone
             Update(RootDictionary, color, BrushesDictionary);
         }
 
-        /// <summary>
-        /// Updates the applied Monotone-Theme to a new color-scheme
-        /// </summary>
-        /// <param name="dictionary">Dictionary which holds the Monotone-Resources. Common value is Application.Current.Resources</param>
-        /// <param name="color">The new color. Only the hue is used, no saturation or brightness!</param>
-        /// <param name="brushesResource">The Uri to the Brushes-Dictionary. A re-apply of this Resource is used to update the Bindings</param>
-        public static void Update(ResourceDictionary dictionary, Color color, Uri brushesResource)
-        {
-            Update(dictionary, HSV.FromColor(color).H, brushesResource);
-        }
 
         /// <summary>
         /// Updates the applied Monotone-Theme to a new color-scheme
         /// </summary>
         /// <param name="dictionary">Dictionary which holds the Monotone-Resources. Common value is Application.Current.Resources</param>
-        /// <param name="hue">The new color. Hue-value of the HSL/HSV colorspace. Range: [0.0,1.0]</param>
+        /// <param name="color">The new base color</param>
         /// <param name="brushesResource">The Uri to the Brushes-Dictionary. A re-apply of this Resource is used to update the Bindings</param>
-        public static void Update(ResourceDictionary dictionary, double hue, Uri brushesResource)
+        public static void Update(ResourceDictionary dictionary, Color color, Uri brushesResource)
         {
             if (brushesResource == null)
                 return;
             if (dictionary == null)
                 return;
 
-            HSV baseborder = HSV.FromColor(Color.FromRgb(102, 102, 102));
-            baseborder.H = hue;
-            
-            Color transm3 = baseborder.ToColor(0, 0.3, 0);
-            transm3.A = 119;
-            Color transm2t = baseborder.ToColor(0, 0.1, -0.25);
-            transm2t.A = 34;
 
 
             ResourceDictionary dict = new ResourceDictionary();
             dict = (ResourceDictionary)System.Windows.Application.LoadComponent(brushesResource);
             dict.Source = brushesResource;
 
-            if (!dictionary.Contains("BaseColor"))
-                return;
+            CalculateColors(ref dictionary, color);
 
-            dictionary["BaseColor"] = HSV.FromHSV(hue, 0.4, 0.2);
-            dictionary["SelectedColor"] = HSV.FromHSV(hue, 1, 1);
-            dictionary["DarkerSelectedColor"] = HSV.FromHSV(hue, 1, 0.7);
-            dictionary["BaseM2Color"] = baseborder.ToColor(0, 0.1, -0.25);
-            dictionary["BaseM2TColor"] = transm2t;
-            dictionary["BaseM1Color"] = baseborder.ToColor(0, 0.1, -0.2);
-            dictionary["Base1Color"] = baseborder.ToColor(0, 0.1, 0);
-            dictionary["Base2Color"] = baseborder.ToColor(0, 0.2, 0);
-            dictionary["Base3Color"] = baseborder.ToColor(0, 0.3, 0);
-            dictionary["Base3TColor"] = transm3;
-            dictionary["Base4Color"] = baseborder.ToColor(0, 0.4, 0);
-            dictionary["Base5Color"] = baseborder.ToColor(0, 0.5, 0);
-            dictionary["Base6Color"] = baseborder.ToColor(0, 0.6, 0);
 
             int index = -1;
             for (int i = 0; i < dictionary.MergedDictionaries.Count; i++)
@@ -117,8 +78,102 @@ namespace Monotone
                 dictionary.MergedDictionaries.Insert(index, dict);
             }
         }
+        
+        #endregion
 
-#endregion
+        /// <summary>
+        /// Derive all colors from the given base color
+        /// </summary>
+        /// <param name="dictionary">Dictionary to store new Colors</param>
+        /// <param name="baseColor"></param>
+        public static void CalculateColors(ref ResourceDictionary dictionary, Color baseColor)
+        {
+            HSV bc = HSV.FromColor(baseColor);
+
+            HSV baseborder = HSV.FromColor(Color.FromRgb(102, 102, 102));
+            baseborder.H = bc.H;
+            Color selectedcolorhover = HSV.FromHSV(bc.H, 1, 0.7);
+            selectedcolorhover.A = 80;
+
+            Color transm3 = baseborder.ToColor(0, 0.3, 0);
+            transm3.A = 119;
+            Color transm2t = baseborder.ToColor(0, 0.1, -0.25);
+            transm2t.A = 34;
+
+            dictionary["BaseColor"] = HSV.FromHSV(bc.H, 0.4, 0.2);
+            dictionary["SelectedColor"] = HSV.FromHSV(bc.H, 1, 1);
+            dictionary["DarkerSelectedColor"] = HSV.FromHSV(bc.H, 1, 0.7);
+            dictionary["DarkerSelectedColorHover"] = selectedcolorhover;
+            dictionary["BaseM2Color"] = baseborder.ToColor(0, 0.1, -0.25);
+            dictionary["BaseM2TColor"] = transm2t;
+            dictionary["BaseM1Color"] = baseborder.ToColor(0, 0.1, -0.2);
+            dictionary["Base1Color"] = baseborder.ToColor(0, 0.1, 0);
+            dictionary["Base2Color"] = baseborder.ToColor(0, 0.2, 0);
+            dictionary["Base3Color"] = baseborder.ToColor(0, 0.3, 0);
+            dictionary["Base3TColor"] = transm3;
+            dictionary["Base4Color"] = baseborder.ToColor(0, 0.4, 0);
+            dictionary["Base5Color"] = baseborder.ToColor(0, 0.5, 0);
+            dictionary["Base6Color"] = baseborder.ToColor(0, 0.6, 0);
+            dictionary["TextColor"] = Colors.White;
+            dictionary["ErrorColor"] = Color.FromRgb(255, 136, 136);
+            dictionary["DarkErrorColor"] = Color.FromRgb(170, 68, 68);
+
+        }
+
+        /// <summary>
+        /// Generates a dictionary containing the Monotone colors based on the given base color
+        /// </summary>
+        /// <param name="baseColor"></param>
+        /// <returns></returns>
+        public static ResourceDictionary CalculateColors(Color baseColor)
+        {
+            ResourceDictionary d = new ResourceDictionary();
+            CalculateColors(ref d, baseColor);
+            return d;
+        }
+
+        /// <summary>
+        /// Generates a dictionary containing the Monotone colors based on system color scheme
+        /// </summary>
+        /// <returns></returns>
+        public static ResourceDictionary CalculateColors()
+        {
+            ResourceDictionary d = new ResourceDictionary();
+            CalculateColors(ref d, GetSystemColor());
+            return d;
+        }
+
+        /// <summary>
+        /// Generates a Monotone.Colors.xaml-File based on the system color scheme
+        /// </summary>
+        /// <param name="file"></param>
+        public static void GenerateXaml(string file)
+        {
+            ResourceDictionary d = CalculateColors();
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<ResourceDictionary xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\">");
+                      
+
+            foreach(var key in d.Keys)
+            {
+                sb.Append("<Color x:Key=\"");
+                sb.Append(key);
+                sb.Append("\">");
+                sb.Append(d[key]);
+                sb.AppendLine("</Color>");
+            }
+
+            sb.AppendLine("</ResourceDictionary>");
+            string xaml = sb.ToString();
+
+            using (StreamWriter sw = new StreamWriter(file))
+            {
+                sw.Write(xaml);
+            }
+        }
+
+
 
         #region Properties
 
@@ -206,13 +261,22 @@ namespace Monotone
         [DllImport("dwmapi.dll")]
         private static extern int DwmIsCompositionEnabled(out bool enabled);
 
+        /// <summary>
+        /// Triggers the Update()-Method when a UserPreferenceChanged-event occours
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
-            Update(Application.Current.Resources, GetSystemColor().H, new System.Uri("/Monotone;component/Monotone.Brushes.xaml", System.UriKind.Relative));
-            Console.WriteLine("Color changed");
+            Update(Application.Current.Resources, GetSystemColor(), new System.Uri("/Monotone;component/Monotone.Brushes.xaml", System.UriKind.Relative));
         }
 
-        public static  HSV GetSystemColor()
+        /// <summary>
+        /// Reads the system color out of the registry
+        /// </summary>
+        /// <remarks>Works only when DWM is enabled</remarks>
+        /// <returns></returns>
+        private static Color GetSystemColor()
         {
             bool dwm = false;
             DwmIsCompositionEnabled(out dwm);
@@ -227,14 +291,19 @@ namespace Monotone
                 }
                 uint u = BitConverter.ToUInt32(BitConverter.GetBytes(val), 0);
                 Color c = DWORDtoColor(u);
-                return HSV.FromColor(c);
+                return c;
             }
-            return new HSV();
+            return new Color();
         }
 
-        static Color DWORDtoColor(ulong dwColor)
+        /// <summary>
+        /// Converts a DWORD of the registry to a Color-Instance
+        /// </summary>
+        /// <param name="dwColor"></param>
+        /// <returns></returns>
+        private static Color DWORDtoColor(ulong dwColor)
         {
-            Color tmp = new Color(); /* why did you declare it static??? */
+            Color tmp = new Color(); 
             tmp.B = (byte)(dwColor % 256); dwColor /= 256;
             tmp.G = (byte)(dwColor % 256); dwColor /= 256;
             tmp.R = (byte)(dwColor % 256); dwColor /= 256;

@@ -38,12 +38,12 @@ namespace Monotone
 
         private void theme_Checked(object sender, RoutedEventArgs e)
         {
-            ThemeUpdater.UseSystemPreferences = true;
+            MonotoneUtils.UseSystemPreferences = true;
         }
 
         private void theme_Unchecked(object sender, RoutedEventArgs e)
         {
-            ThemeUpdater.UseSystemPreferences = false;
+            MonotoneUtils.UseSystemPreferences = false;
         }
 
 

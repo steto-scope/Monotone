@@ -9,12 +9,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" x:Class="Monotone.MainWindow"
         Title="MainWindow" Height="690" Width="1000" Background="#000">
-    <Window.Resources>
-        <Style TargetType="ToolBar" BasedOn="{StaticResource {x:Type ToolBar}}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderBrush" Value="Red" />
-        </Style>
-    </Window.Resources>
     <Grid>
         
         
@@ -149,6 +143,7 @@
                         <Button Content="Button"  Margin="5"  >
                         </Button>
                         <ToggleButton Content="Toggle Button" Margin="5" />
+                       
                         <CheckBox Content="CheckBox" Margin="5">
                             <CheckBox.ContextMenu>
                                 <ContextMenu>
@@ -176,6 +171,10 @@
                         <Image  Margin="5" Stretch="Fill" />
                         <Label Content="Label"  Margin="5"  />
                         <TextBlock Margin="5" Text="TextBlock" />
+                        <TextBlock>
+                             <TextBlock Text="Click: " />
+                            <Hyperlink>Hyperink</Hyperlink>
+                        </TextBlock>
                         <ListBox Margin="5">
                             <ListBoxItem>Item 1</ListBoxItem>
                             <ListBoxItem IsEnabled="False">Item 2</ListBoxItem>

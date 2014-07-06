@@ -1,19 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	
-		
-
-   
-
-
-
-
-    <!--<Style TargetType="{x:Type Grid}">
-			<Setter Property="Background" Value="{DynamicResource BaseBrush}" />
-    </Style>
-    <Style TargetType="{x:Type DockPanel}">
-        <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
-    </Style>-->
-    
+		    
     <Style TargetType="Window">
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Style.Triggers>
@@ -28,6 +15,18 @@
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Style.Triggers>
 
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Hyperlink}" x:Key="{x:Type Hyperlink}">
+        <Setter Property="IsEnabled" Value="{Binding IsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkerSelectedBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground" Value="{DynamicResource SelectedBrush}" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
             </Trigger>
@@ -327,7 +326,7 @@
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
-        <Setter Property="SelectionBrush" Value="{x:Null}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -353,7 +352,7 @@
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}"/>
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
-        <Setter Property="SelectionBrush" Value="{x:Null}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -577,6 +576,7 @@
     <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="MinWidth" Value="0"/>
         <Setter Property="MinHeight" Value="0"/>
