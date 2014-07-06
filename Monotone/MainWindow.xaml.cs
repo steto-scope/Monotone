@@ -46,6 +46,16 @@ namespace Monotone
             MonotoneUtils.UseSystemPreferences = false;
         }
 
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+        {
+            MonotoneUtils.Update(e.NewValue);
+        }
+        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MonotoneUtils.Update();
+        }
+
 
     }
     

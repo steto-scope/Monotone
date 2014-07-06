@@ -26,8 +26,7 @@ namespace Monotone
         /// </summary>
         public static void Update()
         {
-            if (UseSystemPreferences)
-                Update(GetSystemColor());
+             Update(GetSystemColor());
         }
 
         /// <summary>
@@ -61,7 +60,7 @@ namespace Monotone
 
             CalculateColors(ref dictionary, color);
 
-
+            
             int index = -1;
             for (int i = 0; i < dictionary.MergedDictionaries.Count; i++)
             {
@@ -92,28 +91,29 @@ namespace Monotone
 
             HSV baseborder = HSV.FromColor(Color.FromRgb(102, 102, 102));
             baseborder.H = bc.H;
-            Color selectedcolorhover = HSV.FromHSV(bc.H, 1, 0.7);
+            baseborder.S = bc.S*0.5;
+            Color selectedcolorhover = HSV.FromHSV(bc.H, bc.S, bc.V * 0.7);
             selectedcolorhover.A = 80;
 
-            Color transm3 = baseborder.ToColor(0, 0.3, 0);
+            Color transm3 = baseborder.ToColor(0, 0, 0.1);
             transm3.A = 119;
-            Color transm2t = baseborder.ToColor(0, 0.1, -0.25);
+            Color transm2t = baseborder.ToColor(0, 0, -0.2);
             transm2t.A = 34;
 
-            dictionary["BaseColor"] = HSV.FromHSV(bc.H, 0.4, 0.2);
-            dictionary["SelectedColor"] = HSV.FromHSV(bc.H, 1, 1);
-            dictionary["DarkerSelectedColor"] = HSV.FromHSV(bc.H, 1, 0.7);
+            dictionary["BaseColor"] = HSV.FromHSV(bc.H, bc.S*0.7, bc.V*0.4);
+            dictionary["SelectedColor"] = bc.ToColor();
+            dictionary["DarkerSelectedColor"] = HSV.FromHSV(bc.H, bc.S, bc.V*0.7);
             dictionary["DarkerSelectedColorHover"] = selectedcolorhover;
-            dictionary["BaseM2Color"] = baseborder.ToColor(0, 0.1, -0.25);
+            dictionary["BaseM2Color"] = baseborder.ToColor(0, 0, -0.2);
             dictionary["BaseM2TColor"] = transm2t;
-            dictionary["BaseM1Color"] = baseborder.ToColor(0, 0.1, -0.2);
-            dictionary["Base1Color"] = baseborder.ToColor(0, 0.1, 0);
-            dictionary["Base2Color"] = baseborder.ToColor(0, 0.2, 0);
-            dictionary["Base3Color"] = baseborder.ToColor(0, 0.3, 0);
+            dictionary["BaseM1Color"] = baseborder.ToColor(0, 0, -0.15);
+            dictionary["Base1Color"] = baseborder.ToColor(0, 0, 0.025);
+            dictionary["Base2Color"] = baseborder.ToColor(0, 0, 0.05);
+            dictionary["Base3Color"] = baseborder.ToColor(0, 0, 0.1);
             dictionary["Base3TColor"] = transm3;
-            dictionary["Base4Color"] = baseborder.ToColor(0, 0.4, 0);
-            dictionary["Base5Color"] = baseborder.ToColor(0, 0.5, 0);
-            dictionary["Base6Color"] = baseborder.ToColor(0, 0.6, 0);
+            dictionary["Base4Color"] = baseborder.ToColor(0, 0, 0.125);
+            dictionary["Base5Color"] = baseborder.ToColor(0, 0, 0.15);
+            dictionary["Base6Color"] = baseborder.ToColor(0, 0, 0.175);
             dictionary["TextColor"] = Colors.White;
             dictionary["ErrorColor"] = Color.FromRgb(255, 136, 136);
             dictionary["DarkErrorColor"] = Color.FromRgb(170, 68, 68);
