@@ -1102,8 +1102,35 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
                     <Border Name="Border" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="1">
-                        <ScrollViewer Style="{StaticResource GridViewScrollViewerStyle}" >
-                            <ItemsPresenter />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
+                            <DockPanel >
+                                <GridViewHeaderRowPresenter Margin="2,0,2,0" DockPanel.Dock="Top"
+                                          Columns="{Binding Path=View.Columns,
+                RelativeSource={RelativeSource TemplatedParent}}"
+                                          ColumnHeaderContainerStyle="{Binding
+                Path=View.ColumnHeaderContainerStyle,
+                RelativeSource={RelativeSource TemplatedParent}}"
+                                          ColumnHeaderTemplate="{Binding
+                Path=View.ColumnHeaderTemplate,
+                RelativeSource={RelativeSource TemplatedParent}}"
+                                          ColumnHeaderTemplateSelector="{Binding
+                Path=View.ColumnHeaderTemplateSelector,
+                RelativeSource={RelativeSource TemplatedParent}}"
+                                          AllowsColumnReorder="{Binding
+                Path=View.AllowsColumnReorder,
+                RelativeSource={RelativeSource TemplatedParent}}"
+                                          ColumnHeaderContextMenu="{Binding
+                Path=View.ColumnHeaderContextMenu,
+                RelativeSource={RelativeSource TemplatedParent}}"
+                                          ColumnHeaderToolTip="{Binding
+                Path=View.ColumnHeaderToolTip,
+                RelativeSource={RelativeSource TemplatedParent}}"
+                                          UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                    <ItemsPresenter />
+                                </ScrollViewer>
+                            </DockPanel>
+                            
                         </ScrollViewer>
 
                     </Border>
