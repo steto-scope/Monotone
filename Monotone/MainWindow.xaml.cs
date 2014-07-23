@@ -17,22 +17,24 @@ using Ionic.Zip;
 using System.Security;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using MahApps.Metro.Controls;
 
 namespace Monotone
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow ()
         {
             InitializeComponent ();
-            var ad = tab.Items[2] as TabItem;
+            DataContext = Workspace.This;
+            /*var ad = tab.Items[2] as TabItem;
             if(ad!=null)
             {
                 ad.DataContext = Workspace.This;
-            }
+            }*/
             
         }
 
@@ -56,6 +58,15 @@ namespace Monotone
             MonotoneUtils.Update();
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Xceed.Wpf.Toolkit.MessageBox mb = new Xceed.Wpf.Toolkit.MessageBox();
+            mb.Caption = "Caption";
+            mb.Text = "Text";
+            mb.ShowDialog();
+        }
+
+      
 
     }
     

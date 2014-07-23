@@ -5,9 +5,14 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                
                 <ResourceDictionary Source="Monotone.Colors.xaml" />
                 <ResourceDictionary Source="Monotone.Brushes.xaml" />
+                <ResourceDictionary Source="Monotone.MahApps.xaml" />
                 <ResourceDictionary Source="Monotone.xaml" />
+                <ResourceDictionary Source="Monotone.ExtendedWPFToolkit.xaml" />
+
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

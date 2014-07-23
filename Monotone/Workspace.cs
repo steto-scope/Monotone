@@ -188,6 +188,13 @@ namespace Monotone
 
         #endregion
 
+        public string[] ItemCollection
+        {
+            get
+            {
+                return new string[] { "Item1", "Item2", "Item3" };
+            }
+        }
 
         internal void Close(FileViewModel fileToClose)
         {
