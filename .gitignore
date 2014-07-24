@@ -155,3 +155,6 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 /Version2.0
+/7za.exe
+/Monotone.zip
+/Release.zip

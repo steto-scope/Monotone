@@ -237,8 +237,18 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <xtk:AutoSelectTextBox Text="Auto Select Text Box" Margin="5" AutoMoveFocus="True" AutoWordSelection="True" AutoSelectBehavior="OnFocus" />
-                        <xtk:BusyIndicator Margin="5" IsBusy="True"  >
+                        <xtk:BusyIndicator Margin="5" IsBusy="True"   >
                             BusyIndicator
+                            <xtk:BusyIndicator.BusyContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="4">
+                                        <TextBlock Text="Working..." FontWeight="Bold" HorizontalAlignment="Center" />
+                                        <StackPanel Margin="4">
+                                            <ProgressBar Value="40" Height="15" />
+                                        </StackPanel>                                        
+                                    </StackPanel>
+                                </DataTemplate>
+                            </xtk:BusyIndicator.BusyContentTemplate>
                         </xtk:BusyIndicator>
                         <xtk:ButtonSpinner Margin="5" >
                             Item 1
@@ -443,7 +453,7 @@
             </TabItem>
             <TabItem Header="Child Windows">
                 <xtk:WindowContainer>
-                    <xtk:ChildWindow Caption="Child Window" Width="200" WindowStartupLocation="Manual" Left="400" Top="300">
+                    <xtk:ChildWindow Caption="Child Window" Width="200" WindowStartupLocation="Manual" Left="400" Top="300" Canvas.Left="246" Canvas.Top="96">
                         <Grid>
                             <TextBlock Text="Text" />
                         </Grid>

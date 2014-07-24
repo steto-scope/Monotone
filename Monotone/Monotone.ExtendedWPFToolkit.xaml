@@ -342,15 +342,7 @@
                 </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="ProgressBarStyle">
-            <Setter.Value>
-                <Style TargetType="ProgressBar">
-                    <Setter Property="IsIndeterminate" Value="True" />
-                    <Setter Property="Height" Value="15" />
-                    <Setter Property="Margin" Value="8,0,8,8" />
-                </Style>
-            </Setter.Value>
-        </Setter>
+        
         <Setter Property="DisplayAfter" Value="00:00:00.1" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
@@ -359,8 +351,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type xtk:BusyIndicator}">
+                    <Grid Margin="5">
                     <Grid>
-                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="VisibilityStates">
                                 <VisualState x:Name="Hidden">
                                     <Storyboard>
@@ -426,24 +419,27 @@
                         </VisualStateManager.VisualStateGroups>
                         <ContentControl x:Name="content" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsTabStop="False" Focusable="False" />
                         <Rectangle x:Name="overlay" Style="{TemplateBinding OverlayStyle}" />
-                        <ContentPresenter x:Name="busycontent">
+                        <ContentPresenter x:Name="busycontent" Margin="5">
                             <ContentPresenter.Content>
-                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Border Background="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="2" BorderBrush="{DynamicResource VeryLighterBaseBrush}">
-                                        <Border CornerRadius="1" Margin="1" Background="{DynamicResource LighterBaseBrush}">
+                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Grid.Effect>
+                                            <DropShadowEffect BlurRadius="5"  ShadowDepth="0" Color="{DynamicResource Base6Color}" />
+                                        </Grid.Effect>
+                                        <Border Background="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="2" BorderBrush="{DynamicResource BaseBorderBrush}">
+                                        <Border CornerRadius="1" Margin="1" Background="{DynamicResource BaseBrush}">
                                             <Grid MinWidth="150">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition />
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
                                                 <ContentPresenter Content="{TemplateBinding BusyContent}" ContentTemplate="{TemplateBinding BusyContentTemplate}" Margin="8" />
-                                                <ProgressBar Grid.Row="1" />
                                             </Grid>
                                         </Border>
                                     </Border>
                                 </Grid>
                             </ContentPresenter.Content>
                         </ContentPresenter>
+                    </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

@@ -60,7 +60,7 @@
     <SolidColorBrush x:Key="SelectedTabColorBrush" Color="{DynamicResource Base5Color}" />
     <SolidColorBrush x:Key="HoverTabColorBrush" Color="{DynamicResource Base6Color}" />
     <SolidColorBrush Color="Transparent" x:Key="TransparentBrush" />
-    <SolidColorBrush Color="{StaticResource TextColor}" x:Key="GlyphBrush" />
+    <SolidColorBrush Color="{DynamicResource TextColor}" x:Key="GlyphBrush" />
 
     <!--<LinearGradientBrush x:Key="DisabledBrush" EndPoint="0,0" StartPoint="6,6" MappingMode="Absolute" SpreadMethod="Repeat">
 			<GradientStop Color="{DynamicResource Base6Color}" Offset="0" />
@@ -77,7 +77,7 @@
     <Geometry x:Key="DownArrow">M 0,0 L 3.5,4 L 7,0 Z</Geometry>
     <Geometry x:Key="RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
     <MenuScrollingVisibilityConverter x:Key="MenuScrollingVisibilityConverter"/>
-    <SolidColorBrush x:Key="MenuHoverBrush" Color="#33ffffff" />
+    <SolidColorBrush x:Key="MenuHoverBrush" Color="{DynamicResource Base3TColor}" />
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" x:Key="ProgressbarAnimationBrush">
         <GradientStop Color="Transparent" Offset="0" />
         <GradientStop Color="#88FFFFFF" Offset="0.5" />
@@ -86,14 +86,13 @@
     <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
 
     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" x:Key="ProgressBarIndicatorBackground">
-        <GradientStop Color="{DynamicResource DarkerSelectedColor}" Offset="0" />
-        <GradientStop Color="{DynamicResource SelectedColor}" Offset="0.5" />
-        <GradientStop Color="{DynamicResource DarkerSelectedColor}" Offset="1" />
+        <GradientStop Color="{DynamicResource Base3Color}" Offset="0" />
+        <GradientStop Color="{DynamicResource Base1Color}" Offset="0.5" />
+        <GradientStop Color="{DynamicResource Base3Color}" Offset="1" />
     </LinearGradientBrush>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" x:Key="ProgressBarAnimationBackground">
         <GradientStop Color="Transparent" Offset="0" />
-        <GradientStop Color="{DynamicResource SelectedColor}" Offset="0.3" />
-        <GradientStop Color="{DynamicResource SelectedColor}" Offset="0.7" />
+        <GradientStop Color="{DynamicResource Base1Color}" Offset="0.8" />
         <GradientStop Color="Transparent" Offset="1" />
     </LinearGradientBrush>
 

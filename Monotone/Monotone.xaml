@@ -214,7 +214,7 @@
                             <Grid x:Name="Foreground">
                                 <Rectangle x:Name="Indicator" Fill="{DynamicResource LighterBaseBrush}"/>
                                 <Grid x:Name="Animation" ClipToBounds="true">
-                                    <Rectangle x:Name="PART_GlowRect" Fill="{DynamicResource ProgressBarAnimationBackground}" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
+                                    <Rectangle x:Name="PART_GlowRect" Fill="Transparent" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
                                 </Grid>
                                 <Grid x:Name="Overlay">
                                     <Grid.ColumnDefinitions>
@@ -236,7 +236,7 @@
                                 </Grid>
                             </Grid>
                         </Decorator>
-                        <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" BorderBrush="{TemplateBinding BorderBrush}"/>
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Name="b" BorderBrush="{TemplateBinding BorderBrush}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">
@@ -259,10 +259,11 @@
                                 <Condition Property="IsIndeterminate" Value="false" />
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource ProgressBarIndicatorBackground}"/>
+                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource LighterBaseBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Indicator" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="Background" TargetName="b" Value="{DynamicResource BaseBrush}" />
                             <Setter Property="Stroke" TargetName="Indicator" Value="{DynamicResource BaseBorderBrush}" />
                             <Setter Property="StrokeThickness" TargetName="Indicator" Value="0,0,1,0" />
                             <Setter Property="Fill" TargetName="PART_GlowRect" Value="Transparent" />
@@ -1928,7 +1929,7 @@
                         <Canvas.RenderTransform>
                             <TranslateTransform X="5.5" Y="11"/>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{StaticResource LighterBaseBrush}"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
                         <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
@@ -2019,7 +2020,7 @@
                                 </TransformGroup.Children>
                             </TransformGroup>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{StaticResource LighterBaseBrush}"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
                         <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
@@ -2063,7 +2064,7 @@
                                 </TransformGroup.Children>
                             </TransformGroup>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{StaticResource LighterBaseBrush}"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
                         <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
@@ -3025,50 +3026,36 @@
                                 <Grid Margin="0,5,0,0">
                                     <Grid.Resources>
                                         <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
-                                            <Grid Cursor="Hand">
-                                                <VisualStateManager.VisualStateGroups>
-                                                    <VisualStateGroup x:Name="CommonStates">
-                                                        <VisualState x:Name="Normal"/>
-                                                        <VisualState x:Name="MouseOver">
-                                                            <Storyboard>
-                                                                <ColorAnimation Duration="0" To="{DynamicResource SelectedColor}" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path"/>
-                                                            </Storyboard>
-                                                        </VisualState>
-                                                        <VisualState x:Name="Disabled">
-                                                            <Storyboard>
-                                                                <ColorAnimation Duration="0"  To="{DynamicResource Base3Color}" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path"/>
-                                                            </Storyboard>
-                                                        </VisualState>
-                                                    </VisualStateGroup>
-                                                </VisualStateManager.VisualStateGroups>
+                                            <Grid Cursor="Hand">                                               
                                                 <Rectangle Fill="Transparent" Opacity="1" Stretch="Fill"/>
                                                 <Grid>
-                                                    <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Left" Height="10" Margin="14,-6,0,0" Stretch="Fill" VerticalAlignment="Center" Width="6"/>
+                                                    <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="{DynamicResource GlyphBrush}" HorizontalAlignment="Left" Height="10" Margin="14,-6,0,0" Stretch="Fill" VerticalAlignment="Center" Width="6"/>
                                                 </Grid>
                                             </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter Property="Fill" TargetName="path" Value="{DynamicResource SelectedBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="false">
+                                                    <Setter Property="Fill" TargetName="path" Value="{DynamicResource DisabledBrush}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                         <ControlTemplate x:Key="NextButtonTemplate" TargetType="{x:Type Button}">
-                                            <Grid Cursor="Hand">
-                                                <VisualStateManager.VisualStateGroups>
-                                                    <VisualStateGroup x:Name="CommonStates">
-                                                        <VisualState x:Name="Normal"/>
-                                                        <VisualState x:Name="MouseOver">
-                                                            <Storyboard>
-                                                                <ColorAnimation Duration="0" To="{DynamicResource SelectedColor}" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path"/>
-                                                            </Storyboard>
-                                                        </VisualState>
-                                                        <VisualState x:Name="Disabled">
-                                                            <Storyboard>
-                                                                <ColorAnimation Duration="0"  To="{DynamicResource Base3Color}" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path"/>
-                                                            </Storyboard>
-                                                        </VisualState>
-                                                    </VisualStateGroup>
-                                                </VisualStateManager.VisualStateGroups>
+                                            <Grid Cursor="Hand">                                                
                                                 <Rectangle Fill="Transparent" Opacity="1" Stretch="Fill"/>
                                                 <Grid>
-                                                    <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Right" Height="10" Margin="0,-6,14,0" Stretch="Fill" VerticalAlignment="Center" Width="6"/>
-                                                </Grid>
+                                                    <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="{DynamicResource GlyphBrush}" HorizontalAlignment="Right" Height="10" Margin="0,-6,14,0" Stretch="Fill" VerticalAlignment="Center" Width="6"/>
+                                                </Grid>                                                
                                             </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter Property="Fill" TargetName="path" Value="{DynamicResource SelectedBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="false">
+                                                    <Setter Property="Fill" TargetName="path" Value="{DynamicResource DisabledBrush}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                         <ControlTemplate x:Key="HeaderButtonTemplate" TargetType="{x:Type Button}">
                                             <Grid Cursor="Hand">
