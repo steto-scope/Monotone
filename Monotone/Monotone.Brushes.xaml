@@ -86,18 +86,14 @@
     <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
 
     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" x:Key="ProgressBarIndicatorBackground">
-        <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
-        <GradientStop Color="{DynamicResource Base4Color}" Offset="0.5" />
-        <GradientStop Color="{DynamicResource Base2Color}" Offset="1" />
-    </LinearGradientBrush>
-    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" x:Key="ProgressBarIndicatorBackground90D">
-        <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
-        <GradientStop Color="{DynamicResource Base4Color}" Offset="0.5" />
-        <GradientStop Color="{DynamicResource Base2Color}" Offset="1" />
+        <GradientStop Color="{DynamicResource DarkerSelectedColor}" Offset="0" />
+        <GradientStop Color="{DynamicResource SelectedColor}" Offset="0.5" />
+        <GradientStop Color="{DynamicResource DarkerSelectedColor}" Offset="1" />
     </LinearGradientBrush>
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" x:Key="ProgressBarAnimationBackground">
         <GradientStop Color="Transparent" Offset="0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="{DynamicResource SelectedColor}" Offset="0.3" />
+        <GradientStop Color="{DynamicResource SelectedColor}" Offset="0.7" />
         <GradientStop Color="Transparent" Offset="1" />
     </LinearGradientBrush>
 

@@ -143,7 +143,6 @@
               
           </Trigger>
           <Trigger Property="IsPressed" Value="true">
-            <Setter TargetName="outerborder" Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
             <Setter TargetName="outerborder" Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
           </Trigger>
           <Trigger Property="IsEnabled" Value="false">
@@ -179,13 +178,11 @@
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Fill" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
                             <Setter TargetName="Border" Property="Stroke" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource SelectedBrush}"/>
 
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="Border" Property="Fill" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
                             <Setter TargetName="Border" Property="Stroke" Value="{DynamicResource DarkerSelectedBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
@@ -215,7 +212,7 @@
                             <Grid x:Name="Foreground">
                                 <Rectangle x:Name="Indicator" Fill="{DynamicResource LighterBaseBrush}"/>
                                 <Grid x:Name="Animation" ClipToBounds="true">
-                                    <Rectangle x:Name="PART_GlowRect" Fill="{StaticResource ProgressBarAnimationBackground}" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
+                                    <Rectangle x:Name="PART_GlowRect" Fill="{DynamicResource ProgressBarAnimationBackground}" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
                                 </Grid>
                                 <Grid x:Name="Overlay">
                                     <Grid.ColumnDefinitions>
@@ -260,10 +257,13 @@
                                 <Condition Property="IsIndeterminate" Value="false" />
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Animation" Value="{StaticResource ProgressBarIndicatorBackground}"/>
+                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource ProgressBarIndicatorBackground}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Indicator" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="Stroke" TargetName="Indicator" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter Property="StrokeThickness" TargetName="Indicator" Value="0,0,1,0" />
+                            <Setter Property="Fill" TargetName="PART_GlowRect" Value="Transparent" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -364,7 +364,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="0,1,0,1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
@@ -560,7 +560,7 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="20" />
                         </Grid.ColumnDefinitions>
-                        <Border  x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="1" Background="{DynamicResource BaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" />
+                        <Border  x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="1" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" />
                         <Border   Grid.Column="0" CornerRadius="1,0,0,1"  Margin="1"  Background="{DynamicResource ButtonBackgroundBrush}"  BorderBrush="{DynamicResource BaseBorderBrush}"  BorderThickness="0,0,1,0" />
                         <Path   x:Name="Arrow"      Grid.Column="1"           Fill="{StaticResource GlyphBrush}"      HorizontalAlignment="Center"      VerticalAlignment="Center"      Data="M 0 0 L 4 4 L 8 0 Z"/>
                     </Grid>
@@ -1837,13 +1837,12 @@
                                 </TransformGroup.Children>
                             </TransformGroup>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource ButtonBackgroundBrush}"/>
-                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource BaseBorderBrush}" StrokeThickness="1"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
+                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="Background" Value="{DynamicResource DarkerSelectedBrush}"/>
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
@@ -1877,13 +1876,12 @@
                         <Canvas.RenderTransform>
                             <TranslateTransform X="5" Y="9"/>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{StaticResource HorizontalSliderThumbNormalBackground}"/>
-                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource BaseBorderBrush}" StrokeThickness="1"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
+                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="Background" Value="{DynamicResource DarkerSelectedBrush}"/>
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
@@ -1928,13 +1926,12 @@
                         <Canvas.RenderTransform>
                             <TranslateTransform X="5.5" Y="11"/>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{StaticResource HorizontalSliderThumbNormalBackground}"/>
-                        <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource BaseBorderBrush}"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{StaticResource LighterBaseBrush}"/>
+                        <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="Background" Value="{DynamicResource DarkerSelectedBrush}"/>
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
@@ -1975,13 +1972,12 @@
                                 </TransformGroup.Children>
                             </TransformGroup>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{StaticResource VerticalSliderThumbNormalBackground}"/>
-                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource BaseBorderBrush}" StrokeThickness="1"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
+                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="Background" Value="{DynamicResource DarkerSelectedBrush}"/>
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
@@ -2021,13 +2017,12 @@
                                 </TransformGroup.Children>
                             </TransformGroup>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{StaticResource VerticalSliderThumbNormalBackground}"/>
-                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource BaseBorderBrush}" StrokeThickness="1"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{StaticResource LighterBaseBrush}"/>
+                        <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="Background" Value="{DynamicResource DarkerSelectedBrush}"/>
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
@@ -2066,13 +2061,12 @@
                                 </TransformGroup.Children>
                             </TransformGroup>
                         </Canvas.RenderTransform>
-                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{StaticResource VerticalSliderThumbNormalBackground}"/>
-                        <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource BaseBorderBrush}" StrokeThickness="1"/>
+                        <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{StaticResource LighterBaseBrush}"/>
+                        <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="Background" Value="{DynamicResource DarkerSelectedBrush}"/>
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
@@ -2108,9 +2102,9 @@
                             </Grid.RowDefinitions>
                             <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                             <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                            <Border x:Name="TrackBackground" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" Background="{DynamicResource VeryLighterBaseBrush}"  Height="4.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
+                            <Border x:Name="TrackBackground" Background="{DynamicResource VeryLighterBaseBrush}"  Height="2.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
                                 <Canvas Margin="-6,-1">
-                                    <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4.0" Visibility="Hidden"/>
+                                    <Rectangle x:Name="PART_SelectionRange" Fill="Transparent" Height="4.0" Visibility="Hidden"/>
                                 </Canvas>
                             </Border>
                             <Track x:Name="PART_Track" Grid.Row="1">
@@ -2148,8 +2142,7 @@
                             <Setter Property="Foreground" TargetName="Thumb" Value="Blue"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="TrackBackground" Value="{DynamicResource BaseBrush}" />
-                            <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter Property="Background" TargetName="TrackBackground" Value="{DynamicResource BaseBorderBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -2169,7 +2162,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TickBar x:Name="TopTick" Grid.Column="0" Fill="{TemplateBinding Foreground}" Placement="Left" Visibility="Collapsed" Width="4"/>
                                     <TickBar x:Name="BottomTick" Grid.Column="2" Fill="{TemplateBinding Foreground}" Placement="Right" Visibility="Collapsed" Width="4"/>
-                                    <Border x:Name="TrackBackground" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" Background="{DynamicResource VeryLighterBaseBrush}" Grid.Column="1" CornerRadius="1" HorizontalAlignment="center" Margin="0,5" Width="4.0">
+                                    <Border x:Name="TrackBackground" Background="{DynamicResource VeryLighterBaseBrush}" Grid.Column="1" CornerRadius="1" HorizontalAlignment="center" Margin="0,5" Width="2.0">
                                         <Canvas Margin="-1,-6">
                                             <Rectangle x:Name="PART_SelectionRange"  StrokeThickness="1.0" Visibility="Hidden" Width="4.0"/>
                                         </Canvas>
@@ -2209,8 +2202,7 @@
                                     <Setter Property="Foreground" TargetName="Thumb" Value="Blue"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Background" TargetName="TrackBackground" Value="{DynamicResource BaseBrush}" />
-                                    <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource BaseBorderBrush}" />
+                                    <Setter Property="Background" TargetName="TrackBackground" Value="{DynamicResource BaseBorderBrush}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

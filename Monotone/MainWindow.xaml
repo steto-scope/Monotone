@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <TabControl Grid.Column="1" Name="tab" Margin="10" >
-            <TabItem Header="Misc">
+            <TabItem Header="Misc" IsSelected="True">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -71,7 +71,7 @@
                                     </Button>
                                 </ToolBar>
                                 <ToolBar Band="0">
-                                    <Button>Button</Button>
+                                    <ToggleButton IsChecked="True">Toggle Button</ToggleButton>
                                     <Button>Another Button</Button>
                                 </ToolBar>
                             </ToolBarTray>
@@ -127,8 +127,7 @@
                         <Image  Margin="5" Stretch="Fill" />
                         <Label Content="Label"  Margin="5"  />
                         <TextBlock Margin="5" Text="TextBlock" />
-                        <TextBlock>
-                             <TextBlock Text="Click: " />
+                        <TextBlock Margin="5">
                             <Hyperlink>Hyperink</Hyperlink>
                         </TextBlock>
                         <ListBox Margin="5">
@@ -201,23 +200,23 @@
                         <ProgressBar Margin="5" Value="50" />
 
                         <ProgressBar Margin="5" Value="50" Orientation="Vertical"  HorizontalAlignment="Center" Height="100" Width="20"/>
-                        <Expander Header="expander1" HorizontalAlignment="Left" Margin="5" ExpandDirection="Right" Height="100"
+                        <Expander Header="expander1" HorizontalAlignment="Left" Margin="5" ExpandDirection="Right" Height="100" Visibility="Collapsed"
                                   IsExpanded="True">
                             <Grid>
                                 <TextBox Margin="10" />
                             </Grid>
                         </Expander>
-                        <Expander HorizontalAlignment="Right" Header="expander1" Margin="5" ExpandDirection="Left" Height="100" IsExpanded="True">
+                        <Expander HorizontalAlignment="Right" Header="expander1" Margin="5" ExpandDirection="Left" Height="100" IsExpanded="True" Visibility="Collapsed">
                             <Grid>
                                 <TextBox Margin="10" />
                             </Grid>
                         </Expander>
-                        <Expander Header="expander1" Margin="5" ExpandDirection="Up" >
+                        <Expander Header="Up-Expander" Margin="5" ExpandDirection="Up">
                             <Grid>
                                 <TextBox Margin="10" />
                             </Grid>
                         </Expander>
-                        <Expander Header="expander1" Margin="5" ExpandDirection="Down" >
+                        <Expander Header="Down-Expander" Margin="5" ExpandDirection="Down" IsExpanded="True" >
                             <Grid>
                                 <TextBox Margin="10" />
                             </Grid>
@@ -229,7 +228,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Extended WPF Toolkit" IsSelected="True">
+            <TabItem Header="Extended WPF Toolkit">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -238,7 +237,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <xtk:AutoSelectTextBox Text="Auto Select Text Box" Margin="5" AutoMoveFocus="True" AutoWordSelection="True" AutoSelectBehavior="OnFocus" />
-                        <xtk:BusyIndicator Margin="5" IsBusy="True" >
+                        <xtk:BusyIndicator Margin="5" IsBusy="True"  >
                             BusyIndicator
                         </xtk:BusyIndicator>
                         <xtk:ButtonSpinner Margin="5" >
