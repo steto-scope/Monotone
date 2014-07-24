@@ -35,27 +35,9 @@ namespace Monotone
             {
                 ad.DataContext = Workspace.This;
             }*/
-            
-        }
-
-        private void theme_Checked(object sender, RoutedEventArgs e)
-        {
-            MonotoneUtils.UseSystemPreferences = true;
-        }
-
-        private void theme_Unchecked(object sender, RoutedEventArgs e)
-        {
-            MonotoneUtils.UseSystemPreferences = false;
-        }
-
-        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
-            MonotoneUtils.Update(e.NewValue);
-        }
-        
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MonotoneUtils.Update();
+            ThemeManager tm = new ThemeManager(this);
+            tm.Show();
+            Closing += delegate { tm.Close(); };
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

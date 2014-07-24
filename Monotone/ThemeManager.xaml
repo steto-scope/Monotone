@@ -1,0 +1,38 @@
+﻿<Window x:Class="Monotone.ThemeManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xtk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="ThemeManager" Height="600" Width="751" Background="{DynamicResource BaseBrush}">
+    <Grid>
+        <Grid.Resources>
+            <xtk:InverseBoolConverter x:Key="ibc" />
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            
+            <CheckBox Checked="enabledcontrols_Checked" Unchecked="enabledcontrols_Unchecked" Content="Enable Controls" Margin="0,0,10,0" Name="enabledcontrols" />
+            <CheckBox Margin="0,40,5,0" Name="theme" Checked="theme_Checked" Unchecked="theme_Unchecked" Content="Bind Scheme to System Preferences"   />
+            <TextBlock  HorizontalAlignment="Center" Text=" -- or --" Foreground="{DynamicResource TextBrush}" Margin="0,10,0,10"/>
+            <xtk:ColorPicker SelectedColorChanged="ColorPicker_SelectedColorChanged" Margin="0,5,0,0" IsEnabled="{Binding ElementName=theme, Path=IsChecked, Converter={StaticResource ibc}}" />
+            <Button Content="Use System Colors" Margin="0,5,0,0" Click="Button_Click" IsEnabled="{Binding ElementName=theme, Path=IsChecked, Converter={StaticResource ibc}}" />
+            
+        </StackPanel>
+        <TabControl Margin="5" Grid.Column="1">
+            <TabItem Header="Colors">
+                 <ae:TextEditor x:Name="coloreditor" Grid.Column="1" Background="#222" Foreground="White">
+                 </ae:TextEditor>
+            </TabItem>
+            <TabItem Header="Brushes">
+                <ae:TextEditor x:Name="brusheseditor" Grid.Column="1" Background="#222" Foreground="White">
+                </ae:TextEditor>
+            </TabItem>
+        </TabControl>
+       <Button VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Margin="0,2,10,0" Content="Apply Edit" Click="Button_Click_1" />
+            
+    </Grid>
+    
+</Window>

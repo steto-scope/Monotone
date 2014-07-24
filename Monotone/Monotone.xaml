@@ -14,6 +14,8 @@
         </Style.Triggers>
     </Style>
     
+    
+    
     <Style TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Style.Triggers>

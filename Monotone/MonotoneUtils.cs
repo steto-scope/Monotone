@@ -64,7 +64,7 @@ namespace Monotone
             int index = -1;
             for (int i = 0; i < dictionary.MergedDictionaries.Count; i++)
             {
-                if (brushesResource.OriginalString.ToLower().EndsWith(dictionary.MergedDictionaries[i].Source.OriginalString.ToLower()))
+                if (dictionary.MergedDictionaries[i].Source!=null && brushesResource.OriginalString.ToLower().EndsWith(dictionary.MergedDictionaries[i].Source.OriginalString.ToLower()))
                 {
                     index = i;
                     break;
@@ -77,7 +77,40 @@ namespace Monotone
                 dictionary.MergedDictionaries.Insert(index, dict);
             }
         }
-        
+
+
+        /// <summary>
+        /// Updates the applied Monotone-Theme to a new scheme
+        /// </summary>
+        /// <param name="dictionary">Dictionary which holds the Monotone-Resources. Common value is Application.Current.Resources</param>
+        /// <param name="brushes">brushes.xaml</param>
+        /// <param name="colors">colors.xaml</param>
+        public static void Update(ResourceDictionary dictionary, ResourceDictionary colors, ResourceDictionary brushes)
+        {
+            if (colors == null)
+                return;
+            if (brushes == null)
+                return;
+            if (dictionary == null)
+                return;
+
+            for(int i=dictionary.MergedDictionaries.Count-1; i>=0; i--)
+            {
+                if ( dictionary.MergedDictionaries[i].Source == null || !(dictionary.MergedDictionaries[i].Source.OriginalString.ToLower().EndsWith("monotone.xaml") || 
+                     dictionary.MergedDictionaries[i].Source.OriginalString.ToLower().EndsWith("monotone.mahapps.xaml") || 
+                     dictionary.MergedDictionaries[i].Source.OriginalString.ToLower().EndsWith("monotone.extendedwpftoolkit.xaml"))
+                    )
+                {
+                    dictionary.MergedDictionaries.RemoveAt(i);
+                }
+            }
+
+
+            dictionary.MergedDictionaries.Insert(0, colors);
+            dictionary.MergedDictionaries.Insert(1, brushes);
+            
+        }
+
         #endregion
 
         /// <summary>

@@ -53,6 +53,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit">
+      <HintPath>..\packages\AvalonEdit.4.4.2.9744\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>.\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -95,6 +98,9 @@
     <Compile Include="LayoutInitializer.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="MonotoneUtils.cs" />
+    <Compile Include="ThemeManager.xaml.cs">
+      <DependentUpon>ThemeManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ToolViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="Workspace.cs" />
@@ -116,12 +122,18 @@
     <Page Include="Monotone.Brushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="Monotone.Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="Monotone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ThemeManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,6 +208,10 @@
     <Resource Include="Images\property-blue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)Monotone.Colors.xaml $(TargetDir)Monotone.Colors.xaml
+copy $(ProjectDir)Monotone.Brushes.xaml $(TargetDir)Monotone.Brushes.xaml</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
