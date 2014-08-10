@@ -58,12 +58,16 @@ namespace Monotone
 
         private void enabledcontrols_Checked(object sender, RoutedEventArgs e)
         {
-            mw.IsEnabled = false;
+            var mg = mw.FindName("maingrid") as Grid;
+            if(mg!=null)
+                mg.IsEnabled = false;
         }
 
         private void enabledcontrols_Unchecked(object sender, RoutedEventArgs e)
         {
-            mw.IsEnabled = true;
+            var mg = mw.FindName("maingrid") as Grid;
+            if (mg != null)
+                mg.IsEnabled = true;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

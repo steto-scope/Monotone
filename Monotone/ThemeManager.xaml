@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Margin="10" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
             
-            <CheckBox Checked="enabledcontrols_Checked" Unchecked="enabledcontrols_Unchecked" Content="Enable Controls" Margin="0,0,10,0" Name="enabledcontrols" />
+            <CheckBox Checked="enabledcontrols_Checked" Unchecked="enabledcontrols_Unchecked" Content="Disable Controls" Margin="0,0,10,0" Name="enabledcontrols" />
             <CheckBox Margin="0,40,5,0" Name="theme" Checked="theme_Checked" Unchecked="theme_Unchecked" Content="Bind Scheme to System Preferences"   />
             <TextBlock  HorizontalAlignment="Center" Text=" -- or --" Foreground="{DynamicResource TextBrush}" Margin="0,10,0,10"/>
             <xtk:ColorPicker SelectedColorChanged="ColorPicker_SelectedColorChanged" Margin="0,5,0,0" IsEnabled="{Binding ElementName=theme, Path=IsChecked, Converter={StaticResource ibc}}" />

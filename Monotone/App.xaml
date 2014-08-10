@@ -12,7 +12,6 @@
                 <ResourceDictionary Source="Monotone.xaml" />
                 <ResourceDictionary Source="Monotone.ExtendedWPFToolkit.xaml" />
 
-
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

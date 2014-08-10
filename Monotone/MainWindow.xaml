@@ -12,7 +12,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" x:Class="Monotone.MainWindow"
         Title="Sample Controls" Height="690" Width="800" >
-    <Grid Background="{DynamicResource BaseBrush}">
+    <Grid Background="{DynamicResource BaseBrush}" Name="maingrid">
         <Grid.Resources>
             <xtk:InverseBoolConverter x:Key="ibc" />
         </Grid.Resources>
@@ -221,6 +221,20 @@
                                 <TextBox Margin="10" />
                             </Grid>
                         </Expander>
+                        <RichTextBox Height="150" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                            <FlowDocument>
+                                <Paragraph>
+                                    Flow Document in default text color. 
+                                    <Bold>Bold text.</Bold>
+                                </Paragraph>
+                                <Paragraph Foreground="Cyan">
+                                    Cyan paragraph (static color).
+                                </Paragraph>
+                                <Paragraph Foreground="{DynamicResource SelectedBrush}">
+                                    Dynamic colored paragraph
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
                     </StackPanel>
 
 
@@ -453,7 +467,7 @@
             </TabItem>
             <TabItem Header="Child Windows">
                 <xtk:WindowContainer>
-                    <xtk:ChildWindow Caption="Child Window" Width="200" WindowStartupLocation="Manual" Left="400" Top="300" Canvas.Left="246" Canvas.Top="96">
+                    <xtk:ChildWindow Caption="Child Window" Width="200" Canvas.Left="246" Canvas.Top="96">
                         <Grid>
                             <TextBlock Text="Text" />
                         </Grid>
