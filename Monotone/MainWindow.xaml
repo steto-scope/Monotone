@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <TabControl Grid.Column="1" Name="tab" Margin="10" >
-            <TabItem Header="Misc" IsSelected="True">
+            <TabItem Header="Misc">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -242,7 +242,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Extended WPF Toolkit">
+            <TabItem Header="Extended WPF Toolkit" IsSelected="True">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -307,6 +307,23 @@
                         <xtk:ColorPicker DisplayColorAndName="True" Margin="5" UsingAlphaChannel="True" ShowAdvancedButton="True" ShowAvailableColors="True" ShowDropDownButton="True" ShowRecentColors="True" ShowStandardColors="True" >
 
                         </xtk:ColorPicker>
+                        <xtk:RichTextBox Height="100" Margin="5">
+                            <FlowDocument>
+                                <Paragraph>
+                                    Flow Document in default text color.
+                                    <Bold>Bold text.</Bold>
+                                </Paragraph>
+                                <Paragraph Foreground="Cyan">
+                                    Cyan paragraph (static color).
+                                </Paragraph>
+                                <Paragraph Foreground="{DynamicResource SelectedBrush}">
+                                    Dynamic colored paragraph
+                                </Paragraph>
+                            </FlowDocument>
+                            <xtk:RichTextBoxFormatBarManager.FormatBar>
+                                <xtk:RichTextBoxFormatBar />
+                            </xtk:RichTextBoxFormatBarManager.FormatBar>
+                        </xtk:RichTextBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2">
