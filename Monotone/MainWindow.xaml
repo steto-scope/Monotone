@@ -324,11 +324,11 @@
                                 <xtk:RichTextBoxFormatBar />
                             </xtk:RichTextBoxFormatBarManager.FormatBar>
                         </xtk:RichTextBox>
+                        <xtk:CalculatorUpDown Margin="5"></xtk:CalculatorUpDown>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2">
-                        <xtk:Calculator Margin="5"></xtk:Calculator>
-                        <xtk:CalculatorUpDown Margin="5"></xtk:CalculatorUpDown>
+                            <xtk:PropertyGrid SelectedObject="{Binding Path=., RelativeSource={RelativeSource AncestorType={x:Type Grid}}}" Height="480" Margin="5" />
                     </StackPanel>
 
 

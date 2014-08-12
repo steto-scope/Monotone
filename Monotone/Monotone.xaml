@@ -114,6 +114,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type GridSplitter}">
+        <Setter Property="Background" Value="{DynamicResource VeryLighterBaseBrush}" />
+    </Style>
 
 	<Style TargetType="{x:Type CheckBox}">
   <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -124,9 +127,9 @@
       <ControlTemplate TargetType="{x:Type CheckBox}">
         <BulletDecorator Background="Transparent">
           <BulletDecorator.Bullet>
-              <Border x:Name="outerborder" Width="13"  Height="13" CornerRadius="0" Background="{DynamicResource DarkerBaseBrush}" BorderThickness="0" BorderBrush="{DynamicResource SelectedBrush}">
-                 <Border x:Name="Border" Width="13"   Height="13"  CornerRadius="0" BorderThickness="1" BorderBrush="{DynamicResource BaseBorderBrush}">
-                    <Path  Width="7" Height="7" x:Name="CheckMark" SnapsToDevicePixels="False"  Stroke="{StaticResource GlyphBrush}" StrokeThickness="2" Data="M 0 3 L 2 6 L 7 0" />
+              <Border x:Name="outerborder" Width="17"  Height="17" CornerRadius="0" Background="{DynamicResource DarkerBaseBrush}" BorderThickness="0" BorderBrush="{DynamicResource SelectedBrush}">
+                 <Border x:Name="Border" Width="17"   Height="17"  CornerRadius="0" BorderThickness="1" BorderBrush="{DynamicResource BaseBorderBrush}">
+                    <Path  Width="9" Height="9" x:Name="CheckMark" SnapsToDevicePixels="False"  Stroke="{StaticResource GlyphBrush}" StrokeThickness="2" Data="M 0 4 L 3 7 L 8 0" />
                  </Border>
               </Border>
           </BulletDecorator.Bullet>
@@ -140,14 +143,15 @@
             <Setter TargetName="CheckMark" Property="Data" Value="M 0 7 L 7 0" />
           </Trigger>
           <Trigger Property="IsMouseOver" Value="true">
-            <Setter TargetName="outerborder" Property="BorderThickness" Value="1" />
-            <Setter TargetName="CheckMark" Property="Margin" Value="-1,-1,0,0" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
+          
             <Setter Property="Foreground" Value="{DynamicResource SelectedBrush}"/>
               
           </Trigger>
           <Trigger Property="IsPressed" Value="true">
-            <Setter TargetName="outerborder" Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
-          </Trigger>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
+
+                        </Trigger>
           <Trigger Property="IsEnabled" Value="false">
             <Setter TargetName="outerborder" Property="Background" Value="{DynamicResource BaseBrush}" />
             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
@@ -169,9 +173,9 @@
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <BulletDecorator Background="Transparent">
                         <BulletDecorator.Bullet>
-                            <Grid Width="13" Height="13">
+                            <Grid Width="17" Height="17">
                                 <Ellipse x:Name="Border" Fill="{DynamicResource DarkerBaseBrush}" StrokeThickness="1" Stroke="{DynamicResource BaseBorderBrush}" />
-                                <Ellipse x:Name="CheckMark" Margin="4" Fill="{StaticResource GlyphBrush}" />
+                                <Ellipse x:Name="CheckMark" Margin="5" Fill="{StaticResource GlyphBrush}" />
                             </Grid>
                         </BulletDecorator.Bullet>
                         <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" RecognizesAccessKey="True"/>
@@ -213,7 +217,7 @@
                         <Rectangle x:Name="PART_Track" Margin="1"/>
                         <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left" Margin="1">
                             <Grid x:Name="Foreground">
-                                <Rectangle x:Name="Indicator" Fill="{DynamicResource LighterBaseBrush}"/>
+                                <Rectangle x:Name="Indicator" Fill="{DynamicResource VeryLighterBaseBrush}"/>
                                 <Grid x:Name="Animation" ClipToBounds="true">
                                     <Rectangle x:Name="PART_GlowRect" Fill="Transparent" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
                                 </Grid>
@@ -260,7 +264,7 @@
                                 <Condition Property="IsIndeterminate" Value="false" />
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource LighterBaseBrush}"/>
+                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource VeryLighterBaseBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Indicator" Value="{DynamicResource BaseBrush}" />
@@ -370,12 +374,13 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
+        <Setter Property="Height" Value="22" />
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <ScrollViewer VerticalAlignment="Center" VerticalContentAlignment="Center" x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
@@ -400,11 +405,12 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="22" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <ScrollViewer x:Name="PART_ContentHost" Margin="0,1,0,1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" VerticalContentAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">

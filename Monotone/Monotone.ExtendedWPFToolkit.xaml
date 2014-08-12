@@ -1366,7 +1366,7 @@
         </Setter>
     </Style>
 
-    <!-- child window stuff-->
+    <!-- child window stuff
     <Style TargetType="{x:Type xtk:ChildWindow}">
         <Setter Property="MinWidth" Value="140" />
 
@@ -1377,9 +1377,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type xtk:ChildWindow}">
                     <Grid x:Name="PART_Root">
-                        <!-- Used For modal layer Deprecated-->
                         <Grid.Resources>
-                            <!-- Used For KeyboardFocus Deprecated-->
                             <Style x:Key="FocusVisualStyle" TargetType="Control">
                                 <Setter Property="BorderBrush" Value="Black" />
                                 <Setter Property="Background" Value="Transparent" />
@@ -1398,7 +1396,6 @@
                             </Style>
                         </Grid.Resources>
 
-                        <!-- Used for drag -->
                         <Grid x:Name="PART_WindowRoot" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="{TemplateBinding MinWidth}" MinHeight="{TemplateBinding MinHeight}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
                             <xtk:WindowControl x:Name="PART_WindowControl" Caption="{TemplateBinding Caption}" CaptionForeground="{TemplateBinding CaptionForeground}" CaptionShadowBrush="{TemplateBinding CaptionShadowBrush}" CaptionIcon="{TemplateBinding CaptionIcon}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" IsActive="{TemplateBinding IsActive}" WindowBackground="{TemplateBinding WindowBackground}" WindowInactiveBackground="{TemplateBinding WindowInactiveBackground}" WindowBorderBrush="{TemplateBinding WindowBorderBrush}" WindowBorderThickness="{TemplateBinding WindowBorderThickness}" CloseButtonVisibility="{TemplateBinding CloseButtonVisibility}" CloseButtonStyle="{TemplateBinding CloseButtonStyle}" WindowOpacity="{TemplateBinding WindowOpacity}" Content="{TemplateBinding Content}" WindowStyle="{TemplateBinding WindowStyle}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
@@ -1415,7 +1412,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+-->
 
     <!-- Datetime stuff-->
     <Style TargetType="{x:Type xtk:DateTimePicker}">
@@ -1807,7 +1804,6 @@
             </Grid>
         </Border>
     </ControlTemplate>
-
     <Style TargetType="{x:Type xtk:RichTextBoxFormatBar}">
         <Setter Property="Template" Value="{StaticResource richTextBoxFormatBarTemplate}" />
         <Setter Property="Effect">
@@ -1818,5 +1814,607 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="IsTabStop" Value="false" />
     </Style>
+    
+    
+    
+    <!-- PropertyGrid stuff-->
+    <xtk:ExpandableObjectMarginConverter x:Key="ExpandableObjectMarginConverter" />
+    <x:Static x:Key="EmptyString" Member="sys:String.Empty" />
+
+    <!-- PropertyGrid numeric Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorByteUpDown}" BasedOn="{StaticResource NumericUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type xtk:PropertyGridEditorDecimalUpDown}" BasedOn="{StaticResource NumericUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type xtk:PropertyGridEditorDoubleUpDown}" BasedOn="{StaticResource NumericUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type xtk:PropertyGridEditorIntegerUpDown}" BasedOn="{StaticResource NumericUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type xtk:PropertyGridEditorLongUpDown}" BasedOn="{StaticResource NumericUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type xtk:PropertyGridEditorShortUpDown}" BasedOn="{StaticResource NumericUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type xtk:PropertyGridEditorSingleUpDown}" BasedOn="{StaticResource NumericUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- PropertyGrid DateTime Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorDateTimeUpDown}" BasedOn="{StaticResource DateTimeUpDown}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- PropertyGrid TimeSpan Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorTimeSpanUpDown}" >
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowButtonSpinner" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- PropertyGrid ComboBox Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Background" Value="Transparent" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- PropertyGrid CheckBox Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorCheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+        <Setter Property="Margin" Value="5,0,0,0" />
+    </Style>
+    <!-- PropertyGrid TextBox Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorTextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- PropertyGrid TextBlock Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorTextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!-- PropertyGrid ColorPicker Editors -->
+    <Style TargetType="{x:Type xtk:PropertyGridEditorColorPicker}" BasedOn="{StaticResource {x:Type xtk:ColorPicker}}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsKeyboardFocusWithin" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="ShowDropDownButton" Value="False" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+
+    <Style x:Key="OptionsToggleButtonStyle" TargetType="{x:Type RadioButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="ToolTipService.InitialShowDelay" Value="900" />
+        <Setter Property="ToolTipService.ShowDuration" Value="20000" />
+        <Setter Property="ToolTipService.BetweenShowDelay" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Border x:Name="OuterBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"  />
+                        <Border x:Name="MiddleBorder" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" >
+                            <Border x:Name="InnerBorder" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Padding="{TemplateBinding Padding}">
+                                <StackPanel x:Name="StackPanel" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                    <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Margin="1" RenderOptions.BitmapScalingMode="NearestNeighbor" VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                </StackPanel>
+                            </Border>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="OuterBorder" Value="{DynamicResource  LighterBaseBrush}" />
+                            <Setter Property="BorderBrush" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Content" Value="0.5" />
+                            <Setter Property="TextElement.Foreground" TargetName="OuterBorder" Value="{DynamicResource DisabledBrush}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="true" />
+                                <Condition Property="IsEnabled" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="OuterBorder" Value="{DynamicResource  LighterBaseBrush}" />
+                            <Setter Property="BorderBrush" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}" />                            
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ClearFilterButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="ToolTipService.InitialShowDelay" Value="900" />
+        <Setter Property="ToolTipService.ShowDuration" Value="20000" />
+        <Setter Property="ToolTipService.BetweenShowDelay" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Border x:Name="OuterBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"  />
+                        <Border x:Name="MiddleBorder" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent">
+                            <Border x:Name="InnerBorder" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Padding="{TemplateBinding Padding}">
+                                <StackPanel x:Name="StackPanel" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                    <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Margin="1" RenderOptions.BitmapScalingMode="NearestNeighbor" VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                </StackPanel>
+                            </Border>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="OuterBorder" Value="{DynamicResource LighterBaseBrush}" />
+                            <Setter Property="BorderBrush" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Content" Value="0.5" />
+                            <Setter Property="TextElement.Foreground" TargetName="OuterBorder" Value="{DynamicResource DisabledBrush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="OuterBorder" Value="{DynamicResource LighterBaseBrush}" />
+                            <Setter Property="BorderBrush" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter Property="BorderBrush" TargetName="InnerBorder" Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
+        <Grid>
+            <Rectangle Margin="0,0,0,0" x:Name="Rectangle" Fill="Transparent" />
+            <Path HorizontalAlignment="Center" x:Name="Up_Arrow" VerticalAlignment="Center" Fill="{DynamicResource GlyphBrush}" Data="M 0 0 L 4 4 L 8 0 Z" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                        <SkewTransform AngleX="0" AngleY="0" />
+                        <RotateTransform Angle="-90" />
+                        <TranslateTransform X="0" Y="0" />
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Path Visibility="Collapsed" HorizontalAlignment="Center" x:Name="Down_Arrow" VerticalAlignment="Center" Fill="{DynamicResource GlyphBrush}" Data="M 0 4 L 4 0 L 8 4 Z" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                        <SkewTransform AngleX="0" AngleY="0" />
+                        <RotateTransform Angle="135" />
+                        <TranslateTransform X="0" Y="0" />
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Visibility" Value="Visible" TargetName="Down_Arrow" />
+                <Setter Property="Visibility" Value="Collapsed" TargetName="Up_Arrow" />
+                <Setter Property="OpacityMask" TargetName="Down_Arrow" Value="#FF000000" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Fill" TargetName="Up_Arrow" Value="{DynamicResource BaseBorderBrush}" />
+                <Setter Property="Fill" TargetName="Down_Arrow" Value="{DynamicResource BaseBorderBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="ExpanderStyle" TargetType="{x:Type Expander}">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource LighterBaseBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Expander}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" x:Name="ContentRow" />
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton Template="{StaticResource ExpanderToggleButton}" IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" OverridesDefaultStyle="True" />
+                                <ContentPresenter Grid.Column="1" Margin="1" RecognizesAccessKey="True" ContentSource="Header" TextElement.FontWeight="Bold" />
+                            </Grid>
+                        </Border>
+                        <Border Visibility="Collapsed" Grid.Row="1" x:Name="ExpandSite" Background="{DynamicResource BaseBrush}" Padding="10 0 0 0">
+                            <Border BorderThickness="0" Margin="0" Padding="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="False" />
+                            </Border>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="ExpandSite" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PropertyExpanderStyle" TargetType="{x:Type Expander}">
+        <Setter Property="Padding" Value="10 0 0 0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Expander}">
+                    <Grid>
+                        <Border Visibility="Collapsed" Grid.Row="1" x:Name="ExpandSite" Padding="0 0 0 0">
+                            <Border BorderThickness="0" Margin="0" Padding="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="False" />
+                            </Border>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="ExpandSite" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ContextMenu x:Key="{ComponentResourceKey 
+                  TypeInTargetAssembly={x:Type xtk:PropertyGrid}, 
+                  ResourceId=SelectedObjectAdvancedOptionsMenu}">
+        <MenuItem Header="Reset Value" Command="xtk:PropertyItemCommands.ResetValue" />
+    </ContextMenu>
+
+    <Style TargetType="{x:Type xtk:PropertyItem}">
+        <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+        <!-- Set the margin at 1 pixel bottom to let the horizontal "line" effect appear. -->
+        <Setter Property="Margin" Value="0,0,0,1" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type xtk:PropertyItem}">
+                    <Border ContextMenu="{Binding AdvancedOptionsMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:PropertyGrid}}" ContextMenuService.Placement="Bottom">
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding NameColumnWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type xtk:PropertyGrid}}}" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Set the BorderThickness at 1 pixel to the right to let the "vertical line" appear -->
+                            <Border x:Name="PART_Name"  Margin="0,0,1,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                                <Grid Margin="2,2,2,2" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Margin="{Binding Level, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ExpandableObjectMarginConverter}}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="15" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <ToggleButton x:Name="_expandableButton" Grid.Column="0" Template="{StaticResource ExpanderToggleButton}" OverridesDefaultStyle="True" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding IsExpandable, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                                        <TextBlock Foreground="{DynamicResource TextBrush}" x:Name="_text" Grid.Column="1" Text="{Binding DisplayName, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" IsEnabled="{Binding IsReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:PropertyGrid}, Converter={StaticResource InverseBoolConverter}}" />
+                                    </Grid>
+
+                                    <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="5,0,5,0" Visibility="{Binding ShowAdvancedOptions, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:PropertyGrid}, Converter={StaticResource BooleanToVisibilityConverter}}" xtk:ContextMenuUtilities.OpenOnMouseLeftButtonClick="True" ContextMenu="{Binding AdvancedOptionsMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:PropertyGrid}}">
+
+                                        <Image x:Name="_optionsImage" Width="11" Height="11" ToolTip="{Binding AdvancedOptionsTooltip, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <Border x:Name="PART_Editor" Grid.Column="1" Background="{TemplateBinding Background}" KeyboardNavigation.DirectionalNavigation="None" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <ContentControl x:Name="PART_ValueContainer" Content="{TemplateBinding Editor}" Focusable="False" IsTabStop="False" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" IsEnabled="{Binding IsReadOnly, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:PropertyGrid}, Converter={StaticResource InverseBoolConverter}}">
+                                </ContentControl>
+                            </Border>
+
+                            <Expander x:Name="_propertyExpander" Grid.ColumnSpan="2" Grid.Row="1" IsExpanded="{TemplateBinding IsExpanded}" Style="{StaticResource PropertyExpanderStyle}" IsEnabled="True">
+                                <xtk:PropertyItemsControl  x:Name="PART_PropertyItemsControl" IsTabStop="False" Focusable="False" ItemsSource="{Binding Properties, RelativeSource={RelativeSource TemplatedParent}}" ItemContainerStyle="{Binding PropertyContainerStyle, RelativeSource={RelativeSource TemplatedParent}}" >
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </xtk:PropertyItemsControl>
+                            </Expander>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Name" Property="TextElement.Foreground" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="PART_Name" Property="Background" Value="{DynamicResource MenuHoverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Name" Property="Background" Value="{DynamicResource MenuHoverBrush}" />
+                            <Setter TargetName="PART_Name" Property="TextElement.Foreground" Value="{DynamicResource DarkerSelectedBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" TargetName="PART_ValueContainer" Value="{DynamicResource DisabledBrush}" />
+                            <Setter Property="Foreground" TargetName="_text" Value="{DynamicResource DisabledBrush}" />
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="true">
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                        </Trigger>
+                        <Trigger Property="Visibility" Value="Visible" SourceName="_expandableButton">
+                            <Setter Property="Focusable" Value="False" />
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static xtk:StringConstants.Local}">
+                            <Setter TargetName="_optionsImage" Property="Source" Value="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/Local11.png" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static xtk:StringConstants.Resource}">
+                            <Setter TargetName="_optionsImage" Property="Source" Value="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/Resource11.png" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static xtk:StringConstants.Databinding}">
+                            <Setter TargetName="_optionsImage" Property="Source" Value="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/Database11.png" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static xtk:StringConstants.Inheritance}">
+                            <Setter TargetName="_optionsImage" Property="Source" Value="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/Inheritance11.png" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static xtk:StringConstants.StyleSetter}">
+                            <Setter TargetName="_optionsImage" Property="Source" Value="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/Style11.png" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}" Value="{x:Static xtk:StringConstants.AdvancedProperties}">
+                            <Setter TargetName="_optionsImage" Property="Source" Value="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/AdvancedProperties11.png" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type xtk:PropertyGrid}">
+        <Style.Resources>
+            <xtk:SelectedObjectConverter x:Key="objectConverter" />
+        </Style.Resources>
+        <Setter Property="Background" Value="{DynamicResource MenuHoverBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="SelectedObjectType" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=Type}" />
+        <Setter Property="SelectedObjectTypeName" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=TypeName}" />
+        <Setter Property="SelectedObjectName" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=SelectedObjectName}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type xtk:PropertyGrid}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Margin="6,2,0,4" Visibility="{Binding ShowTitle, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <TextBlock Text="{TemplateBinding SelectedObjectTypeName}" FontWeight="Bold" />
+                                <TextBlock Text="{TemplateBinding SelectedObjectName}" Margin="5,0,0,0" />
+                            </StackPanel>
+
+                            <Grid x:Name="toolsContainer" Grid.Row="1" Margin="4,0,4,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid x:Name="sortButtonContainer" Margin="4" Visibility="{Binding ShowSortOptions, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal" Margin="1">
+                                        <RadioButton IsChecked="{Binding IsCategorized, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" Style="{StaticResource OptionsToggleButtonStyle}" ToolTip="Categorized">
+                                            <Image Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/Categorize16.png" Width="16" Height="16" />
+                                        </RadioButton>
+                                        <RadioButton IsChecked="{Binding IsCategorized, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}, Mode=OneWay}" VerticalAlignment="Center" Style="{StaticResource OptionsToggleButtonStyle}" ToolTip="Alphabetical">
+                                            <Image Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/SortAscending16.png" Width="16" Height="16" />
+                                        </RadioButton>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Border x:Name="searchBoxContainer" Grid.Column="1" Margin="4,4,0,4"  BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="0" Visibility="{Binding ShowSearchBox, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <xtk:WatermarkTextBox x:Name="_txtFilter" Background="{DynamicResource DarkerBaseBrush}" Text="{Binding Filter, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Watermark="{TemplateBinding FilterWatermark}">
+                                        </xtk:WatermarkTextBox>
+
+                                        <Button Grid.Column="1" Command="xtk:PropertyGridCommands.ClearFilter" Style="{StaticResource ClearFilterButtonStyle}" HorizontalAlignment="Left">
+                                            <Image Source="pack://application:,,,/Xceed.Wpf.Toolkit;component/PropertyGrid/Images/ClearFilter16.png" Width="16" Height="16" />
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Background="{DynamicResource BaseBrush}">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <xtk:PropertyItemsControl x:Name="PART_PropertyItemsControl" IsTabStop="False" Focusable="False" ItemsSource="{Binding Properties, RelativeSource={RelativeSource TemplatedParent}}" ItemContainerStyle="{Binding PropertyContainerStyle, RelativeSource={RelativeSource TemplatedParent}}" Background="{DynamicResource BaseBrush}" VerticalAlignment="Top">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+
+                                        <ItemsControl.GroupStyle>
+                                            <GroupStyle>
+                                                <GroupStyle.ContainerStyle>
+                                                    <Style TargetType="{x:Type GroupItem}">
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate>
+                                                                    <Border>
+                                                                        <Expander  Header="{Binding Name}" Style="{StaticResource ExpanderStyle}">
+                                                                            <ItemsPresenter />
+                                                                        </Expander>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </GroupStyle.ContainerStyle>
+                                            </GroupStyle>
+                                        </ItemsControl.GroupStyle>
+
+                                    </xtk:PropertyItemsControl>
+                                </ScrollViewer>
+
+                                <Thumb x:Name="PART_DragThumb" HorizontalAlignment="Left" Width="5" Margin="6,0,0,0" Cursor="SizeWE">
+                                    <Thumb.Template>
+                                        <ControlTemplate>
+                                            <Border Background="Transparent" />
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+
+                            </Grid>
+
+                            <GridSplitter Height="3" Grid.Row="3" HorizontalAlignment="Stretch" Visibility="{Binding ShowSummary, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <StackPanel Grid.Row="4" Margin="0,0,0,5" Visibility="{Binding ShowSummary, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <TextBlock Padding="2 2 2 0" FontWeight="Bold" Text="{Binding SelectedPropertyItem.DisplayName, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <TextBlock Padding="5 2 2 0" TextWrapping="WrapWithOverflow" Text="{Binding SelectedPropertyItem.Description, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="searchBoxContainer" Property="Visibility" Value="Collapsed" />
+                                <Condition SourceName="sortButtonContainer" Property="Visibility" Value="Collapsed" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="toolsContainer" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>
