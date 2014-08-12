@@ -299,6 +299,11 @@
                             </xtk:SplitButton.DropDownContent>
 
                         </xtk:SplitButton>
+                        <xtk:TimelinePanel BeginDate="01/01/2007" EndDate="12/31/2007" Margin="5">
+                            <TextBlock Text="TimelinePanel" xtk:TimelinePanel.Date="02/01/2007"  />
+                            <TextBlock Text="TimelinePanel" xtk:TimelinePanel.Date="03/31/2007" />
+                            <TextBlock Text="TimelinePanel" xtk:TimelinePanel.Date="07/06/2007" />
+                        </xtk:TimelinePanel>
 
                     </StackPanel>
 
@@ -325,6 +330,9 @@
                             </xtk:RichTextBoxFormatBarManager.FormatBar>
                         </xtk:RichTextBox>
                         <xtk:CalculatorUpDown Margin="5"></xtk:CalculatorUpDown>
+                        <xtk:MultiLineTextEditor Margin="5">
+                            MultiLineTextEditor
+                        </xtk:MultiLineTextEditor>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2">

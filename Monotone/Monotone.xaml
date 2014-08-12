@@ -217,7 +217,7 @@
                         <Rectangle x:Name="PART_Track" Margin="1"/>
                         <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left" Margin="1">
                             <Grid x:Name="Foreground">
-                                <Rectangle x:Name="Indicator" Fill="{DynamicResource VeryLighterBaseBrush}"/>
+                                <Rectangle x:Name="Indicator" Fill="{DynamicResource SelectedBrush}"/>
                                 <Grid x:Name="Animation" ClipToBounds="true">
                                     <Rectangle x:Name="PART_GlowRect" Fill="Transparent" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
                                 </Grid>
@@ -264,7 +264,7 @@
                                 <Condition Property="IsIndeterminate" Value="false" />
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource VeryLighterBaseBrush}"/>
+                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource SelectedBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Indicator" Value="{DynamicResource BaseBrush}" />
@@ -374,13 +374,13 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
-        <Setter Property="Height" Value="22" />
+        <Setter Property="MinHeight" Value="22" />
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <ScrollViewer VerticalAlignment="Center" VerticalContentAlignment="Center" x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <ScrollViewer VerticalAlignment="Top" Margin="0,2,0,0" VerticalContentAlignment="Top" x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
@@ -405,12 +405,12 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Height" Value="22" />
+        <Setter Property="MinHeight" Value="22" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" VerticalContentAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Top" Margin="0,2,0,0" VerticalContentAlignment="Top" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
@@ -604,10 +604,10 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
-                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="17" />
                         </Grid.ColumnDefinitions>
-                        <Border  x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="1" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" />
-                        <Border   Grid.Column="0" CornerRadius="1,0,0,1"  Margin="1"  Background="{DynamicResource ButtonBackgroundBrush}"  BorderBrush="{DynamicResource BaseBorderBrush}"  BorderThickness="0,0,1,0" />
+                        <Border  x:Name="Border"  Grid.ColumnSpan="2"  Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" />
+                        <Border   Grid.Column="0"  Margin="1"  Background="{DynamicResource ButtonBackgroundBrush}"  BorderBrush="{DynamicResource BaseBorderBrush}"  BorderThickness="0,0,1,0" />
                         <Path   x:Name="Arrow"      Grid.Column="1"           Fill="{StaticResource GlyphBrush}"      HorizontalAlignment="Center"      VerticalAlignment="Center"      Data="M 0 0 L 4 4 L 8 0 Z"/>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -736,10 +736,10 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
-                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="17" />
                         </Grid.ColumnDefinitions>
-                        <Border  x:Name="Border"   Grid.ColumnSpan="2"      CornerRadius="1"      Background="{DynamicResource ButtonBackgroundBrush}"  BorderBrush="{DynamicResource BaseBorderBrush}"      BorderThickness="1" />
-                        <Border   Grid.Column="0" Name="separator"   CornerRadius="1,0,0,1"       Margin="1"       Background="{DynamicResource ButtonBackgroundBrush}"       BorderBrush="{DynamicResource BaseBorderBrush}"      BorderThickness="0,0,1,0" />
+                        <Border  x:Name="Border"   Grid.ColumnSpan="2"           Background="{DynamicResource ButtonBackgroundBrush}"  BorderBrush="{DynamicResource BaseBorderBrush}"      BorderThickness="1" />
+                        <Border   Grid.Column="0" Name="separator"        Margin="1"       Background="{DynamicResource ButtonBackgroundBrush}"       BorderBrush="{DynamicResource BaseBorderBrush}"      BorderThickness="0,0,1,0" />
                         <Path     x:Name="Arrow"      Grid.Column="1"           Fill="{StaticResource GlyphBrush}"      HorizontalAlignment="Center"      VerticalAlignment="Center"      Data="M 0 0 L 4 4 L 8 0 Z"/>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -3044,6 +3044,7 @@
     </Style>
     <Style TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0,3,0,3"/>
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CalendarItem}">
@@ -3064,8 +3065,8 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1">
-                            <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="1">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="1">
+                            <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1">
                                 <Grid Margin="0,5,0,0">
                                     <Grid.Resources>
                                         <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
@@ -3201,7 +3202,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">
                     <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
-                        <CalendarItem x:Name="PART_CalendarItem" />
+                        <CalendarItem x:Name="PART_CalendarItem" BorderThickness="{TemplateBinding BorderThickness}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>

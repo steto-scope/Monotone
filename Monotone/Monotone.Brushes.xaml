@@ -5,6 +5,7 @@
     <SolidColorBrush Color="{DynamicResource BaseColor}" x:Key="BaseBrush" />
     <SolidColorBrush Color="{DynamicResource Base2Color}" x:Key="LighterBaseBrush" />
     <SolidColorBrush Color="{DynamicResource Base4Color}" x:Key="VeryLighterBaseBrush" />
+    <SolidColorBrush Color="{DynamicResource Base6Color}" x:Key="PopupBorderBrush" />
     <SolidColorBrush Color="{DynamicResource BaseM2Color}" x:Key="DarkerBaseBrush" />
     <SolidColorBrush Color="{StaticResource TextColor}" x:Key="TextBrush" />
     <SolidColorBrush Color="{DynamicResource Base3Color}" x:Key="BaseBorderBrush" />
