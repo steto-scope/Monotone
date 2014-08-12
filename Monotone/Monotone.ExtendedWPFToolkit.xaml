@@ -57,7 +57,7 @@
                     <Grid>
 
                         <Border x:Name="OuterBorder" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource ButtonBackgroundBrush}">
-                            <Border x:Name="InnerBorder" BorderThickness="0" CornerRadius="{TemplateBinding InnerCornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}"/>
+                            <Border x:Name="InnerBorder" BorderThickness="0" CornerRadius="{TemplateBinding InnerCornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" />
                         </Border>
 
                         <Border x:Name="MouseOverVisual" Opacity="0" Visibility="Collapsed" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource SelectedBrush}" Background="{DynamicResource ButtonBackgroundBrush}">
@@ -88,6 +88,13 @@
                             <Setter TargetName="InnerBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
                         </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter TargetName="InnerBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+                        </Trigger>
 
                         <!-- if button is enabled and pressed -->
                         <MultiTrigger>
@@ -287,6 +294,7 @@
 
     <!-- controls -->
     <Style TargetType="{x:Type xtk:AutoSelectTextBox}" BasedOn="{StaticResource {x:Type TextBox}}" />
+    <Style TargetType="{x:Type xtk:ValueRangeTextBox}" BasedOn="{StaticResource {x:Type TextBox}}" />
 
     <Style TargetType="{x:Type xtk:BusyIndicator}">
         <Setter Property="OverlayStyle">
@@ -566,6 +574,7 @@
     <Style TargetType="{x:Type xtk:LongUpDown}" BasedOn="{StaticResource NumericUpDown}" />
     <Style TargetType="{x:Type xtk:ByteUpDown}" BasedOn="{StaticResource NumericUpDown}" />
     <Style TargetType="{x:Type xtk:SingleUpDown}" BasedOn="{StaticResource NumericUpDown}" />
+    <Style TargetType="{x:Type xtk:TimeSpanUpDown}" BasedOn="{StaticResource NumericUpDown}" />
 
 
     <!-- color canvas stuff-->
@@ -2545,7 +2554,7 @@
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
                                 </Border.Effect>
-                                <Grid>
+                                <Grid Name="popupgrid">
                                     <TextBox x:Name="PART_TextBox" AcceptsReturn="true" TextWrapping="{TemplateBinding TextWrapping}" Padding="{TemplateBinding Padding}"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SpellCheck.IsEnabled="{TemplateBinding IsSpellCheckEnabled}" IsReadOnly="{TemplateBinding IsReadOnly}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" TextAlignment="{TemplateBinding TextAlignment}"  />
                                     <Thumb x:Name="PART_ResizeThumb" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE">
                                         <Thumb.Template>
@@ -2560,6 +2569,11 @@
                             </Border>
                         </Popup>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="popupgrid" Value="{DynamicResource BaseBrush}" />
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

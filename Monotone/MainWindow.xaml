@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ad="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:local="clr-namespace:Monotone"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     
     xmlns:mm="http://metro.mahapps.com/winfx/xaml/controls"
 		xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
@@ -333,9 +334,12 @@
                             </xtk:RichTextBoxFormatBarManager.FormatBar>
                         </xtk:RichTextBox>
                         <xtk:CalculatorUpDown Margin="5"></xtk:CalculatorUpDown>
-                        <xtk:MultiLineTextEditor Margin="5">
+                        <xtk:MultiLineTextEditor Margin="5" MaxHeight="50">
                             MultiLineTextEditor
                         </xtk:MultiLineTextEditor>
+                        <xtk:TimeSpanUpDown Margin="5" />
+                        <xtk:DateTimeUpDown Margin="5" />
+                        <xtk:ValueRangeTextBox Margin="5" ValueDataType="{x:Type sys:Int32}" MinValue="0" MaxValue="100"  />
                     </StackPanel>
 
                     <StackPanel Grid.Column="2">
