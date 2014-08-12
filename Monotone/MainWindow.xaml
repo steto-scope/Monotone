@@ -28,6 +28,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <Menu Margin="5">
@@ -248,6 +249,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <xtk:AutoSelectTextBox Text="Auto Select Text Box" Margin="5" AutoMoveFocus="True" AutoWordSelection="True" AutoSelectBehavior="OnFocus" />
@@ -304,7 +306,8 @@
                             <TextBlock Text="TimelinePanel" xtk:TimelinePanel.Date="03/31/2007" />
                             <TextBlock Text="TimelinePanel" xtk:TimelinePanel.Date="07/06/2007" />
                         </xtk:TimelinePanel>
-
+                        <xtk:RangeSlider Margin="5" Minimum="0" Maximum="100" LowerValue="20" HigherValue="60" />
+                      
                     </StackPanel>
 
                     <StackPanel Grid.Column="1">
@@ -338,7 +341,7 @@
                     <StackPanel Grid.Column="2">
                             <xtk:PropertyGrid SelectedObject="{Binding Path=., RelativeSource={RelativeSource AncestorType={x:Type Grid}}}" Height="480" Margin="5" />
                     </StackPanel>
-
+                    <xtk:RangeSlider Grid.Column="3" Margin="5" Minimum="0" Maximum="100" LowerValue="20" HigherValue="60" Orientation="Vertical" />
 
 
 
