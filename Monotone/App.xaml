@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Monotone.MahApps.xaml" />
                 <ResourceDictionary Source="Monotone.xaml" />
                 <ResourceDictionary Source="Monotone.ExtendedWPFToolkit.xaml" />
+                <ResourceDictionary Source="Monotone.ColorBox.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

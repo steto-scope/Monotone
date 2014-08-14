@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ad="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:local="clr-namespace:Monotone"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    
+    xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:cb="http://schemas.ncore.com/wpf/xaml/colorbox"
     xmlns:mm="http://metro.mahapps.com/winfx/xaml/controls"
 		xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -12,7 +11,7 @@
     xmlns:mt="clr-namespace:MonotoneTheme;assembly=MonotoneTheme"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" x:Class="Monotone.MainWindow"
-        Title="Sample Controls" Height="690" Width="800" >
+        Title="Sample Controls" Height="700" Width="900" >
     <Grid Background="{DynamicResource BaseBrush}" Name="maingrid">
         <Grid.Resources>
             <xtk:InverseBoolConverter x:Key="ibc" />
@@ -39,7 +38,7 @@
                                         <Image Source="Images/document.png"     Width="24"     	 />
                                     </MenuItem.Icon>
                                     <MenuItem Header="C" Command="Cut"/>
-                                    <MenuItem Header="öffnen" IsCheckable="True" IsChecked="True"/>
+                                    <MenuItem Header="open" IsCheckable="True" IsChecked="True"/>
                                 </MenuItem>
                                 <MenuItem Header="Can Open" Command="Copy" IsCheckable="True" IsChecked="True"/>
                                 <MenuItem Header="Close" />
@@ -50,7 +49,7 @@
                                 <MenuItem />
                             </MenuItem>
                             <MenuItem Header="View" >
-                                <MenuItem Header="HHHH" />
+                                <MenuItem Header="Item" />
                             </MenuItem>
                         </Menu>
 
@@ -102,7 +101,7 @@
                         </Button>
                         <ToggleButton Content="Toggle Button" Margin="5" />
 
-                        <CheckBox Content="CheckBox" Margin="5">
+                        <CheckBox Content="CheckBox" Margin="5" IsChecked="True">
                             <CheckBox.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Item 1" />
@@ -111,7 +110,18 @@
                                 </ContextMenu>
                             </CheckBox.ContextMenu>
                         </CheckBox>
-                        <RadioButton Content="RadioButton"  Margin="5"/>
+                        <CheckBox Content="CheckBox (CheckBoxSwitchStyle)" Style="{StaticResource CheckBoxSwitchStyle}" Margin="5">
+                            <CheckBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Item 1" />
+                                    <MenuItem IsEnabled="False" Header="Item 2" />
+                                    <MenuItem Header="Item 3" />
+                                </ContextMenu>
+                            </CheckBox.ContextMenu>
+                        </CheckBox>
+                        <RadioButton Content="RadioButton" GroupName="group"  Margin="5"/>
+                        <RadioButton GroupName="group" Style="{StaticResource RadioButtonArrowStyle}" Margin="5" Content="RadioButton (RadioButtonArrowStyle)" />
+                        <RadioButton GroupName="group" Style="{StaticResource RadioButtonCheckStyle}" Margin="5" Content="RadioButton (RadioButtonCheckStyle)" />
                         <ComboBox  Margin="5">
                             <ComboBoxItem Content="Item 1"/>
                             <ComboBoxItem Content="Item 2" IsEnabled="False"/>
@@ -139,13 +149,7 @@
                             <Separator />
                             <ListBoxItem>Item 4</ListBoxItem>
                         </ListBox>
-                        <Rectangle Margin="5" Height="20" />
-                        <GroupBox Header="GroupBox" Margin="5">
-                            <StackPanel>
-                                <PasswordBox Margin="5" Password="Password"/>
-                                <TextBox Margin="5" Text="Textbox" />
-                            </StackPanel>
-                        </GroupBox>
+                       
 
                     </StackPanel>
 
@@ -194,6 +198,12 @@
                             </TreeViewItem>
                             <TreeViewItem Header="Item 2" />
                         </TreeView>
+                        <GroupBox Header="GroupBox" Margin="5">
+                            <StackPanel>
+                                <PasswordBox Margin="5" Password="Password" />
+                                <TextBox Margin="5" Text="Textbox" />
+                            </StackPanel>
+                        </GroupBox>
 
                     </StackPanel>
 
@@ -237,6 +247,8 @@
                                 </Paragraph>
                             </FlowDocument>
                         </RichTextBox>
+                        <cb:ColorBox Margin="5" />
+
                     </StackPanel>
 
 
@@ -244,7 +256,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Extended WPF Toolkit" IsSelected="True">
+            <TabItem Header="Extended WPF Toolkit">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
