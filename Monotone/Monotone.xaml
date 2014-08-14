@@ -54,8 +54,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="outerborder" BorderBrush="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="1" Background="{TemplateBinding Background}" >
-                        <Border x:Name="border"  BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="1">
+                    <Border x:Name="outerborder" BorderBrush="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="0" Background="{TemplateBinding Background}" >
+                        <Border x:Name="border"  BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="0">
                             <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                     </Border>
@@ -86,8 +86,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border x:Name="outerborder" BorderBrush="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="1" Background="{TemplateBinding Background}" >
-                        <Border x:Name="border"  BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="1">
+                    <Border x:Name="outerborder" BorderBrush="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="0" Background="{TemplateBinding Background}" >
+                        <Border x:Name="border"  BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="0">
                             <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                     </Border>
@@ -800,9 +800,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
-                <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=Placement}">
-                    <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" Background="{DynamicResource DarkerBaseBrush}">
+            <Popup  x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="None" Placement="Bottom">
+                <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=Placement}" HorizontalAlignment="Left">
+                    <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource PopupBorderBrush}" BorderThickness="1" Background="{DynamicResource DarkerBaseBrush}" Margin="0,0,20,10"  >
                         <ScrollViewer x:Name="DropDownScrollViewer">
                             <Grid RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -812,6 +812,9 @@
                             </Grid>
                         </ScrollViewer>
                     </Border>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
+                    </Border.Effect>
                 </Border>
             </Popup>
             <Border Background="{DynamicResource DarkerBaseBrush}" />
@@ -839,10 +842,6 @@
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" TargetName="Placement" Value="{DynamicResource SelectedBrush}" />
                 <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource SelectedBrush}" />
-            </Trigger>
-            <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
-                <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
-                <Setter Property="Background" TargetName="Shdw" Value="#71000000"/>
             </Trigger>
             <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
                 <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
@@ -926,9 +925,9 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                         </Grid.ColumnDefinitions>
-                        <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
-                            <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=MainGrid}">
-                                <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" Background="{DynamicResource DarkerBaseBrush}">
+                        <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="None" Placement="Bottom">
+                            <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=MainGrid}" >
+                                <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource PopupBorderBrush}" BorderThickness="1" Background="{DynamicResource DarkerBaseBrush}" Margin="0,0,18,10">
                                     <ScrollViewer x:Name="DropDownScrollViewer" Foreground="{StaticResource GlyphBrush}">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                             <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -938,15 +937,15 @@
                                         </Grid>
                                     </ScrollViewer>
                                 </Border>
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
+                                </Border.Effect>
                             </Border>
                         </Popup>
                         <ToggleButton BorderBrush="{TemplateBinding BorderBrush}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxReadonlyToggleButton}" Name="bu"/>
                         <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
-                            <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
-                        </Trigger>
                         <Trigger Property="HasItems" Value="false">
                             <Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
                         </Trigger>
@@ -1304,7 +1303,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
-                    <Border Name="Border" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="1">
+                    <Border Name="Border" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="0">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
                             <DockPanel >
                                 <GridViewHeaderRowPresenter Margin="2,0,2,0" DockPanel.Dock="Top"
@@ -1366,7 +1365,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource LighterBaseBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource MenuHoverBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <MultiTrigger>
@@ -1374,7 +1373,7 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition Property="IsEnabled" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="{DynamicResource LighterBaseBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource MenuHoverBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DarkerSelectedBrush}" />
                         </MultiTrigger>                        
                         <MultiTrigger>
@@ -1383,7 +1382,7 @@
                                 <Condition Property="IsEnabled" Value="True" />
                                 <Condition Property="Selector.IsSelectionActive" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="{DynamicResource LighterBaseBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource MenuHoverBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DarkerSelectedBrush}" />
                         </MultiTrigger>
                         <MultiTrigger>
@@ -1447,7 +1446,7 @@
                     <ColumnDefinition Width="17"/>
                 </Grid.ColumnDefinitions>
                 <ContentPresenter Width="16" x:Name="Icon" ContentSource="Icon" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                <Border x:Name="GlyphPanel" BorderBrush="#22ffffff" BorderThickness="1" CornerRadius="1" Margin="1" Visibility="Hidden" >
+                <Border x:Name="GlyphPanel" BorderBrush="#22ffffff" BorderThickness="1" CornerRadius="0" Margin="1" Visibility="Hidden" >
                     <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="{StaticResource GlyphBrush}" FlowDirection="LeftToRight" Height="11" Width="9"/>
                 </Border>
                 <ContentPresenter Name="header" Grid.Column="2" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -1490,7 +1489,7 @@
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
         <Grid SnapsToDevicePixels="true" Height="22"  >
             <Rectangle x:Name="OuterBorder" RadiusY="0" RadiusX="0"/>
-            <Rectangle x:Name="Bg" Fill="{TemplateBinding Background}" Margin="1" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0"/>
+            <Rectangle x:Name="Bg" Fill="{TemplateBinding Background}" Margin="1" RadiusY="0" RadiusX="0" Stroke="{TemplateBinding  BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/>
             <Rectangle x:Name="InnerBorder" Margin="2"/>
             <Border Name="dp">
                 <DockPanel>
@@ -1499,7 +1498,7 @@
                     <ContentPresenter Name="header" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                 </DockPanel>
             </Border>
-            <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom" VerticalOffset="-1">
+            <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="None" Placement="Bottom" VerticalOffset="-1">
                 <Microsoft_Windows_Themes:SystemDropShadowChrome x:Name="Shdw" Color="Transparent">
                     <ContentControl x:Name="SubMenuBorder" IsTabStop="false" Template="{DynamicResource {ComponentResourceKey ResourceId=SubmenuContent, TypeInTargetAssembly={x:Type FrameworkElement}}}" Foreground="{DynamicResource TextBrush}">
                         <ScrollViewer x:Name="SubMenuScrollViewer" CanContentScroll="true" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
@@ -1615,8 +1614,8 @@
                 <TextBlock Grid.Column="4" Margin="{TemplateBinding Padding}" Text="{TemplateBinding InputGestureText}" FontSize="10" VerticalAlignment="Bottom" Visibility="Collapsed"/>
                 <Path Grid.Column="5" Data="{StaticResource RightArrow}" Margin="4,0,0,0" VerticalAlignment="Center" Fill="{StaticResource GlyphBrush}"/>
             </Grid>
-            <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="-2" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Right" VerticalOffset="-3">
-                <Microsoft_Windows_Themes:SystemDropShadowChrome x:Name="Shdw" Color="Transparent">
+            <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="-2" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="None" Placement="Right" VerticalOffset="-3">
+                <Microsoft_Windows_Themes:SystemDropShadowChrome x:Name="Shdw" >
                     <ContentControl x:Name="SubMenuBorder" IsTabStop="false" Template="{DynamicResource {ComponentResourceKey ResourceId=SubmenuContent, TypeInTargetAssembly={x:Type FrameworkElement}}}" Foreground="{DynamicResource NormalTextBrush}">
                         <ScrollViewer x:Name="SubMenuScrollViewer" CanContentScroll="true" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                             <Grid RenderOptions.ClearTypeHint="Enabled">
@@ -1939,14 +1938,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToolBar}">
-                    <Border Margin="3,1,1,1" CornerRadius="1"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                    <Border Margin="3,1,1,1" CornerRadius="0"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                     <Grid x:Name="Grid" SnapsToDevicePixels="true" >
                         <Grid x:Name="OverflowGrid" HorizontalAlignment="Right">
                             <ToggleButton x:Name="OverflowButton" ClickMode="Press" FocusVisualStyle="{x:Null}" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" Style="{StaticResource ToolBarHorizontalOverflowButtonStyle}" >
 
                             </ToggleButton>
-                            <Popup x:Name="OverflowPopup" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom" StaysOpen="false">
-                                <Microsoft_Windows_Themes:SystemDropShadowChrome x:Name="Shdw" Color="#66000000">
+                            <Popup x:Name="OverflowPopup" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="None" Placement="Bottom" StaysOpen="false">
+                                <Microsoft_Windows_Themes:SystemDropShadowChrome x:Name="Shdw" Color="{DynamicResource Base6Color}">
                                     <Border x:Name="ToolBarSubMenuBorder" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" Background="{DynamicResource BaseBrush}" RenderOptions.ClearTypeHint="Enabled">
                                         <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel" KeyboardNavigation.DirectionalNavigation="Cycle" FocusVisualStyle="{x:Null}" Focusable="true" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle" WrapWidth="200"/>
                                     </Border>
@@ -2356,7 +2355,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TickBar x:Name="TopTick" Grid.Column="0" Fill="{TemplateBinding Foreground}" Placement="Left" Visibility="Collapsed" Width="4"/>
                                     <TickBar x:Name="BottomTick" Grid.Column="2" Fill="{TemplateBinding Foreground}" Placement="Right" Visibility="Collapsed" Width="4"/>
-                                    <Border x:Name="TrackBackground" Background="{DynamicResource VeryLighterBaseBrush}" Grid.Column="1" CornerRadius="1" HorizontalAlignment="center" Margin="0,5" Width="2.0">
+                                    <Border x:Name="TrackBackground" Background="{DynamicResource VeryLighterBaseBrush}" Grid.Column="1" CornerRadius="0" HorizontalAlignment="center" Margin="0,5" Width="2.0">
                                         <Canvas Margin="-1,-6">
                                             <Rectangle x:Name="PART_SelectionRange"  StrokeThickness="1.0" Visibility="Hidden" Width="4.0"/>
                                         </Canvas>
@@ -3213,8 +3212,8 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="1">
-                            <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
+                            <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
                                 <Grid Margin="0,5,0,0">
                                     <Grid.Resources>
                                         <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
