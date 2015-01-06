@@ -10,7 +10,7 @@
         xmlns:xtk="http://schemas.xceed.com/wpf/xaml/toolkit"
     xmlns:mt="clr-namespace:MonotoneTheme;assembly=MonotoneTheme"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" x:Class="Monotone.MainWindow"
+    mc:Ignorable="d" x:Class="Monotone.MainWindow" 
         Title="Sample Controls" Height="700" Width="900" >
     <Grid Background="{DynamicResource BaseBrush}" Name="maingrid">
         <Grid.Resources>
@@ -233,6 +233,11 @@
                                 <TextBox Margin="10" />
                             </Grid>
                         </Expander>
+                        <!--<Expander Header="Down-Expander" Margin="5" ExpandDirection="Down" IsExpanded="True" Style="{DynamicResource ExpanderShowMoreStyle}">
+                            <Grid>
+                                <TextBox Margin="10" />
+                            </Grid>
+                        </Expander>-->
                         <RichTextBox Height="150" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Visible">
                             <FlowDocument>
                                 <Paragraph>
@@ -363,7 +368,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Tab Control Variants">
+            <TabItem Header="Tab Control Variants" >
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

@@ -1,6 +1,44 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <Thickness x:Key="ButtonBorderThickness">5</Thickness>
+    <Thickness x:Key="ToolbarBorderThickness">5</Thickness>
+    <Thickness x:Key="DefaultBorderThickness">5</Thickness>
+    <Thickness x:Key="ComboBoxBorderThickness">5</Thickness>
+    
+    <!-- The Top value has to be the negative of the BorderThickness. By setting this the (selected) TabItem-Header will exactly overlap with the border -->
+    <Thickness x:Key="TabTopContentPlacement">0,-5,0,0</Thickness>
+    <Thickness x:Key="TabBottomContentPlacement">0,0,0,-5</Thickness>
+    <Thickness x:Key="TabLeftContentPlacement">-5,0,0,0</Thickness>
+    <Thickness x:Key="TabRightContentPlacement">0,0,-5,0</Thickness>
+    <Thickness x:Key="TabHeaderTopThickness">5,5,5,0</Thickness>
+    <Thickness x:Key="TabHeaderBottomThickness">5,0,5,5</Thickness>
+    <Thickness x:Key="TabHeaderLeftThickness">5,5,0,5</Thickness>
+    <Thickness x:Key="TabHeaderRightThickness">0,5,5,5</Thickness>
+    <Thickness x:Key="TabHeaderTopThicknessInverted">0,0,0,5</Thickness>
+    <Thickness x:Key="TabHeaderBottomThicknessInverted">0,5,0,0</Thickness>
+    <Thickness x:Key="TabHeaderLeftThicknessInverted">0,0,5,0</Thickness>
+    <Thickness x:Key="TabHeaderRightThicknessInverted">5,0,0,0</Thickness>
+
+    <CornerRadius x:Key="ButtonCornerRadius">10</CornerRadius>
+    <CornerRadius x:Key="DefaultCornerRadius">3</CornerRadius>
+    <CornerRadius x:Key="ComboBoxCornerRadius">10</CornerRadius>
+    <CornerRadius x:Key="ComboBoxRightCornerRadius">0,10,10,0</CornerRadius>
+
+    <!-- Corner Radius for TabControl -->
+    <CornerRadius x:Key="TabTopCornerRadius">0,3,3,3</CornerRadius>
+    <CornerRadius x:Key="TabBottomCornerRadius">3,3,3,0</CornerRadius>
+    <CornerRadius x:Key="TabLeftCornerRadius">0,3,3,3</CornerRadius>
+    <CornerRadius x:Key="TabRightCornerRadius">3,0,3,3</CornerRadius>
+    <!-- CornerRadius for TabItem -->
+    <CornerRadius x:Key="TabTopHeaderCornerRadius">3,3,0,0</CornerRadius>
+    <CornerRadius x:Key="TabBottomHeaderCornerRadius">0,0,3,3</CornerRadius>
+    <CornerRadius x:Key="TabLeftHeaderCornerRadius">3,0,0,3</CornerRadius>
+    <CornerRadius x:Key="TabRightHeaderCornerRadius">0,3,3,0</CornerRadius>
+    
+    
+    
+
 
     <SolidColorBrush Color="{DynamicResource BaseColor}" x:Key="BaseBrush" />
     <SolidColorBrush Color="{DynamicResource Base2Color}" x:Key="LighterBaseBrush" />
@@ -14,6 +52,10 @@
     <SolidColorBrush Color="{DynamicResource DarkErrorColor}" x:Key="DarkerErrorBrush" />
     <SolidColorBrush Color="{DynamicResource BaseM2TColor}" x:Key="SemiTransparentDarkerBaseBrush" />
 
+    <LinearGradientBrush x:Key="ToolBarTrayBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
+        <GradientStop Color="{DynamicResource BaseColor}" Offset="1" />
+    </LinearGradientBrush>
     <LinearGradientBrush x:Key="ButtonBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="{DynamicResource Base3Color}" Offset="0" />
         <GradientStop Color="{DynamicResource BaseColor}" Offset="1" />

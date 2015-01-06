@@ -16,9 +16,9 @@
     </Style>
     
     
-    
     <Style TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
         <Style.Triggers>
 
             <Trigger Property="IsEnabled" Value="false">
@@ -28,6 +28,7 @@
     </Style>
     <Style TargetType="{x:Type Hyperlink}" x:Key="{x:Type Hyperlink}">
         <Setter Property="IsEnabled" Value="{Binding IsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
         <Setter Property="Foreground" Value="{DynamicResource DarkerSelectedBrush}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
@@ -51,13 +52,12 @@
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="outerborder" BorderBrush="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="0" Background="{TemplateBinding Background}" >
-                        <Border x:Name="border"  BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="0">
-                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
+                    <Border x:Name="outerborder" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"  >                       
+                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>                   
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -83,13 +83,12 @@
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border x:Name="outerborder" BorderBrush="{DynamicResource BaseBrush}" BorderThickness="1" CornerRadius="0" Background="{TemplateBinding Background}" >
-                        <Border x:Name="border"  BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="0">
-                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
+                    <Border CornerRadius="{DynamicResource ButtonCornerRadius}" x:Name="outerborder" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{DynamicResource ButtonBorderThickness}"  Background="{TemplateBinding Background}" >                       
+                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>         
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -127,13 +126,13 @@
       <ControlTemplate TargetType="{x:Type CheckBox}">
         <BulletDecorator Background="Transparent">
           <BulletDecorator.Bullet>
-              <Border x:Name="outerborder" Width="17"  Height="17" CornerRadius="0" Background="{DynamicResource DarkerBaseBrush}" BorderThickness="0" BorderBrush="{DynamicResource SelectedBrush}">
-                 <Border x:Name="Border" Width="17"   Height="17"  CornerRadius="0" BorderThickness="1" BorderBrush="{DynamicResource BaseBorderBrush}">
-                                    <Path Width="11" Height="11" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{StaticResource GlyphBrush}" StrokeThickness="2" Data="M 1 4 L 4 8 L 10 1" />
+              <Border x:Name="outerborder"  CornerRadius="{DynamicResource DefaultCornerRadius}" Background="{DynamicResource DarkerBaseBrush}" BorderThickness="0" BorderBrush="{DynamicResource SelectedBrush}">
+                 <Border x:Name="Border"  CornerRadius="{DynamicResource DefaultCornerRadius}" BorderThickness="{DynamicResource DefaultBorderThickness}" BorderBrush="{DynamicResource BaseBorderBrush}">
+                                    <Path Width="11" Height="11" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{StaticResource GlyphBrush}" StrokeThickness="2" Data="M 1 4 L 4 8 L 10 1" Margin="2" />
                  </Border>
               </Border>
           </BulletDecorator.Bullet>
-          <ContentPresenter Margin="4,0,0,0"  HorizontalAlignment="Left" RecognizesAccessKey="True"/>
+          <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center"  HorizontalAlignment="Left" RecognizesAccessKey="True"/>
         </BulletDecorator>
         <ControlTemplate.Triggers>
           <Trigger Property="IsChecked" Value="false">
@@ -166,7 +165,7 @@
     <Style TargetType="{x:Type CheckBox}" x:Key="CheckBoxSwitchStyle">
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
@@ -175,15 +174,15 @@
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <BulletDecorator Background="Transparent">
                         <BulletDecorator.Bullet>
-                            <Border Background="{TemplateBinding Background}" Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border Background="{TemplateBinding Background}" Name="Border" CornerRadius="{DynamicResource DefaultCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <StackPanel Orientation="Horizontal" Name="contentpanel" Margin="2">
                                     
-                                    <Rectangle Fill="{DynamicResource BaseBorderBrush}" Width="16" Height="14" Margin="2,0,2,0" />
+                                    <Rectangle Fill="{DynamicResource BaseBorderBrush}"  Width="16" Height="14" Margin="2,0,2,0" />
                                 <Path VerticalAlignment="Center" Margin="2,1,2,0" Width="13" Height="13" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{StaticResource GlyphBrush}" StrokeThickness="2" Data="M 2 9 L 9 2  M9,9 L2,2 " />
                                 </StackPanel>
                             </Border>
                         </BulletDecorator.Bullet>
-                        <ContentPresenter Margin="4,0,0,0" HorizontalAlignment="Left" RecognizesAccessKey="True" />
+                        <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" RecognizesAccessKey="True" />
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="false">
@@ -216,8 +215,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type RadioButton}">
-        
+    <Style TargetType="{x:Type RadioButton}">        
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
@@ -227,8 +225,9 @@
                     <BulletDecorator Background="Transparent">
                         <BulletDecorator.Bullet>
                             <Grid Width="17" Height="17">
-                                <Ellipse x:Name="Border" Fill="{DynamicResource DarkerBaseBrush}" StrokeThickness="1" Stroke="{DynamicResource BaseBorderBrush}" />
-                                <Ellipse x:Name="CheckMark" Margin="5" Fill="{StaticResource GlyphBrush}" />
+                                <Border x:Name="Border" Background="{DynamicResource DarkerBaseBrush}" BorderThickness="{DynamicResource DefaultBorderThickness}" BorderBrush="{DynamicResource BaseBorderBrush}" CornerRadius="500">
+                                    <Border x:Name="CheckMark" Margin="4" Background="{StaticResource GlyphBrush}" CornerRadius="500" />
+                                </Border>
                             </Grid>
                         </BulletDecorator.Bullet>
                         <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" RecognizesAccessKey="True"/>
@@ -238,18 +237,18 @@
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Stroke" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource SelectedBrush}"/>
 
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="Border" Property="Stroke" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Border" Property="Fill" Value="{DynamicResource BaseBrush}" />
-                            <Setter TargetName="Border" Property="Stroke" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
-                            <Setter Property="Fill" TargetName="CheckMark" Value="{DynamicResource SemiTransparentBaseBorderBrush}" />
+                            <Setter Property="Background" TargetName="CheckMark" Value="{DynamicResource SemiTransparentBaseBorderBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -319,9 +318,9 @@
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <BulletDecorator Background="Transparent">
                         <BulletDecorator.Bullet>
-                            <Border x:Name="outerborder" Width="17" Height="17">
-                                <Border x:Name="Border" Width="17" Height="17" CornerRadius="0" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
-                                    <Path Width="9" Height="9" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" Data="M 0 4 L 3 7 L 8 0" />
+                            <Border x:Name="outerborder" CornerRadius="{DynamicResource DefaultCornerRadius}" Background="{DynamicResource DarkerBaseBrush}" BorderThickness="0" BorderBrush="{DynamicResource SelectedBrush}">
+                                <Border x:Name="Border" CornerRadius="{DynamicResource DefaultCornerRadius}" BorderThickness="{DynamicResource DefaultBorderThickness}" BorderBrush="{DynamicResource BaseBorderBrush}">
+                                    <Path Width="11" Height="11" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{StaticResource GlyphBrush}" StrokeThickness="2" Data="M 1 4 L 4 8 L 10 1" Margin="2" />
                                 </Border>
                             </Border>
                         </BulletDecorator.Bullet>
@@ -329,7 +328,7 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="false">
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden" />
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="true">
@@ -353,17 +352,18 @@
     
     <Style TargetType="{x:Type ProgressBar}">
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Height" Value="18" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ProgressBar}">
                     <Grid x:Name="TemplateRoot" SnapsToDevicePixels="true">
                         <Rectangle RadiusY="0" RadiusX="0" />
-                        <Border  CornerRadius="0" Margin="1"/>
+                        <Border Margin="1"/>
                         <Border  BorderThickness="0"  Margin="1"/>
                         <Rectangle x:Name="PART_Track" Margin="1"/>
-                        <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left" Margin="1">
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Name="b" BorderBrush="{TemplateBinding BorderBrush}">
+                            <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
                             <Grid x:Name="Foreground">
                                 <Rectangle x:Name="Indicator" Fill="{DynamicResource SelectedBrush}"/>
                                 <Grid x:Name="Animation" ClipToBounds="true">
@@ -388,8 +388,8 @@
                                     <Border x:Name="Highlight2" Background="Transparent" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
                                 </Grid>
                             </Grid>
-                        </Decorator>
-                        <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Name="b" BorderBrush="{TemplateBinding BorderBrush}"/>
+                        </Decorator>                       
+                        </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">
@@ -429,7 +429,7 @@
     <Style TargetType="{x:Type GroupBox}">
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
@@ -446,12 +446,12 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="6"/>
                         </Grid.RowDefinitions>
-                        <Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="4" Grid.Column="0" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3"/>
+                        <Border CornerRadius="{DynamicResource DefaultCornerRadius}" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="4" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"/>
                         <Border x:Name="Header" Grid.Column="1" Padding="3,0,3,0" Grid.Row="0" Grid.RowSpan="2">
                             <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ContentPresenter Grid.ColumnSpan="2" Grid.Column="1" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="4" CornerRadius="0" Grid.Row="1" Grid.RowSpan="3">
+                        <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="4" CornerRadius="{DynamicResource DefaultCornerRadius}" Grid.Row="1" Grid.RowSpan="3">
                             <Border.OpacityMask>
                                 <MultiBinding ConverterParameter="7" Converter="{StaticResource BorderGapMaskConverter}">
                                     <Binding ElementName="Header" Path="ActualWidth"/>
@@ -475,7 +475,7 @@
     </Style>
 
     <Style TargetType="RichTextBox">
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="Padding" Value="2" />
@@ -485,7 +485,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RichTextBox">
                     <Grid x:Name="RootElement">   
-                        <Border x:Name="Border" BorderThickness="{TemplateBinding BorderThickness}"  Opacity="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border x:Name="Border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                                 <ScrollViewer x:Name="PART_ContentHost" Margin="2" Padding="{TemplateBinding Padding}" BorderThickness="0" IsTabStop="False" />
                         </Border>                        
                      </Grid>
@@ -522,12 +522,13 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
         <Setter Property="MinHeight" Value="22" />
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                    <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <ScrollViewer VerticalAlignment="Top" Margin="0,2,0,0" VerticalContentAlignment="Top" x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -552,12 +553,13 @@
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="MinHeight" Value="22" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
-                    <Border x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                    <Border CornerRadius="{DynamicResource DefaultCornerRadius}" x:Name="Bd" BorderThickness="{TemplateBinding BorderThickness}"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
                         <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Top" Margin="0,2,0,0" VerticalContentAlignment="Top" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -583,6 +585,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -596,7 +599,7 @@
                             <RowDefinition x:Name="RowDefinition1" Height="*"/>
                         </Grid.RowDefinitions>
                         <TabPanel x:Name="HeaderPanel" Grid.Column="0" IsItemsHost="true" Margin="0,0,0,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Background="{DynamicResource TransparentBrush}" Panel.ZIndex="1"/>
-                        <Border Background="{TemplateBinding Background}" Margin="0,-1,0,0" x:Name="ContentPanel" Grid.Column="0" BorderBrush="{DynamicResource SelectedTabColorBrush}" BorderThickness="1" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                        <Border Background="{TemplateBinding Background}" Margin="{DynamicResource TabTopContentPlacement}" x:Name="ContentPanel" Grid.Column="0" BorderBrush="{DynamicResource SelectedTabColorBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource TabTopCornerRadius}" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">                           
                             <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                     </Grid>
@@ -607,7 +610,8 @@
                             <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
                             <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
                             <Setter Property="Margin" TargetName="HeaderPanel" Value="0,0,2,2"/>
-                            <Setter Property="Margin" TargetName="ContentPanel" Value="0,0,0,-1"/>
+                            <Setter Property="Margin" TargetName="ContentPanel" Value="{DynamicResource TabBottomContentPlacement}" />
+                            <Setter Property="CornerRadius" TargetName="ContentPanel" Value="{DynamicResource TabBottomCornerRadius}" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Left">
                             <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
@@ -619,8 +623,8 @@
                             <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
                             <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
                             <Setter Property="Margin" TargetName="HeaderPanel" Value="2,0,0,2"/>
-                            <Setter Property="Margin" TargetName="ContentPanel" Value="-1,0,0,0"/>
-
+                            <Setter Property="Margin" TargetName="ContentPanel" Value="{DynamicResource TabLeftContentPlacement}"/>
+                            <Setter Property="CornerRadius" TargetName="ContentPanel" Value="{DynamicResource TabLeftCornerRadius}" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Right">
                             <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
@@ -632,7 +636,9 @@
                             <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
                             <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
                             <Setter Property="Margin" TargetName="HeaderPanel" Value="0,0,2,2"/>
-                            <Setter Property="Margin" TargetName="ContentPanel" Value="0,0,-1,0"/>
+                            <Setter Property="Margin" TargetName="ContentPanel" Value="{DynamicResource TabRightContentPlacement}"/>
+                            <Setter Property="CornerRadius" TargetName="ContentPanel" Value="{DynamicResource TabRightCornerRadius}" />
+
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="BorderBrush" TargetName="ContentPanel" Value="{DynamicResource BaseBorderBrush}" />
@@ -649,8 +655,8 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid SnapsToDevicePixels="True">
                         <Border Name="outerborder" >
-                            <Border BorderBrush="{DynamicResource TransparentBrush}" BorderThickness="0,0,0,1" Name="linebd">
-                                <Border MinHeight="25" x:Name="Bd" BorderBrush="{DynamicResource SemiTransparentBaseBorderBrush}"  BorderThickness="1,1,1,0" Background="{DynamicResource TabItemHeaderBrush}" Padding="{TemplateBinding Padding}">
+                            <Border BorderBrush="{DynamicResource TransparentBrush}" CornerRadius="{DynamicResource DefaultCornerRadius}" BorderThickness="{DynamicResource TabHeaderTopThicknessInverted}" Name="linebd">
+                                <Border MinHeight="25" x:Name="Bd" BorderBrush="{DynamicResource SemiTransparentBaseBorderBrush}" BorderThickness="{DynamicResource TabHeaderTopThickness}" Background="{DynamicResource TabItemHeaderBrush}" Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                                     <ContentPresenter x:Name="Content" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
                                 </Border>
                             </Border>
@@ -664,25 +670,25 @@
                             <Setter Property="Panel.ZIndex" Value="1"/>
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource SelectedTabItemHeaderBrush}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource SelectedTabColorBrush}"/>
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="1,1,1,0" />
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderTopThickness}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="False"/>
                                 <Condition Property="IsMouseOver" Value="True"/>
-                            </MultiTrigger.Conditions>
+                            </MultiTrigger.Conditions>                            
                         </MultiTrigger>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
-                            <Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="0,1,0,0" />
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="{DynamicResource TabHeaderBottomThickness}"/>
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderBottomThicknessInverted}" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Left">
-                            <Setter Property="BorderThickness" TargetName="Bd" Value="1,1,0,1"/>
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="0,0,1,0" />
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="{DynamicResource TabHeaderLeftThickness}"/>
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderLeftThicknessInverted}" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Right">
-                            <Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1"/>
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="1,0,0,0" />
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="{DynamicResource TabHeaderRightThickness}"/>
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderRightThicknessInverted}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -690,10 +696,12 @@
                                 <Condition Property="IsSelected" Value="True"/>
                                 <Condition Property="TabStripPlacement" Value="Top"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="1,1,1,0" />
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderTopThickness}" />
                             <Setter Property="BorderBrush" TargetName="linebd" Value="{DynamicResource SelectedTabColorBrush}" />
-                            <Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+                            <Setter Property="Margin" TargetName="Content" Value="{DynamicResource TabHeaderTopThicknessInverted}"/>
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
+                            <Setter Property="CornerRadius" TargetName="linebd" Value="{DynamicResource TabTopHeaderCornerRadius}" />
+                            <Setter Property="CornerRadius" TargetName="Bd" Value="{DynamicResource TabTopHeaderCornerRadius}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -701,10 +709,13 @@
                                 <Condition Property="IsSelected" Value="True"/>
                                 <Condition Property="TabStripPlacement" Value="Bottom"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+                            <Setter Property="Margin" TargetName="Content" Value="{DynamicResource TabHeaderBottomThicknessInverted}"/>
                             <Setter Property="BorderBrush" TargetName="linebd" Value="{DynamicResource SelectedTabColorBrush}" />
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="1,0,1,1" />
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderBottomThickness}" />
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
+                            <Setter Property="CornerRadius" TargetName="linebd" Value="{DynamicResource TabBottomHeaderCornerRadius}" />
+                            <Setter Property="CornerRadius" TargetName="Bd" Value="{DynamicResource TabBottomHeaderCornerRadius}" />
+
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -713,9 +724,12 @@
                                 <Condition Property="TabStripPlacement" Value="Left"/>
                             </MultiTrigger.Conditions>
                             <Setter Property="BorderBrush" TargetName="linebd" Value="{DynamicResource SelectedTabColorBrush}" />
-                            <Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="1,1,0,1" />
+                            <Setter Property="Margin" TargetName="Content" Value="{DynamicResource TabHeaderLeftThicknessInverted}"/>
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderLeftThickness}" />
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
+                            <Setter Property="CornerRadius" TargetName="linebd" Value="{DynamicResource TabLeftHeaderCornerRadius}" />
+                            <Setter Property="CornerRadius" TargetName="Bd" Value="{DynamicResource TabLeftHeaderCornerRadius}" />
+
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -724,14 +738,16 @@
                                 <Condition Property="TabStripPlacement" Value="Right"/>
                             </MultiTrigger.Conditions>
                             <Setter Property="BorderBrush" TargetName="linebd" Value="{DynamicResource SelectedTabColorBrush}" />
-                            <Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
-                            <Setter Property="BorderThickness" TargetName="linebd" Value="0,1,1,1" />
+                            <Setter Property="Margin" TargetName="Content" Value="{DynamicResource TabHeaderRightThicknessInverted}"/>
+                            <Setter Property="BorderThickness" TargetName="linebd" Value="{DynamicResource TabHeaderRightThickness}" />
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0" />
+                            <Setter Property="CornerRadius" TargetName="linebd" Value="{DynamicResource TabRightHeaderCornerRadius}" />
+                            <Setter Property="CornerRadius" TargetName="Bd" Value="{DynamicResource TabRightHeaderCornerRadius}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource SemiTransparentDarkerBaseBrush}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource SemiTransparentBaseBorderBrush}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -743,21 +759,23 @@
     <!-- ComboBox stuff-->
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
         <Setter Property="IsTabStop" Value="false"/>
         <Setter Property="Focusable" Value="false"/>
         <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="17" />
-                        </Grid.ColumnDefinitions>
-                        <Border  x:Name="Border"  Grid.ColumnSpan="2"  Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" />
-                        <Border   Grid.Column="0"  Margin="1"  Background="{DynamicResource ButtonBackgroundBrush}"  BorderBrush="{DynamicResource BaseBorderBrush}"  BorderThickness="0,0,1,0" />
-                        <Path   x:Name="Arrow"      Grid.Column="1"           Fill="{StaticResource GlyphBrush}"      HorizontalAlignment="Center"      VerticalAlignment="Center"      Data="M 0 0 L 4 4 L 8 0 Z"/>
+                    <Border x:Name="Border" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="0">
+                        <Grid>                        
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="17" />
+                            </Grid.ColumnDefinitions>                       
+                            <Border Grid.Column="0" Margin="1" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="0,0,1,0" />
+                            <Path x:Name="Arrow" Grid.Column="1" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
                     </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
@@ -779,10 +797,11 @@
     <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />
-        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource SelectedBrush}" />        
+       <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="MinWidth" Value="0"/>
         <Setter Property="MinHeight" Value="0"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThickness}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -795,34 +814,40 @@
         </Setter>
     </Style>
     <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
-        <Grid x:Name="Placement" SnapsToDevicePixels="true"> 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Popup  x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="None" Placement="Bottom">
-                <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=Placement}" HorizontalAlignment="Left">
-                    <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource PopupBorderBrush}" BorderThickness="1" Background="{DynamicResource DarkerBaseBrush}" Margin="0,0,20,10"  >
-                        <ScrollViewer x:Name="DropDownScrollViewer">
-                            <Grid RenderOptions.ClearTypeHint="Enabled">
-                                <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
-                                </Canvas>
-                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Grid>
-                        </ScrollViewer>
-                    </Border>
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
-                    </Border.Effect>
-                </Border>
-            </Popup>
-            <Border Background="{DynamicResource DarkerBaseBrush}" />
-            <TextBox CaretBrush="{DynamicResource TextBrush}" x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            <ToggleButton Grid.Column="1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
-            <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"  Grid.ColumnSpan="2" />
+        <Border Background="{DynamicResource DarkerBaseBrush}" CornerRadius="{DynamicResource ComboBoxCornerRadius}">
+            <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" CornerRadius="{DynamicResource ComboBoxCornerRadius}">
+                <Grid x:Name="Placement" SnapsToDevicePixels="true">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="None" Placement="Bottom">
+                        <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=Placement}" HorizontalAlignment="Left" CornerRadius="{DynamicResource DefaultCornerRadius}">
+                            <Border x:Name="DropDownBorder" CornerRadius="{DynamicResource DefaultCornerRadius}" BorderBrush="{DynamicResource PopupBorderBrush}" BorderThickness="{DynamicResource DefaultBorderThickness}" Background="{DynamicResource DarkerBaseBrush}" Margin="0,0,20,10">
+                                <ScrollViewer x:Name="DropDownScrollViewer">
+                                    <Grid RenderOptions.ClearTypeHint="Enabled">
+                                        <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                            <Border CornerRadius="{DynamicResource DefaultCornerRadius}">
+                                            <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                            </Border>
+                                        </Canvas>
+                                        <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Grid>
+                                </ScrollViewer>
+                            </Border>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
+                            </Border.Effect>
+                        </Border>
+                    </Popup>
 
-        </Grid>
+                    <TextBox CaretBrush="{DynamicResource TextBrush}" x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <ToggleButton Grid.Column="1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}" />
+
+
+                </Grid>
+            </Border>
+        </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsKeyboardFocusWithin" Value="true">
                 <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
@@ -840,7 +865,6 @@
                 <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" TargetName="Placement" Value="{DynamicResource SelectedBrush}" />
                 <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource SelectedBrush}" />
             </Trigger>
             <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
@@ -854,7 +878,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Border x:Name="Bd"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                    <Border x:Name="Bd"  SnapsToDevicePixels="true" Background="{TemplateBinding Background}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
@@ -876,19 +900,23 @@
         <Setter Property="IsTabStop" Value="false"/>
         <Setter Property="Focusable" Value="false"/>
         <Setter Property="ClickMode" Value="Press"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="17" />
-                        </Grid.ColumnDefinitions>
-                        <Border  x:Name="Border"   Grid.ColumnSpan="2"           Background="{DynamicResource ButtonBackgroundBrush}"  BorderBrush="{DynamicResource BaseBorderBrush}"      BorderThickness="1" />
-                        <Border   Grid.Column="0" Name="separator"        Margin="1"       Background="{DynamicResource ButtonBackgroundBrush}"       BorderBrush="{DynamicResource BaseBorderBrush}"      BorderThickness="0,0,1,0" />
-                        <Path     x:Name="Arrow"      Grid.Column="1"           Fill="{StaticResource GlyphBrush}"      HorizontalAlignment="Center"      VerticalAlignment="Center"      Data="M 0 0 L 4 4 L 8 0 Z"/>
-                    </Grid>
+                   
+                        <Border x:Name="Border" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource ComboBoxCornerRadius}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Name="separator" Margin="1" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="0,0,1,0" />
+                            <Path x:Name="Arrow" Width="8" Margin="5" Height="8" Grid.Column="1" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
+                        </Grid>
+                    </Border>
+                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
@@ -911,7 +939,7 @@
     <Style TargetType="{x:Type ComboBox}">
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThickness}"/>
         <Setter Property="Padding" Value="4,3"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
@@ -920,14 +948,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid x:Name="MainGrid" SnapsToDevicePixels="true">
+                    <Grid x:Name="MainGrid" SnapsToDevicePixels="true" MinHeight="22">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                         </Grid.ColumnDefinitions>
                         <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="None" Placement="Bottom">
                             <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=MainGrid}" >
-                                <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource PopupBorderBrush}" BorderThickness="1" Background="{DynamicResource DarkerBaseBrush}" Margin="0,0,18,10">
+                                <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource PopupBorderBrush}" BorderThickness="{DynamicResource DefaultBorderThickness}" Background="{DynamicResource DarkerBaseBrush}" CornerRadius="{DynamicResource DefaultCornerRadius}" Margin="0,0,18,10">
                                     <ScrollViewer x:Name="DropDownScrollViewer" Foreground="{StaticResource GlyphBrush}">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                             <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -1023,7 +1051,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Name="b" CornerRadius="0" Background="{DynamicResource BaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" />
+                    <Border Name="b" CornerRadius="0" Background="{DynamicResource BaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{DynamicResource DefaultBorderThickness}" />
                     <ControlTemplate.Triggers>     
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="b" Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
@@ -1294,7 +1322,7 @@
     <Style TargetType="{x:Type ListView}">
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
@@ -1303,7 +1331,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
-                    <Border Name="Border" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" CornerRadius="0">
+                    <Border Name="Border" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
                             <DockPanel >
                                 <GridViewHeaderRowPresenter Margin="2,0,2,0" DockPanel.Dock="Top"
@@ -1354,7 +1382,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
-                    <Border SnapsToDevicePixels="True" BorderThickness="{TemplateBinding BorderThickness}"   BorderBrush="{TemplateBinding BorderBrush}"  Background="{TemplateBinding Background}">
+                    <Border SnapsToDevicePixels="True" BorderThickness="{TemplateBinding BorderThickness}"   BorderBrush="{TemplateBinding BorderBrush}"  Background="{TemplateBinding Background}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition MaxHeight="11" />
@@ -1477,7 +1505,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuContent, TypeInTargetAssembly={x:Type FrameworkElement}}" TargetType="{x:Type ContentControl}">
-        <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="1" Background="{DynamicResource BaseBrush}">
+        <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{DynamicResource DefaultBorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Background="{DynamicResource BaseBrush}">
             <Grid>
                 <Rectangle Fill="{DynamicResource HorizontalButtonBackgroundBrush}" HorizontalAlignment="Left" Margin="0" RadiusY="0" RadiusX="2" Width="30"/>
                 <Rectangle Fill="{x:Null}" HorizontalAlignment="Left" Margin="30,2,0,2" Width="1"/>
@@ -1697,7 +1725,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
-                    <Border x:Name="Border"    Background="{DynamicResource BaseBrush}"   BorderThickness="1" BorderBrush="{DynamicResource VeryLighterBaseBrush}">
+                    <Border x:Name="Border"    Background="{DynamicResource BaseBrush}"   BorderThickness="{DynamicResource DefaultBorderThickness}" BorderBrush="{DynamicResource VeryLighterBaseBrush}">
                         <StackPanel IsItemsHost="True"  KeyboardNavigation.DirectionalNavigation="Cycle" />
                     </Border>
                     <ControlTemplate.Triggers>
@@ -1716,7 +1744,7 @@
 
     <!-- Toolbar stuff-->
     <Style TargetType="{x:Type ToolBarTray}">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="{DynamicResource ToolBarTrayBackgroundBrush}" />
     </Style>
     <Style x:Key="ToolBarButtonBaseStyle" TargetType="{x:Type ButtonBase}">
         <Setter Property="Background" Value="Transparent" />
@@ -1932,13 +1960,13 @@
         <Setter Property="CornerRadius" Value="1"/>
     </Style>
     <Style TargetType="{x:Type ToolBar}">
-        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToolBar}">
-                    <Border Margin="3,1,1,1" CornerRadius="0"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                    <Border Margin="3,1,1,1" CornerRadius="{DynamicResource DefaultCornerRadius}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                     <Grid x:Name="Grid" SnapsToDevicePixels="true" >
                         <Grid x:Name="OverflowGrid" HorizontalAlignment="Right">
                             <ToggleButton x:Name="OverflowButton" ClickMode="Press" FocusVisualStyle="{x:Null}" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" Style="{StaticResource ToolBarHorizontalOverflowButtonStyle}" >
@@ -1954,7 +1982,7 @@
                         </Grid>
                         <Border x:Name="MainPanelBorder"  Padding="{TemplateBinding Padding}" Style="{StaticResource ToolBarMainPanelBorderStyle}" >
                             <DockPanel KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
-                                <Thumb x:Name="ToolBarThumb" Margin="-3,-1,0,0" Padding="6,5,1,6" Style="{StaticResource ToolBarThumbStyle}" Width="10" Background="{x:Null}"/>
+                                <Thumb x:Name="ToolBarThumb" Margin="-3,-1,0,0" Padding="6,5,1,6" Style="{StaticResource ToolBarThumbStyle}" Width="10" Background="{x:Null}" Visibility="Hidden"/>
                                 <ContentPresenter x:Name="ToolBarHeader" ContentSource="Header" HorizontalAlignment="Center" Margin="4,0,4,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                                 <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" Margin="0,1,2,2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </DockPanel>
@@ -1964,6 +1992,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOverflowOpen" Value="true">
                             <Setter Property="IsEnabled" TargetName="ToolBarThumb" Value="false"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="ToolBarThumb" />
                         </Trigger>
                         <Trigger Property="Header" Value="{x:Null}">
                             <Setter Property="Visibility" TargetName="ToolBarHeader" Value="Collapsed"/>
@@ -2410,7 +2441,7 @@
     <Style TargetType="{x:Type ListBox}">
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
@@ -2419,7 +2450,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </ScrollViewer>
@@ -2631,7 +2662,7 @@
     <Style TargetType="{x:Type TreeView}">
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Padding" Value="1"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -2649,7 +2680,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeView}">
-                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <ScrollViewer x:Name="_tv_scrollviewer_" Background="{TemplateBinding Background}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                             <ItemsPresenter/>
                         </ScrollViewer>
@@ -2891,13 +2922,13 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Expander}">
                     <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                         <Grid>
-                            <Rectangle Margin="2,10,2,2" Name="bdrect" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" />
+                            <Border Margin="2,10,2,2" Name="bdrect" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" />
                             <DockPanel Margin="0,0,0,3" Name="dp">
                                 <ToggleButton x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}" FontWeight="{TemplateBinding FontWeight}" FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisual}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="10,1,3,1" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" Style="{StaticResource ExpanderDownHeaderStyle}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                                 <ContentPresenter x:Name="ExpandSite" DockPanel.Dock="Bottom" Focusable="false" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="8,2,8,2" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -3191,7 +3222,7 @@
     </Style>
     <Style TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0,3,0,3"/>
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CalendarItem}">
@@ -3212,8 +3243,8 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="0">
-                            <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="{DynamicResource DefaultCornerRadius}">
+                            <Border BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                                 <Grid Margin="0,5,0,0">
                                     <Grid.Resources>
                                         <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
@@ -3344,7 +3375,7 @@
         <Setter Property="CalendarButtonStyle" Value="{StaticResource CalendarButtonStyle}" />
        <!-- <Setter Property="CalendarItemStyle" Value="{StaticResource CalendarItemStyle}" />-->
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">
