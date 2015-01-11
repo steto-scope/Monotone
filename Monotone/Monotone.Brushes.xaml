@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Thickness x:Key="ButtonBorderThickness">5</Thickness>
+    <Thickness x:Key="InnerButtonBorderThickness">1</Thickness>
     <Thickness x:Key="ToolbarBorderThickness">5</Thickness>
     <Thickness x:Key="DefaultBorderThickness">5</Thickness>
     <Thickness x:Key="ComboBoxBorderThickness">5</Thickness>
@@ -21,6 +22,8 @@
     <Thickness x:Key="TabHeaderRightThicknessInverted">5,0,0,0</Thickness>
 
     <CornerRadius x:Key="ButtonCornerRadius">10</CornerRadius>
+    <CornerRadius x:Key="UpperInnerButtonCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="LowerInnerButtonCornerRadius">0,0,0,0</CornerRadius>
     <CornerRadius x:Key="DefaultCornerRadius">3</CornerRadius>
     <CornerRadius x:Key="ComboBoxCornerRadius">10</CornerRadius>
     <CornerRadius x:Key="ComboBoxRightCornerRadius">0,10,10,0</CornerRadius>

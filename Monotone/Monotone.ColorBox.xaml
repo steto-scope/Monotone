@@ -133,14 +133,14 @@
     <!-- ******* ColorBox ******* -->
     <Style TargetType="{x:Type nc:ColorBox}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type nc:ColorBox}">
-                    <Border x:Name="PART_Root" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border x:Name="PART_Root" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <Border.InputBindings>
                             <KeyBinding Key="Del" Command="{x:Static nc:ColorBox.RemoveGradientStop}" />
                         </Border.InputBindings>
@@ -165,7 +165,7 @@
                             </ToggleButton>
 
                             <Popup IsOpen="{Binding ElementName=PART_OpenPopup,Path=IsChecked}" StaysOpen="False" AllowsTransparency="True" Width="{Binding ActualWidth, ElementName=PART_Root}" MinWidth="250" HorizontalOffset="-1">                                
-                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="10,0,10,10">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="10,0,10,10" CornerRadius="{DynamicResource DefaultCornerRadius}">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
                                     </Border.Effect>

@@ -11,7 +11,7 @@
     xmlns:mt="clr-namespace:MonotoneTheme;assembly=MonotoneTheme"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" x:Class="Monotone.MainWindow" 
-        Title="Sample Controls" Height="700" Width="900" >
+        Title="Sample Controls" Height="750" Width="900" >
     <Grid Background="{DynamicResource BaseBrush}" Name="maingrid">
         <Grid.Resources>
             <xtk:InverseBoolConverter x:Key="ibc" />
@@ -261,7 +261,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Extended WPF Toolkit">
+            <TabItem Header="Extended WPF Toolkit" IsSelected="True">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
