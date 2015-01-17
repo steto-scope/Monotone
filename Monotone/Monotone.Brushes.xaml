@@ -115,6 +115,7 @@
 			<GradientStop Color="{DynamicResource Base3Color}" Offset="1" />
 		</LinearGradientBrush>-->
     <SolidColorBrush x:Key="DisabledBrush" Color="{StaticResource Base3Color}" />
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="{StaticResource Base3Color}" />
     <SolidColorBrush x:Key="SelectedTabItemHeaderBrush" Color="{DynamicResource BaseColor}" />
     <!--<SolidColorBrush x:Key="TabItemHeaderBrush" Color="{DynamicResource Base1Color}" />-->
 
