@@ -49,25 +49,25 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource InnerButtonBorderThickness}" />
-
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ComboBoxRightCornerRadius}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type xtk:ButtonChrome}">
                     <Grid >
 
-                        <Border x:Name="OuterBorder" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource ButtonBackgroundBrush}">
+                        <Border x:Name="OuterBorder" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
                             <Border x:Name="InnerBorder" BorderThickness="0" CornerRadius="{TemplateBinding InnerCornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" />
                         </Border>
 
-                        <Border x:Name="MouseOverVisual" Opacity="0" Visibility="Collapsed" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource SelectedBrush}" Background="{DynamicResource ButtonBackgroundBrush}">
+                        <Border x:Name="MouseOverVisual" Opacity="0" Visibility="Collapsed" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource SelectedBrush}">
                             <Border x:Name="MouseOverInnerVisual" BorderThickness="0" CornerRadius="0" BorderBrush="{DynamicResource SelectedBrush}" />
                         </Border>
-                        <Border x:Name="PressedVisual" Opacity="0" Visibility="Collapsed" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" Background="{DynamicResource ButtonBackgroundPRessedBrush}">
+                        <Border x:Name="PressedVisual" Opacity="0" Visibility="Collapsed" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" >
                             <Border x:Name="PressedInnerVisual" BorderThickness="0" CornerRadius="{TemplateBinding InnerCornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}"  />
                         </Border>
 
-                        <Border x:Name="FocusVisual" Opacity="0" Visibility="Collapsed" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" Background="{DynamicResource ButtonBackgroundBrush}">
+                        <Border x:Name="FocusVisual" Opacity="0" Visibility="Collapsed" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" Background="{TemplateBinding Background}">
                             <Border x:Name="FocusInnerVisual" BorderThickness="1" CornerRadius="{TemplateBinding InnerCornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}"  />
                         </Border>
 
@@ -84,15 +84,15 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
                             <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
-                            <Setter TargetName="InnerBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <!--<Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter TargetName="InnerBorder" Property="Background" Value="{DynamicResource BaseBrush}" />-->
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="OuterBorder" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
                             <Setter TargetName="InnerBorder" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-                            <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
-                            <Setter TargetName="InnerBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <!--<Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter TargetName="InnerBorder" Property="Background" Value="{DynamicResource BaseBrush}" />-->
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
                         </Trigger>
 
@@ -251,22 +251,21 @@
     </Style>
 
     <Style x:Key="ToolkitToggleButton" TargetType="ToggleButton">
-        <Setter Property="Padding" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border >                     
-                        <Grid >
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" Name="mainBorder">                     
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>                            
                             <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                             <Border Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True" CornerRadius="{DynamicResource ButtonCornerRadius}" Grid.Column="1">
-                            <xtk:ButtonChrome MinWidth="22" MinHeight="22" x:Name="ToggleButtonChrome"  Visibility="{Binding ShowDropDownButton, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:ColorPicker}, Converter={StaticResource BooleanToVisibilityConverter}}" RenderChecked="{Binding IsOpen, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:ColorPicker}}" RenderEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:ColorPicker}}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding Tag}" >
+                            <xtk:ButtonChrome MinWidth="22" MinHeight="22" x:Name="ToggleButtonChrome"  Visibility="{Binding ShowDropDownButton, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:ColorPicker}, Converter={StaticResource BooleanToVisibilityConverter}}" RenderChecked="{Binding IsOpen, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:ColorPicker}}" RenderEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:ColorPicker}}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" BorderThickness="0">
                                 <Grid x:Name="arrowGlyph" IsHitTestVisible="False" Grid.Column="1" Margin="5" MinWidth="20">
                                     <Path x:Name="Arrow" Width="7" Height="4" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{DynamicResource GlyphBrush}" />
                                 </Grid>
@@ -278,6 +277,15 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Fill" TargetName="Arrow" Value="{DynamicResource BaseBorderBrush}" />
                             <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="Background" TargetName="mainBorder" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="Background" TargetName="ToggleButtonChrome" Value="{DynamicResource BaseBrush}" />
+
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{DynamicResource SelectedBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{DynamicResource DarkerSelectedBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -409,7 +417,8 @@
 
     <!-- spinnerbutton stuff-->
     <Style x:Key="SpinnerButtonStyle" TargetType="RepeatButton">
-        <Setter Property="BorderThickness" Value="{DynamicResource InnerButtonBorderThickness}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="1,1" />
         <Setter Property="MinWidth" Value="22" />
         <Setter Property="Template">
@@ -420,6 +429,11 @@
 
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" />
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="Chrome" Value="{DynamicResource BaseBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -432,7 +446,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="IsTabStop" Value="True" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Padding" Value="3,0,0,0" />
         <Setter Property="MinHeight" Value="22" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -453,7 +467,7 @@
                                         <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <RepeatButton Style="{StaticResource SpinnerButtonStyle}" x:Name="PART_IncreaseButton" Tag="{DynamicResource UpperInnerButtonCornerRadius}" IsTabStop="{TemplateBinding IsTabStop}" ContentTemplate="{StaticResource  IncreaseGlyphNormalKey}" />
-                                    <RepeatButton Style="{StaticResource SpinnerButtonStyle}" x:Name="PART_DecreaseButton" Tag="{DynamicResource LowerInnerButtonCornerRadius}" Grid.Column="1" IsTabStop="{TemplateBinding IsTabStop}" ContentTemplate="{StaticResource DecreaseGlyphNormalKey}" />
+                                <RepeatButton Style="{StaticResource SpinnerButtonStyle}" x:Name="PART_DecreaseButton" Tag="{DynamicResource LowerInnerButtonCornerRadius}" Grid.Column="1" IsTabStop="{TemplateBinding IsTabStop}" ContentTemplate="{StaticResource DecreaseGlyphNormalKey}" />
                             </Grid>
                         </Grid>
                         </Border>
@@ -575,7 +589,6 @@
 
 
     <!-- color canvas stuff-->
-
     <Style x:Key="ColorCanvasTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="Background" Value="Transparent" />
         <Style.Triggers>
@@ -781,8 +794,8 @@
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Grid ToolTip="{Binding Name}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        <Border BorderThickness="1" Background="Transparent" BorderBrush="Transparent" x:Name="_outerBorder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Border Background="Transparent" BorderThickness="1" BorderBrush="Transparent" x:Name="_innerBorder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <Border Background="Transparent" BorderBrush="Transparent" x:Name="_outerBorder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{DynamicResource DefaultBorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}">
+                            <Border Background="Transparent" BorderBrush="Transparent" x:Name="_innerBorder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -812,8 +825,6 @@
             </Border>
         </Grid>
     </DataTemplate>
-
-
     <Style x:Key="ColorDisplayStyle" TargetType="ContentControl">
         <Setter Property="ContentTemplate">
             <Setter.Value>
@@ -825,7 +836,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style x:Key="ColorListStyle" TargetType="ListBox">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
@@ -840,9 +850,8 @@
         <Setter Property="ItemTemplate" Value="{StaticResource ColorItemTemplate}" />
         <Setter Property="SelectionMode" Value="Single" />
     </Style>
-
     <Style TargetType="{x:Type xtk:ColorPicker}">
-        <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
         <Setter Property="ButtonStyle" Value="{StaticResource ToolkitToggleButton}" />
@@ -854,20 +863,22 @@
                 <ControlTemplate TargetType="{x:Type xtk:ColorPicker}">
                     <Grid>
                         <ToggleButton x:Name="PART_ColorPickerToggleButton" IsTabStop="True" MinHeight="22" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" IsHitTestVisible="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" Style="{TemplateBinding ButtonStyle}">
+                            <Border Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="{DynamicResource DefaultCornerRadius}">
                             <Grid>
                                 <ContentControl x:Name="ColorOnly" Style="{StaticResource ColorDisplayStyle}" />
 
-                                <Border x:Name="ColorAndName" Background="{DynamicResource DarkerBaseBrush}" Visibility="Hidden">
+                                <Border x:Name="ColorAndName"  Visibility="Hidden" >
                                     <StackPanel Orientation="Horizontal">
                                         <ContentControl HorizontalAlignment="Left" Width="20" Margin="2,1,4,1" Style="{StaticResource ColorDisplayStyle}" BorderThickness="1" BorderBrush="{DynamicResource BaseBorderBrush}" />
                                         <TextBlock Text="{Binding SelectedColorText, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource TextBrush}" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </Border>
                             </Grid>
+                            </Border>
                         </ToggleButton>
 
                         <Popup x:Name="PART_ColorPickerPalettePopup" VerticalAlignment="Bottom" IsOpen="{Binding ElementName=PART_ColorPickerToggleButton, Path=IsChecked}" StaysOpen="False"  AllowsTransparency="True" Focusable="False" HorizontalOffset="1" VerticalOffset="1" PopupAnimation="None" Width="{TemplateBinding ActualWidth}" MinWidth="240">
-                            <Border BorderThickness="1" Margin="10,0,10,10" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource PopupBorderBrush}" Padding="3">
+                            <Border BorderThickness="{DynamicResource DefaultBorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Margin="10,0,10,10" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource PopupBorderBrush}" Padding="3">
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
                                 </Border.Effect>
@@ -968,7 +979,6 @@
 
     <!-- calculator stuff -->
     <xtk:CalculatorMemoryToVisibilityConverter x:Key="CalculatorMemoryToVisibilityConverter" />
-
     <Style x:Key="CalculatorOperatorButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
@@ -1263,12 +1273,11 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style TargetType="{x:Type xtk:CalculatorUpDown}">
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
-        <Setter Property="BorderThickness" Value="1,1,0,1" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Right" />
         <Setter Property="TextAlignment" Value="Right" />
         <Setter Property="WatermarkTemplate" Value="{StaticResource DefWatermarkTemplate}" />
@@ -1284,7 +1293,11 @@
                             <xtk:ButtonSpinner x:Name="PART_Spinner" IsTabStop="False" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" AllowSpin="{TemplateBinding AllowSpin}" ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}">
                                 <xtk:WatermarkTextBox x:Name="PART_TextBox" BorderThickness="0" Background="{TemplateBinding Background}" ContextMenu="{TemplateBinding ContextMenu}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" MinWidth="20" AcceptsReturn="False" Padding="0" SelectAllOnGotFocus="{TemplateBinding SelectAllOnGotFocus}" AutoSelectBehavior="{TemplateBinding AutoSelectBehavior}" AutoMoveFocus="{TemplateBinding AutoMoveFocus}" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="NoWrap" TabIndex="{TemplateBinding TabIndex}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Watermark="{TemplateBinding Watermark}" WatermarkTemplate="{TemplateBinding WatermarkTemplate}" />
                             </xtk:ButtonSpinner>
-                            <ToggleButton x:Name="_calculatorToggleButton" Grid.Column="1" Focusable="False" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ToolkitToggleButton}" IsHitTestVisible="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" />
+                            <ToggleButton x:Name="_calculatorToggleButton" Grid.Column="1" Focusable="False" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}}" IsHitTestVisible="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}">
+                                <Grid x:Name="arrowGlyph" IsHitTestVisible="False" Grid.Column="1" Margin="5" MinWidth="20">
+                                    <Path x:Name="Arrow" Width="7" Height="4" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{TemplateBinding Foreground}" />
+                                </Grid>
+                            </ToggleButton>
                         </Grid>
                         <Popup AllowsTransparency="True" x:Name="PART_CalculatorPopup" IsOpen="{Binding IsChecked, ElementName=_calculatorToggleButton}" StaysOpen="False" Width="{TemplateBinding ActualWidth}">
                             <Border BorderThickness="1" Margin="11,0,11,11" BorderBrush="{DynamicResource PopupBorderBrush}">
@@ -1297,6 +1310,11 @@
                             </Border>
                         </Popup>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource BaseBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1317,7 +1335,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type xtk:CheckComboBox}">
-                    <Border CornerRadius="{DynamicResource ComboBoxCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border>
                         <Grid>
                             <Popup x:Name="PART_Popup" AllowsTransparency="true" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" StaysOpen="False" Margin="0" PopupAnimation="None" Placement="Bottom" Width="{TemplateBinding ActualWidth}">
                                 <Border x:Name="DropDownBorder" Margin="10" MaxHeight="{Binding MaxDropDownHeight,  RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{DynamicResource DefaultBorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Background="{DynamicResource DarkerBaseBrush}">
@@ -1338,8 +1356,8 @@
                                 </Border>
                             </Popup>
 
-                            <Border CornerRadius="{DynamicResource ComboBoxCornerRadius}">
-                                <ToggleButton x:Name="PART_DropDownButton" Padding="0" BorderThickness="1" Content="{TemplateBinding Text}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" MinWidth="22" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ToolkitToggleButton}" IsHitTestVisible="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" />
+                            <Border>
+                                <ToggleButton x:Name="PART_DropDownButton"  Content="{TemplateBinding Text}"  Background="{TemplateBinding Background}" MinWidth="22" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ToolkitToggleButton}" Padding="0" IsHitTestVisible="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" />
                             </Border>
                         </Grid>
                     </Border>
@@ -1357,8 +1375,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-
     <Style TargetType="{x:Type xtk:CheckListBox}">
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
@@ -1453,10 +1469,15 @@
                                 <xtk:ButtonSpinner x:Name="PART_Spinner" IsTabStop="False" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" AllowSpin="{TemplateBinding AllowSpin}" ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}">
                                     <xtk:WatermarkTextBox x:Name="PART_TextBox" BorderThickness="0" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" MinWidth="20" AcceptsReturn="False" Padding="0" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="NoWrap" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" TabIndex="{TemplateBinding TabIndex}" Watermark="{TemplateBinding Watermark}" WatermarkTemplate="{TemplateBinding WatermarkTemplate}" />
                                 </xtk:ButtonSpinner>
-                                
-                                <ToggleButton x:Name="_calendarToggleButton" Grid.Column="1" Focusable="False" Style="{StaticResource ToolkitToggleButton}" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}}" IsHitTestVisible="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" Tag="{DynamicResource ButtonCornerRadius}" IsEnabled="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" />
-                            </Grid>
-                            <Popup x:Name="PART_Popup" IsOpen="{Binding IsChecked, ElementName=_calendarToggleButton}" StaysOpen="False" AllowsTransparency="True" Width="{TemplateBinding ActualWidth}">
+
+                                <ToggleButton x:Name="_calendarToggleButton" Grid.Column="1" Focusable="False" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}}" IsHitTestVisible="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" Tag="{DynamicResource ButtonCornerRadius}" IsEnabled="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}">
+                                    <Grid x:Name="arrowGlyph" IsHitTestVisible="False" Grid.Column="1" Margin="5" MinWidth="18">
+                                        <Path x:Name="Arrow" Width="7" Height="4" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{TemplateBinding Foreground}">
+                                         
+                                        </Path>
+                                    </Grid>                                   
+                                </ToggleButton>
+                            </Grid>                            <Popup x:Name="PART_Popup" IsOpen="{Binding IsChecked, ElementName=_calendarToggleButton}" StaysOpen="False" AllowsTransparency="True" Width="{TemplateBinding ActualWidth}">
                                 <Border BorderThickness="{DynamicResource DefaultBorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource PopupBorderBrush}" Padding="3" Margin="10,0,10,10">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
@@ -1469,6 +1490,11 @@
                             </Popup>
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource BaseBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1592,8 +1618,10 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Background" Value="Lime" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="3" />
+        <Setter Property="MinHeight" Value="22" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type xtk:SplitButton}">
@@ -1602,31 +1630,36 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
+                                    <!--<ColumnDefinition Width="Auto" />-->
                                 </Grid.ColumnDefinitions>
-                                <Button x:Name="PART_ActionButton" Margin="0" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}">
+                                <Button Panel.ZIndex="2" x:Name="PART_ActionButton" Margin="0" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}">
                                     <Button.Template>
                                         <ControlTemplate TargetType="Button">
                                             <ContentPresenter />
                                         </ControlTemplate>
                                     </Button.Template>
                                     <Grid>
-                                        <xtk:ButtonChrome x:Name="ActionButtonChrome" BorderThickness="1,1,0,1" RenderEnabled="{TemplateBinding IsEnabled}" RenderMouseOver="{Binding IsMouseOver, ElementName=PART_ActionButton}" RenderPressed="{Binding IsPressed, ElementName=PART_ActionButton}">
+                                        <xtk:ButtonChrome x:Name="ActionButtonChrome" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource ButtonCornerRadius}" RenderEnabled="{TemplateBinding IsEnabled}" RenderMouseOver="{Binding IsMouseOver, ElementName=PART_ActionButton}" RenderPressed="{Binding IsPressed, ElementName=PART_ActionButton}">
                                             <ContentPresenter Name="ActionButtonContent" Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="true" />
                                         </xtk:ButtonChrome>
                                     </Grid>
                                 </Button>
-                                <ToggleButton Style="{DynamicResource ToolkitToggleButton}" x:Name="PART_ToggleButton" Grid.Column="1" IsTabStop="False" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" IsHitTestVisible="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}">
+                                <ToggleButton Style="{DynamicResource ToolkitToggleButton}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Panel.ZIndex="3" Padding="15" HorizontalAlignment="Right" x:Name="PART_ToggleButton" Grid.Column="1" IsTabStop="False" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"  IsHitTestVisible="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <ContentPresenter />
                                         </ControlTemplate>
                                     </ToggleButton.Template>
-                                    <Grid>
-                                        <xtk:ButtonChrome x:Name="ToggleButtonChrome" Padding="1,0,1,0" RenderChecked="{TemplateBinding IsOpen}" RenderEnabled="{TemplateBinding IsEnabled}" RenderMouseOver="{Binding IsMouseOver, ElementName=PART_ToggleButton}" RenderPressed="{Binding IsPressed, ElementName=PART_ToggleButton}">
+                                    <Grid Width="25" Height="25">
+                                        <xtk:ButtonChrome x:Name="ToggleButtonChrome" Padding="1,0,1,0" BorderThickness="0" Background="Transparent" RenderChecked="{TemplateBinding IsOpen}" RenderEnabled="{TemplateBinding IsEnabled}" RenderMouseOver="{Binding IsMouseOver, ElementName=PART_ToggleButton}" RenderPressed="{Binding IsPressed, ElementName=PART_ToggleButton}">
                                             <Grid x:Name="arrowGlyph" IsHitTestVisible="False" Margin="4,3,4,3">
                                                 <Path x:Name="Arrow" Width="7" Height="4" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{DynamicResource GlyphBrush}" />
                                             </Grid>
+                                            <!--<xtk:ButtonChrome.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Fill" TargetName="Arrow" Value="{DynamicResource SelectedBrush}" />
+                                                </Trigger>
+                                            </xtk:ButtonChrome.Triggers>-->
                                         </xtk:ButtonChrome>
                                     </Grid>
                                 </ToggleButton>
@@ -1648,6 +1681,8 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Fill" TargetName="Arrow" Value="{DynamicResource DisabledBrush}" />
+                            <Setter Property="Background" TargetName="ActionButtonChrome" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="Background" TargetName="ControlChrome" Value="{DynamicResource BaseBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -2378,14 +2413,14 @@
         </Style.Resources>
         <Setter Property="Background" Value="{DynamicResource MenuHoverBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
         <Setter Property="SelectedObjectType" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=Type}" />
         <Setter Property="SelectedObjectTypeName" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=TypeName}" />
         <Setter Property="SelectedObjectName" Value="{Binding RelativeSource={RelativeSource Self}, Path=SelectedObject, Converter={StaticResource objectConverter}, ConverterParameter=SelectedObjectName}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type xtk:PropertyGrid}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}">
                         <Grid Margin="{TemplateBinding Padding}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -2505,27 +2540,22 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Grid SnapsToDevicePixels="True">
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True" Name="border">
                                 <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                             </Border>
-
                             <ToggleButton x:Name="ToggleButtonChrome" Grid.Column="1" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:MultiLineTextEditor}}" IsEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xtk:MultiLineTextEditor}}" Style="{StaticResource ToolkitToggleButton}" >                                
                             </ToggleButton>
                         </Grid>
-
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
-                        </Trigger>
-                        
+                        </Trigger>                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -2534,7 +2564,7 @@
     <Style TargetType="{x:Type xtk:MultiLineTextEditor}">
         <Setter Property="Background" Value="{DynamicResource DarkerBaseBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
-        <Setter Property="BorderThickness" Value="1,1,0,1" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Padding" Value="2,0,0,0" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -2596,7 +2626,7 @@
     <ControlTemplate x:Key="LowerThumbTemplate" TargetType="{x:Type Thumb}">
         <Grid>
             <Rectangle x:Name="BackgroundFadingRect" Fill="Red" Width="11" Height="20" />
-            <Rectangle x:Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="1" Stroke="{DynamicResource VeryLighterBaseBrush}" Opacity="1" Width="11" Height="20" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+            <Rectangle x:Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}" Opacity="1" Width="11" Height="20" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
         </Grid>
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">
@@ -2626,7 +2656,7 @@
     <ControlTemplate x:Key="HigherThumbTemplate" TargetType="{x:Type Thumb}">
         <Grid>
             <Rectangle x:Name="BackgroundFadingRect" Fill="Black" Width="11" Height="20" />
-            <Rectangle Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="1" Stroke="{DynamicResource VeryLighterBaseBrush}" Opacity="1" Width="11" Height="20" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+            <Rectangle Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}" Opacity="1" Width="11" Height="20" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
         </Grid>
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">
@@ -2721,7 +2751,7 @@
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
                                                     <Grid>
                                                         <Rectangle x:Name="BackgroundFadingRect"  Width="20" Height="11" />
-                                                        <Rectangle x:Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="1" Stroke="{DynamicResource VeryLighterBaseBrush}"  Width="20" Height="11" Opacity="1" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+                                                        <Rectangle x:Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}"  Width="20" Height="11" Opacity="1" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
                                                     </Grid>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">
@@ -2768,7 +2798,7 @@
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
                                                     <Grid>
                                                         <Rectangle x:Name="BackgroundFadingRect" Width="20" Height="11" />
-                                                        <Rectangle Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="1" Stroke="{DynamicResource VeryLighterBaseBrush}" Width="20" Height="11" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+                                                        <Rectangle Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}" Width="20" Height="11" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
                                                     </Grid>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">

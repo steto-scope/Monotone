@@ -759,32 +759,34 @@
     <!-- ComboBox stuff-->
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
         <Setter Property="IsTabStop" Value="false"/>
         <Setter Property="Focusable" Value="false"/>
         <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border x:Name="Border" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="0">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>                        
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="17" />
                             </Grid.ColumnDefinitions>                       
-                            <Border Grid.Column="0" Margin="1" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="0,0,1,0" />
+                            <Border Grid.Column="0" Margin="1" Background="{TemplateBinding Background}" BorderThickness="0" />
                             <Path x:Name="Arrow" Grid.Column="1" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
                     </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
+                            <!--<Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />-->
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush"  Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <!--<Setter TargetName="Border" Property="Background" Value="{DynamicResource BaseBrush}" />-->
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                             <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource DisabledBrush}" />
@@ -901,18 +903,19 @@
         <Setter Property="Focusable" Value="false"/>
         <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThickness}" />
+        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                    
-                        <Border x:Name="Border" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource ComboBoxCornerRadius}">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource ComboBoxCornerRadius}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Name="separator" Margin="1" Background="{DynamicResource ButtonBackgroundBrush}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="0,0,1,0" />
+                           
                             <Path x:Name="Arrow" Width="8" Margin="5" Height="8" Grid.Column="1" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
                         </Grid>
                     </Border>
@@ -927,7 +930,6 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource BaseBrush}" />
-                            <Setter TargetName="separator" Property="Background" Value="{DynamicResource BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                             <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource DisabledBrush}" />
                         </Trigger>
@@ -2063,7 +2065,7 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -2102,7 +2104,7 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -2152,7 +2154,7 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -2198,7 +2200,7 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -2243,7 +2245,7 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -2287,7 +2289,7 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="1"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -2326,9 +2328,9 @@
                             </Grid.RowDefinitions>
                             <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                             <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                            <Border x:Name="TrackBackground" Background="{DynamicResource VeryLighterBaseBrush}"  Height="2.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
+                            <Border x:Name="TrackBackground" Background="{DynamicResource VeryLighterBaseBrush}"  Height="2" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
                                 <Canvas Margin="-6,-1">
-                                    <Rectangle x:Name="PART_SelectionRange" Fill="Transparent" Height="4.0" Visibility="Hidden"/>
+                                    <Rectangle x:Name="PART_SelectionRange" Fill="Transparent" Height="4" Visibility="Hidden"/>
                                 </Canvas>
                             </Border>
                             <Track x:Name="PART_Track" Grid.Row="1">
