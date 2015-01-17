@@ -45,6 +45,7 @@
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBorderBrush}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource DisabledBorderBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -1457,8 +1458,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
-                    <Rectangle Height="1" Margin="32,1,0,1"        
-                           Fill="{DynamicResource TextBrush}" />
+                    <Rectangle Height="1" Margin="32,1,0,1" Name="b" Fill="{DynamicResource TextBrush}" />                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
