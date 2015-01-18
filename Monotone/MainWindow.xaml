@@ -261,7 +261,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Extended WPF Toolkit" IsSelected="True">
+            <TabItem Header="Extended WPF Toolkit">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -448,7 +448,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Avalon Dock" >
+            <TabItem Header="Avalon Dock" IsSelected="True">
                 <TabItem.Resources>
                     <local:ActiveDocumentConverter x:Key="ActiveDocumentConverter"/>
                     <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
