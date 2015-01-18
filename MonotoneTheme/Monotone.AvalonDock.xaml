@@ -185,6 +185,9 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
+                        <Trigger Property="IsEnabled" SourceName="ContentPanel" Value="False">
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsActive}" Value="True"/>
@@ -203,7 +206,8 @@
                         </MultiDataTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
-                            <Setter Property="Background" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                         </Trigger>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}" Value="0">
                             <Setter Property="Visibility" Value="Collapsed" TargetName="MenuDropDownButton" />
@@ -311,7 +315,7 @@
                                         <Setter Property="Panel.ZIndex" Value="0" />
                                     </MultiTrigger>
                                     <Trigger Property="IsEnabled" Value="false">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource LighterBaseBrush}"/>
+                                        <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}"/>
                                         <Setter Property="Background" Value="{DynamicResource BaseBrush}"/>
                                         <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                                     </Trigger>
@@ -376,7 +380,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
-                            <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                         </Trigger>
                         <DataTrigger Binding="{Binding Items.Count, RelativeSource={RelativeSource Self}}" Value="1">
                             <Setter Property="Margin" Value="0" TargetName="HeaderPanel"/>
@@ -439,7 +443,7 @@
                                         <Setter Property="Panel.ZIndex" Value="0" />
                                     </MultiTrigger>
                                     <Trigger Property="IsEnabled" Value="false">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource LighterBaseBrush}"/>
+                                        <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}"/>
                                         <Setter Property="Background" Value="{DynamicResource BaseBrush}"/>
                                         <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                                     </Trigger>
@@ -617,7 +621,8 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" SourceName="MenuDropDownButton" Value="false">
                             <Setter Property="Fill" TargetName="PART_MenuPinPath" Value="{DynamicResource BaseBorderBrush}"/>
-                            <Setter Property="Background" Value="{DynamicResource BaseBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                             <Setter Property="TextElement.Foreground" Value="{DynamicResource DisabledBrush}" TargetName="Header"/>
 
                         </Trigger>
@@ -689,7 +694,7 @@
                 <Setter Property="Background" Value="{DynamicResource LighterBaseGradientHoverBrush}" TargetName="Bd"/>
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" TargetName="Bd"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" TargetName="Bd"/>
                 <Setter Property="Background" Value="{DynamicResource BaseBrush}" TargetName="Bd"/>
             </Trigger>
         </ControlTemplate.Triggers>
@@ -925,7 +930,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDock:DockingManager}">
                     <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -980,6 +985,11 @@
                                           ContentTemplate="{Binding LayoutItemTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                                           ContentTemplateSelector="{Binding LayoutItemTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"/>-->
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1046,7 +1056,8 @@
                             <Setter Property="Stroke" TargetName="PART_ClosePinPath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Stroke" TargetName="PART_ClosePinPath" Value="{DynamicResource DisabledBrush}"/>
+                            <Setter Property="Stroke" TargetName="PART_ClosePinPath" Value="{DynamicResource DisabledBrush}" />
+                            <Setter Property="BorderBrush"  Value="{DynamicResource DisabledBorderBrush}" />
                         </Trigger>
 
                     </ControlTemplate.Triggers>
@@ -1076,6 +1087,11 @@
                             </Grid>
                         </Border>
                     </avalonDockControls:DropDownControlArea>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1121,6 +1137,9 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Collapsed" TargetName="Header"/>
                         </MultiDataTrigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -1323,6 +1342,9 @@
                         <Trigger Property="IsPressed" SourceName="PART_PinClose" Value="True">
                             <Setter Property="Stroke" TargetName="PART_PinClosePath" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
 
@@ -1518,6 +1540,9 @@
                         </Trigger>
                         <Trigger Property="IsPressed" SourceName="PART_PinClose" Value="True">
                             <Setter Property="Stroke" TargetName="PART_PinClosePath" Value="{DynamicResource DarkerSelectedBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
