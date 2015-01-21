@@ -261,7 +261,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Extended WPF Toolkit">
+            <TabItem Header="Extended WPF Toolkit" IsSelected="True">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -280,6 +280,19 @@
                                         <StackPanel Margin="4">
                                             <ProgressBar Value="40" Height="15" />
                                         </StackPanel>                                        
+                                    </StackPanel>
+                                </DataTemplate>
+                            </xtk:BusyIndicator.BusyContentTemplate>
+                        </xtk:BusyIndicator>
+                        <xtk:BusyIndicator Margin="5" IsBusy="False">
+                            BusyIndicator
+                            <xtk:BusyIndicator.BusyContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="4">
+                                        <TextBlock Text="Working..." FontWeight="Bold" HorizontalAlignment="Center" />
+                                        <StackPanel Margin="4">
+                                            <ProgressBar Value="40" Height="15" />
+                                        </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </xtk:BusyIndicator.BusyContentTemplate>
@@ -448,7 +461,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Avalon Dock" IsSelected="True">
+            <TabItem Header="Avalon Dock" >
                 <TabItem.Resources>
                     <local:ActiveDocumentConverter x:Key="ActiveDocumentConverter"/>
                     <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
