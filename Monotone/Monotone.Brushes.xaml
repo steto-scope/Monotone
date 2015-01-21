@@ -55,6 +55,16 @@
     <SolidColorBrush Color="{DynamicResource DarkErrorColor}" x:Key="DarkerErrorBrush" />
     <SolidColorBrush Color="{DynamicResource BaseM2TColor}" x:Key="SemiTransparentDarkerBaseBrush" />
 
+    <DropShadowEffect x:Key="ButtonHoverGlowEffect" BlurRadius="10" ShadowDepth="0" Color="Transparent" />
+    <DropShadowEffect x:Key="ButtonPressedGlowEffect" BlurRadius="10" ShadowDepth="0" Color="Transparent" />
+    <SolidColorBrush x:Key="ButtonGlowBrush" Color="Transparent" />
+    <Thickness x:Key="GlowBorderThickness">10</Thickness>
+    <Thickness x:Key="GlowBorderMargin">-11</Thickness>
+
+    <SolidColorBrush x:Key="TabHoverBrush" Color="#4400FF00" />    
+    <SolidColorBrush x:Key="TabPressedBrush" Color="#4400AA00" />
+    <SolidColorBrush x:Key="MenuHoverBrush" Color="{DynamicResource Base3TColor}" />
+    
     <LinearGradientBrush x:Key="ToolBarTrayBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
         <GradientStop Color="{DynamicResource BaseColor}" Offset="1" />
@@ -124,7 +134,7 @@
     <Geometry x:Key="DownArrow">M 0,0 L 3.5,4 L 7,0 Z</Geometry>
     <Geometry x:Key="RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
     <MenuScrollingVisibilityConverter x:Key="MenuScrollingVisibilityConverter"/>
-    <SolidColorBrush x:Key="MenuHoverBrush" Color="{DynamicResource Base3TColor}" />
+    
     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" x:Key="ProgressbarAnimationBrush">
         <GradientStop Color="Transparent" Offset="0" />
         <GradientStop Color="#88FFFFFF" Offset="0.5" />

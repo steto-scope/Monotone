@@ -217,7 +217,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release start $(SolutionDir)build.bat</PostBuildEvent>
+    <PostBuildEvent>copy $(ProjectDir)Monotone.Colors.xaml $(ProjectDir)$(OutDir)Monotone.Colors.xaml
+copy $(ProjectDir)Monotone.Brushes.xaml $(ProjectDir)$(OutDir)Monotone.Brushes.xaml
+if $(ConfigurationName) == Release start $(SolutionDir)build.bat</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -269,8 +269,8 @@
                                 <Grid x:Name="arrowGlyph" IsHitTestVisible="False" Grid.Column="1" Margin="5" MinWidth="20">
                                     <Path x:Name="Arrow" Width="7" Height="4" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{DynamicResource GlyphBrush}" />
                                 </Grid>
-                            </xtk:ButtonChrome>
-                            </Border>
+                            </xtk:ButtonChrome>                                
+                            </Border>                            
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -885,8 +885,9 @@
                             </Grid>
                             </Border>
                         </ToggleButton>
-
-                        <Popup x:Name="PART_ColorPickerPalettePopup" VerticalAlignment="Bottom" IsOpen="{Binding ElementName=PART_ColorPickerToggleButton, Path=IsChecked}" StaysOpen="False"  AllowsTransparency="True" Focusable="False" HorizontalOffset="1" VerticalOffset="1" PopupAnimation="None" Width="{TemplateBinding ActualWidth}" MinWidth="240">
+                        <Border ClipToBounds="True">
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        </Border>                        <Popup x:Name="PART_ColorPickerPalettePopup" VerticalAlignment="Bottom" IsOpen="{Binding ElementName=PART_ColorPickerToggleButton, Path=IsChecked}" StaysOpen="False"  AllowsTransparency="True" Focusable="False" HorizontalOffset="1" VerticalOffset="1" PopupAnimation="None" Width="{TemplateBinding ActualWidth}" MinWidth="240">
                             <Border BorderThickness="{DynamicResource DefaultBorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Margin="10,0,10,10" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource PopupBorderBrush}" Padding="3">
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="{DynamicResource Base6Color}" />
@@ -957,6 +958,9 @@
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+                        </Trigger>
                         <Trigger Property="DisplayColorAndName" Value="True">
                             <Setter TargetName="ColorOnly" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="ColorAndName" Property="Visibility" Value="Visible" />
@@ -1374,11 +1378,15 @@
                             <Border>
                                 <ToggleButton x:Name="PART_DropDownButton"  Content="{TemplateBinding Text}" BorderBrush="{TemplateBinding BorderBrush}"  Background="{TemplateBinding Background}" MinWidth="22" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ToolkitToggleButton}" Padding="0" IsHitTestVisible="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" />
                             </Border>
+                            <Border ClipToBounds="True">
+                                <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                            </Border>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
+                            <Setter Property="Visibility" TargetName="glow" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
@@ -1683,6 +1691,9 @@
                                         </xtk:ButtonChrome>
                                     </Grid>
                                 </ToggleButton>
+                                <Border ClipToBounds="True">
+                                    <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                                </Border>
                             </Grid>
                         </xtk:ButtonChrome>
 
@@ -1699,6 +1710,9 @@
 
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Fill" TargetName="Arrow" Value="{DynamicResource DisabledBrush}" />
                             <Setter Property="Background" TargetName="ActionButtonChrome" Value="{DynamicResource BaseBrush}" />
@@ -2650,6 +2664,9 @@
         <Grid>
             <Rectangle x:Name="BackgroundFadingRect" Fill="Red" Width="11" Height="20" />
             <Rectangle x:Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}" Opacity="1" Width="11" Height="20" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+            <Border ClipToBounds="True">
+                <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+            </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">
@@ -2666,6 +2683,8 @@
                 <Setter Property="Opacity" TargetName="MainBorder" Value="1" />
                 <Setter Property="Stroke" TargetName="MainBorder" Value="{DynamicResource SelectedBrush}" />
                 <Setter Property="Fill" TargetName="MainBorder" Value="{DynamicResource LighterBaseBrush}" />
+                <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+
             </MultiDataTrigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Fill" TargetName="MainBorder" Value="{DynamicResource BaseBrush}" />
@@ -2673,6 +2692,8 @@
             </Trigger>
             <Trigger Property="IsDragging" Value="True">
                 <Setter TargetName="MainBorder" Property="Stroke" Value="{DynamicResource DarkerSelectedBrush}" />
+                <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                <Setter TargetName="glow" Property="Visibility" Value="Visible" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -2680,6 +2701,9 @@
         <Grid>
             <Rectangle x:Name="BackgroundFadingRect" Fill="Black" Width="11" Height="20" />
             <Rectangle Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}" Opacity="1" Width="11" Height="20" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+            <Border ClipToBounds="True">
+                <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+            </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">
@@ -2695,6 +2719,7 @@
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Opacity" TargetName="MainBorder" Value="1" />
                 <Setter Property="Stroke" TargetName="MainBorder" Value="{DynamicResource SelectedBrush}" />
+                <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                 <Setter Property="Fill" TargetName="MainBorder" Value="{DynamicResource LighterBaseBrush}" />
             </MultiDataTrigger>
             <Trigger Property="IsEnabled" Value="false">
@@ -2703,6 +2728,8 @@
             </Trigger>
             <Trigger Property="IsDragging" Value="True">
                 <Setter TargetName="MainBorder" Property="Stroke" Value="{DynamicResource DarkerSelectedBrush}" />
+                <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                <Setter TargetName="glow" Property="Visibility" Value="Visible" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -2774,7 +2801,10 @@
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
                                                     <Grid>
                                                         <Rectangle x:Name="BackgroundFadingRect"  Width="20" Height="11" />
-                                                        <Rectangle x:Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}"  Width="20" Height="11" Opacity="1" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+                                                        <Rectangle x:Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}" Width="20" Height="11" Opacity="1" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+                                                        <Border ClipToBounds="True" Width="20" Height="11">
+                                                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                                                        </Border>
                                                     </Grid>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=LowerThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">
@@ -2789,10 +2819,13 @@
                                                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
                                                             </MultiDataTrigger.Conditions>
                                                             <Setter Property="Opacity" TargetName="MainBorder" Value="1" />
+                                                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                                                             <Setter Property="Stroke" TargetName="MainBorder" Value="{DynamicResource SelectedBrush}" />
                                                         </MultiDataTrigger>
                                                         <Trigger Property="IsDragging" Value="True">
                                                             <Setter TargetName="MainBorder" Property="Stroke" Value="{DynamicResource DarkerSelectedBrush}" />
+                                                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                                                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                                                         </Trigger>
                                                         <Trigger Property="IsEnabled" Value="false">
                                                             <Setter Property="Fill" TargetName="MainBorder" Value="{DynamicResource BaseBrush}" />
@@ -2822,6 +2855,9 @@
                                                     <Grid>
                                                         <Rectangle x:Name="BackgroundFadingRect" Width="20" Height="11" />
                                                         <Rectangle Name="MainBorder" Fill="{DynamicResource LighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" Stroke="{DynamicResource VeryLighterBaseBrush}" Width="20" Height="11" ToolTip="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherValue, StringFormat=\{0:00.00\}}" SnapsToDevicePixels="True" />
+                                                        <Border ClipToBounds="True" Width="20" Height="11">
+                                                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                                                        </Border>
                                                     </Grid>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherThumbBackground, Converter={StaticResource SolidColorBrushToColorConverter}}" Value="Transparent">
@@ -2835,11 +2871,14 @@
                                                                 <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type xtk:RangeSlider}}, Path=HigherThumbBackground}" Value="{x:Null}" />
                                                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
                                                             </MultiDataTrigger.Conditions>
+                                                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                                                             <Setter Property="Opacity" TargetName="MainBorder" Value="1" />
                                                             <Setter Property="Stroke" TargetName="MainBorder" Value="{DynamicResource SelectedBrush}" />
                                                         </MultiDataTrigger>
                                                         <Trigger Property="IsDragging" Value="True">
                                                             <Setter TargetName="MainBorder" Property="Stroke" Value="{DynamicResource DarkerSelectedBrush}" />
+                                                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                                                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                                                         </Trigger>
                                                         <Trigger Property="IsEnabled" Value="false">
                                                             <Setter Property="Fill" TargetName="MainBorder" Value="{DynamicResource BaseBrush}" />

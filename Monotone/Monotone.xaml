@@ -58,16 +58,22 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="outerborder" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"  >                       
-                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>                   
+                    <Border x:Name="outerborder" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" ClipToBounds="True"  >
+                        <Grid>
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="outerborder" Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />          
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
-							<Setter TargetName="outerborder" Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
+							<Setter Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True"/>
                         <Trigger Property="IsEnabled" Value="False">
@@ -89,12 +95,23 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border CornerRadius="{DynamicResource ButtonCornerRadius}" x:Name="outerborder" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{DynamicResource ButtonBorderThickness}"  Background="{TemplateBinding Background}" >                       
-                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>         
+                    <Border CornerRadius="{DynamicResource ButtonCornerRadius}" x:Name="outerborder" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{DynamicResource ButtonBorderThickness}"  Background="{TemplateBinding Background}" ClipToBounds="True" >                       
+                        <Grid>
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}">
+                            </Border>
+                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="outerborder" Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -787,18 +804,20 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="17" />
-                            </Grid.ColumnDefinitions>                       
-                            <Border Grid.Column="0" Margin="1" Background="{TemplateBinding Background}" BorderThickness="0" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Border Grid.Column="0" Margin="1" BorderThickness="0" />
                             <Path x:Name="Arrow" Grid.Column="1" Fill="{StaticResource GlyphBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
+                            
                     </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <!--<Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />-->
+                            <!--<Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />-->                            
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush"  Value="{DynamicResource SelectedBrush}" />
-                        </Trigger>
+                        </Trigger>                      
                         <Trigger Property="IsEnabled" Value="False">
                             <!--<Setter TargetName="Border" Property="Background" Value="{DynamicResource BaseBrush}" />-->
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
@@ -966,7 +985,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid x:Name="MainGrid" SnapsToDevicePixels="true" MinHeight="22">
+                    <Grid x:Name="MainGrid" SnapsToDevicePixels="true" MinHeight="22" ClipToBounds="True">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
@@ -988,18 +1007,23 @@
                                 </Border.Effect>
                             </Border>
                         </Popup>
+                       
                         <ToggleButton BorderBrush="{TemplateBinding BorderBrush}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxReadonlyToggleButton}" Name="bu"/>
                         <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <Border Name="glow" Grid.ColumnSpan="2" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasItems" Value="false">
                             <Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
                         </Trigger>
+                      
                         <Trigger Property="IsGrouping" Value="true">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Background" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+
                         </Trigger>
                         <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
                             <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
@@ -2087,19 +2111,26 @@
                                 </TransformGroup.Children>
                             </TransformGroup>
                         </Canvas.RenderTransform>
+                        
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
                         <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
+                        <Border ClipToBounds="True">
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        </Border>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}"/>
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Background" Value="{DynamicResource BaseBrush}"/>
@@ -2129,16 +2160,22 @@
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
                         <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
+                        <Border ClipToBounds="True">
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        </Border>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}"/>
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Background" Value="{DynamicResource BaseBrush}"/>
@@ -2178,18 +2215,24 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" />
+                        <Border ClipToBounds="True">
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        </Border>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
 
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}"/>
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Background" Value="{DynamicResource BaseBrush}"/>
@@ -2224,17 +2267,23 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" />
+                        <Border ClipToBounds="True">
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        </Border>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}"/>
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Data" TargetName="OuterBorder" Value="{StaticResource SliderPointedThumbDisabledGeometry}"/>
@@ -2269,17 +2318,23 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderPointedThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderPointedThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" />
+                        <Border ClipToBounds="True">
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        </Border>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
-                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}"/>
+                            <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Data" TargetName="OuterBorder" Value="{StaticResource SliderPointedThumbDisabledGeometry}"/>
@@ -2313,16 +2368,22 @@
                         </Canvas.RenderTransform>
                         <Path x:Name="Background" Data="{StaticResource SliderThumbOuterBorderGeometry}" Fill="{DynamicResource LighterBaseBrush}"/>
                         <Path x:Name="InnerBorder" Data="{StaticResource SliderThumbMiddleBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="0"/>
-                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}"/>
+                        <Path x:Name="OuterBorder" Data="{StaticResource SliderThumbOuterBorderGeometry}" Stroke="{DynamicResource VeryLighterBaseBrush}" StrokeThickness="{DynamicResource DefaultBorderThicknessNumber}" />
+                        <Border ClipToBounds="True">
+                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        </Border>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Stroke" TargetName="InnerBorder" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="Foreground" Value="Blue">
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
                             <Setter Property="Stroke" TargetName="OuterBorder" Value="{DynamicResource DarkerSelectedBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
