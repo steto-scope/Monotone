@@ -21,6 +21,8 @@ namespace Monotone
     /// </summary>
     public partial class ThemeManager : Window
     {
+        List<string> accents = new List<string>();
+
         private MainWindow mw;
 
         public ThemeManager(MainWindow mw)
@@ -32,6 +34,20 @@ namespace Monotone
             coloreditor.Text = sr.ReadToEnd();
             StreamReader sr2 = new StreamReader("Monotone.Brushes.xaml");
             brusheseditor.Text = sr2.ReadToEnd();
+
+            try
+            {
+                var dirs = Directory.GetDirectories(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)+"\\accents");
+                foreach(string x in dirs)
+                if(File.Exists(x+"\\Monotone.Colors.xaml") && File.Exists(x+"\\Monotone.Brushes.xaml"))
+                {
+                    accentsList.Items.Add(new FileInfo(x).Name);
+                }
+            }
+            catch
+            {
+
+            }
         }
 
 
@@ -80,6 +96,16 @@ namespace Monotone
                 MonotoneUtils.Update(Application.Current.Resources, colors, brushes);
             }
             catch { }
+        }
+
+
+        private void accentsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string a = accentsList.SelectedItem.ToString();
+
+            coloreditor.Text = File.ReadAllText("./accents/" + a + "/Monotone.Colors.xaml");
+            brusheseditor.Text = File.ReadAllText("./accents/" + a + "/Monotone.Brushes.xaml");
+            Button_Click_1(null, null);
         }
     }
 }
