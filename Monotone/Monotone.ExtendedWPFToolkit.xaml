@@ -834,7 +834,7 @@
                             </Border>
                         </ToggleButton>
                         <Border ClipToBounds="True">
-                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                            <Border Name="glow" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
                         </Border>                        <Popup x:Name="PART_ColorPickerPalettePopup" VerticalAlignment="Bottom" IsOpen="{Binding ElementName=PART_ColorPickerToggleButton, Path=IsChecked}" StaysOpen="False"  AllowsTransparency="True" Focusable="False" HorizontalOffset="1" VerticalOffset="1" PopupAnimation="None" Width="{TemplateBinding ActualWidth}" MinWidth="240">
                             <Border BorderThickness="{DynamicResource DefaultBorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Margin="10,0,10,10" Background="{DynamicResource DarkerBaseBrush}" BorderBrush="{DynamicResource PopupBorderBrush}" Padding="3">
                                 <Border.Effect>
@@ -1327,7 +1327,7 @@
                                 <ToggleButton x:Name="PART_DropDownButton"  Content="{TemplateBinding Text}" BorderBrush="{TemplateBinding BorderBrush}"  Background="{TemplateBinding Background}" MinWidth="22" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ToolkitToggleButton}" Padding="0" IsHitTestVisible="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}" />
                             </Border>
                             <Border ClipToBounds="True">
-                                <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                                <Border Name="glow" CornerRadius="{DynamicResource ComboBoxCornerRadius}" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
                             </Border>
                         </Grid>
                     </Border>
@@ -1640,7 +1640,7 @@
                                     </Grid>
                                 </ToggleButton>
                                 <Border ClipToBounds="True">
-                                    <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                                    <Border Name="glow" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
                                 </Border>
                             </Grid>
                         </xtk:ButtonChrome>

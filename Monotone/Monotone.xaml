@@ -60,7 +60,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="outerborder" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" ClipToBounds="True"  >
                         <Grid>
-                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                            <Border Name="glow" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
                             <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </Grid>
                     </Border>
@@ -97,7 +97,7 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border CornerRadius="{DynamicResource ButtonCornerRadius}" x:Name="outerborder" BorderBrush="{DynamicResource BaseBorderBrush}" BorderThickness="{DynamicResource ButtonBorderThickness}"  Background="{TemplateBinding Background}" ClipToBounds="True" >                       
                         <Grid>
-                            <Border Name="glow" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}">
+                            <Border Name="glow" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}">
                             </Border>
                             <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
@@ -1010,7 +1010,7 @@
                        
                         <ToggleButton BorderBrush="{TemplateBinding BorderBrush}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxReadonlyToggleButton}" Name="bu"/>
                         <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        <Border Name="glow" Grid.ColumnSpan="2" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                        <Border Name="glow" CornerRadius="{DynamicResource ComboBoxCornerRadius}" Grid.ColumnSpan="2" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasItems" Value="false">
