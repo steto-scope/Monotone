@@ -40,14 +40,18 @@
         </Style.Triggers>
     </Style>
     <Style TargetType="Separator">
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBorderBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
-                <Setter Property="Background" Value="{DynamicResource DisabledBorderBrush}" />
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Rectangle Height="{DynamicResource DefaultBorderThicknessNumber}" Margin="1,1,0,1" Name="b" Fill="{DynamicResource TextBrush}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="b" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style TargetType="{x:Type Button}">
         <Setter Property="Padding" Value="1"/>
@@ -202,7 +206,7 @@
                             <Border Background="{TemplateBinding Background}" Name="Border" CornerRadius="{DynamicResource DefaultCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <StackPanel Orientation="Horizontal" Name="contentpanel" Margin="2">
                                     
-                                    <Rectangle Fill="{DynamicResource BaseBorderBrush}"  Width="16" Height="14" Margin="2,0,2,0" />
+                                    <Rectangle Fill="{DynamicResource BaseBorderBrush}" Name="bl" Width="16" Height="14" Margin="2,0,2,0" />
                                 <Path VerticalAlignment="Center" Margin="2,1,2,0" Width="13" Height="13" x:Name="CheckMark" SnapsToDevicePixels="False" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" Data="M 2 9 L 9 2  M9,9 L2,2 " />
                                 </StackPanel>
                             </Border>
@@ -231,6 +235,7 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                            <Setter TargetName="bl" Property="Fill" Value="{DynamicResource DisabledBorderBrush}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
                         </Trigger>
@@ -390,12 +395,12 @@
                         <Rectangle x:Name="PART_Track" Margin="1"/>
                         <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DefaultCornerRadius}" Name="b" BorderBrush="{TemplateBinding BorderBrush}">
                             <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
-                            <Grid x:Name="Foreground">
-                                <Rectangle x:Name="Indicator" Fill="{DynamicResource SelectedBrush}"/>
+                            <Grid x:Name="Foreground" Background="{DynamicResource DarkerSelectedBrush}">
                                 <Grid x:Name="Animation" ClipToBounds="true">
-                                    <Rectangle x:Name="PART_GlowRect" Fill="Transparent" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
+                                    <Rectangle x:Name="PART_GlowRect" Fill="{DynamicResource ProgressBarGlowBrush}" HorizontalAlignment="Left" Margin="-200,0,0,0" Width="200"/>
                                 </Grid>
-                                <Grid x:Name="Overlay">
+                                    <Rectangle x:Name="Indicator" Fill="{DynamicResource ProgressBarBrush}" />
+                                    <Grid x:Name="Overlay">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition MaxWidth="15"/>
                                         <ColumnDefinition Width="0.1*"/>
@@ -438,7 +443,7 @@
                                 <Condition Property="IsIndeterminate" Value="false" />
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource SelectedBrush}"/>
+                            <Setter Property="Background" TargetName="Animation" Value="{DynamicResource ProgressBarBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="Indicator" Value="{DynamicResource BaseBrush}" />
@@ -902,6 +907,10 @@
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource SelectedBrush}" />
+            </Trigger>
+            <Trigger Property="IsSelected"  Value="true">
+                <Setter Property="BorderBrush" TargetName="Border"  Value="{DynamicResource DarkerSelectedBrush}" />
+                <Setter Property="BorderThickness" TargetName="Border" Value="1" />
             </Trigger>
             <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
                 <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
@@ -1475,14 +1484,21 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
     
-    
+
     <!-- Menu stuff-->
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="Separator">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
-                    <Rectangle Height="1" Margin="32,1,0,1" Name="b" Fill="{DynamicResource TextBrush}" />                    
+                    <Rectangle Height="{DynamicResource DefaultBorderThicknessNumber}" Margin="32,1,0,1" Name="b" Fill="{DynamicResource TextBrush}" />                   
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="b" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1523,7 +1539,7 @@
                     <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="{StaticResource GlyphBrush}" FlowDirection="LeftToRight" Height="11" Width="9"/>
                 </Border>
                 <ContentPresenter Name="header" Grid.Column="2" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                <TextBlock Grid.Column="4" Margin="{TemplateBinding Padding}" Text="{TemplateBinding InputGestureText}" FontSize="10" VerticalAlignment="Center"/>
+                <TextBlock Name="gest" Grid.Column="4" Margin="{TemplateBinding Padding}" Text="{TemplateBinding InputGestureText}" FontSize="10" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>
@@ -1542,7 +1558,8 @@
                 <Setter Property="TextElement.Foreground" TargetName="header" Value="{DynamicResource SelectedBrush}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="TextElement.Foreground" TargetName="header" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="TextElement.Foreground" TargetName="header" Value="{DynamicResource DisabledBrush}" />
+                <Setter Property="TextElement.Foreground" TargetName="gest" Value="{DynamicResource DisabledBrush}" />
                 <Setter Property="Background" TargetName="GlyphPanel" Value="Transparent"/>
                 <Setter Property="BorderBrush" TargetName="GlyphPanel" Value="Transparent"/>
                 <Setter Property="Fill" TargetName="Glyph" Value="{DynamicResource BaseBrush}"/>
@@ -1684,7 +1701,7 @@
                     <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="{StaticResource GlyphBrush}" FlowDirection="LeftToRight" Height="11" Width="9"/>
                 </Border>
                 <ContentPresenter Grid.Column="2" Name="header" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                <TextBlock Grid.Column="4" Margin="{TemplateBinding Padding}" Text="{TemplateBinding InputGestureText}" FontSize="10" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                <TextBlock Grid.Column="4" Name="gest" Margin="{TemplateBinding Padding}" Text="{TemplateBinding InputGestureText}" FontSize="10" VerticalAlignment="Bottom" Visibility="Collapsed"/>
                 <Path Grid.Column="5" Data="{StaticResource RightArrow}" Margin="4,0,0,0" VerticalAlignment="Center" Fill="{StaticResource GlyphBrush}"/>
             </Grid>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="-2" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="None" Placement="Right" VerticalOffset="-3">
@@ -1729,7 +1746,8 @@
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Foreground" Value="#FF9A9A9A"/>
-                <Setter Property="Background" TargetName="GlyphPanel" Value="#EEE9E9"/>
+                <Setter Property="TextElement.Foreground" TargetName="gest" Value="{DynamicResource DisabledBrush}" />
+                <Setter Property="Background" TargetName="GlyphPanel" Value="#EEE9E9" />
                 <Setter Property="BorderBrush" TargetName="GlyphPanel" Value="#DBD6D6"/>
                 <Setter Property="Fill" TargetName="Glyph" Value="#848589"/>
             </Trigger>

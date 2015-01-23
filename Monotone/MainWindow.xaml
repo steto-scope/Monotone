@@ -12,7 +12,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" x:Class="Monotone.MainWindow" 
         Title="Sample Controls" Height="750" Width="900" >
-    <Grid Background="{DynamicResource BaseBrush}" Name="maingrid">
+    <Grid Name="maingrid">
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource BaseM2Color}" />
+        </Grid.Background>
         <Grid.Resources>
             <xtk:InverseBoolConverter x:Key="ibc" />
         </Grid.Resources>
@@ -261,7 +264,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Extended WPF Toolkit" IsSelected="True">
+            <TabItem Header="Extended WPF Toolkit" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

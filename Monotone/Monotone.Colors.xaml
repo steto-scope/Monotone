@@ -4,7 +4,7 @@
     <Color x:Key="Base1Color">#353535</Color>
     <Color x:Key="Base2Color">#222</Color>
     <Color x:Key="Base3Color">#393939</Color>
-    <Color x:Key="Base3TColor">#44666666</Color>
+    <Color x:Key="Base3TColor">#3300FFFF</Color>
     <Color x:Key="Base5Color">#999</Color>
     <Color x:Key="Base4Color">#555</Color>
     <Color x:Key="Base6Color">#BBB</Color>
