@@ -60,6 +60,7 @@
     <SolidColorBrush x:Key="ButtonGlowBrush" Color="Cyan" />
     <Thickness x:Key="GlowBorderThickness">10</Thickness>
     <Thickness x:Key="GlowBorderMargin">-11</Thickness>
+    <Thickness x:Key="GlowBorderMargin2">-10</Thickness>
 
     <LinearGradientBrush x:Key="ToolBarTrayBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="{DynamicResource Base2Color}" Offset="0" />
@@ -82,8 +83,8 @@
         <GradientStop Color="{DynamicResource BaseColor}" Offset="0" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ButtonBackgroundPressedBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="{DynamicResource Base1Color}" Offset="0" />
-        <GradientStop Color="{DynamicResource BaseColor}" Offset="1" />
+        <GradientStop Color="{DynamicResource BaseColor}" Offset="0" />
+        <GradientStop Color="{DynamicResource Base3Color}" Offset="1" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="LighterBaseGradientBrush" StartPoint="0,1" EndPoint="0,0">
         <LinearGradientBrush.GradientStops>

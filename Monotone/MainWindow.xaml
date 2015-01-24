@@ -169,6 +169,14 @@
                             <MenuItem IsEnabled="False" Header="Hello World" Name="Disabled" />
                             <MenuItem IsCheckable="True" IsChecked="True" Header="Item" Name="Checked" />
                         </ListView>
+                        <ListView Style="{DynamicResource ListViewButtonArrayStyle}" Margin="5">
+                            <TextBlock Text="List" />
+                            <ListViewItem>View</ListViewItem>
+                            <ListViewItem>Button</ListViewItem>
+                            <ListViewItem>Array</ListViewItem>
+                            <ListViewItem>Style</ListViewItem>
+                            <Image Source="Images/document.png" />
+                        </ListView>
 
                         <Grid>
                             <Grid.RowDefinitions>

@@ -1334,6 +1334,7 @@
 
 
     <!-- Listview stuff-->
+   
     <Style x:Key="GridViewColumnHeaderGripper"  TargetType="Thumb">
         <Setter Property="Width" Value="18"/>
         <Setter Property="Background" Value="{DynamicResource BaseBorderBrush}"/>
@@ -1483,10 +1484,100 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>   
+    <Style TargetType="ListView" x:Key="ListViewButtonArrayStyle">
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel ClipToBounds="True" Margin="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" ClipToBounds="True" Background="{TemplateBinding Background}" HorizontalAlignment="Left">
+                        <ItemsPresenter  />
+                    </Border>
+                    <ControlTemplate.Resources>                        
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Border CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="0" Name="b" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Padding="0"  HorizontalAlignment="Left" Margin="0" Cursor="Hand" VerticalAlignment="Stretch" ClipToBounds="True">
+                                            
+                                           <Grid>
+                                                <Border Name="glow" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin2}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                                                <Border VerticalAlignment="Center" Padding="3" ClipToBounds="True">
+                                                    <ContentPresenter />      
+                                                </Border> 
+                                               
+                                           </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                                                <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="false">
+                                                <Setter Property="Visibility" TargetName="glow" Value="Collapsed" />
+                                                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />                                                
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsSelected" Value="true" />
+                                        <Condition Property="IsEnabled" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />                                    
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsSelected" Value="true" />
+                                        <Condition Property="IsEnabled" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="Transparent" />
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+                                    <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{DynamicResource BaseBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 
-    
 
     <!-- Menu stuff-->
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="Separator">
@@ -2752,6 +2843,13 @@
                                 <Condition Property="IsEnabled" Value="true" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Foreground" Value="{DynamicResource DarkerSelectedBrush}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true" />
+                                <Condition Property="IsEnabled" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Foreground" Value="{DynamicResource SelectedBrush}" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
