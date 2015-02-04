@@ -256,7 +256,7 @@
                         <BulletDecorator.Bullet>
                             <Grid Width="17" Height="17">
                                 <Border x:Name="Border" Background="{DynamicResource DarkerBaseBrush}" BorderThickness="{DynamicResource DefaultBorderThickness}" BorderBrush="{DynamicResource BaseBorderBrush}" CornerRadius="500">
-                                    <Border x:Name="CheckMark" Margin="4" Background="{StaticResource GlyphBrush}" CornerRadius="500" />
+                                    <Border x:Name="CheckMark" Margin="4" Background="{DynamicResource GlyphBrush}" CornerRadius="500" />
                                 </Border>
                             </Grid>
                         </BulletDecorator.Bullet>
@@ -278,7 +278,7 @@
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource BaseBrush}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
-                            <Setter Property="Background" TargetName="CheckMark" Value="{DynamicResource SemiTransparentBaseBorderBrush}" />
+                            <Setter Property="Background" TargetName="CheckMark" Value="{DynamicResource DisabledBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -373,6 +373,7 @@
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
                             <Setter Property="Fill" TargetName="CheckMark" Value="Transparent" />
+                            <Setter Property="Stroke" TargetName="CheckMark" Value="{DynamicResource DisabledBrush}" />
                         </Trigger>
                         
                     </ControlTemplate.Triggers>
@@ -601,7 +602,7 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource BaseBrush}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource DisabledBorderBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource SemiTransparentBaseBorderBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource SelectedBrush}"/>
