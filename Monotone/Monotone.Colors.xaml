@@ -3,7 +3,7 @@
     <Color x:Key="BaseColor">#111</Color>
     <Color x:Key="Base1Color">#353535</Color>
     <Color x:Key="Base2Color">#222</Color>
-    <Color x:Key="Base3Color">#393939</Color>
+    <Color x:Key="Base3Color">#606060</Color>
     <Color x:Key="Base3TColor">#3300FFFF</Color>
     <Color x:Key="Base5Color">#999</Color>
     <Color x:Key="Base4Color">#555</Color>
@@ -11,7 +11,7 @@
     <Color x:Key="BaseM1Color">#222</Color>
     <Color x:Key="BaseM2Color">#000</Color>
     <Color x:Key="BaseM2TColor">#000</Color>
-    <Color x:Key="TextColor">#AAA</Color>
+    <Color x:Key="TextColor">#ffffff</Color>
     <Color x:Key="SelectedColor">Cyan</Color>
     <Color x:Key="DarkerSelectedColor">DarkCyan</Color>
     <Color x:Key="DarkerSelectedColorHover">#33008B8B </Color>
