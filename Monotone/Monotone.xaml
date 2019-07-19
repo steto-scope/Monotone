@@ -90,6 +90,43 @@
             </Setter.Value>
         </Setter>
     </Style>    
+    <Style TargetType="{x:Type RepeatButton}">
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThickness}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border x:Name="outerborder" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" ClipToBounds="True"  >
+                        <Grid>
+                            <Border Name="glow" CornerRadius="{DynamicResource ButtonCornerRadius}" BorderThickness="{DynamicResource GlowBorderThickness}" BorderBrush="{DynamicResource ButtonGlowBrush}" Margin="{DynamicResource GlowBorderMargin}" Visibility="Collapsed" Effect="{DynamicResource ButtonHoverGlowEffect}" />
+                            <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource SelectedBrush}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressedBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource DarkerSelectedBrush}" />
+                            <Setter TargetName="glow" Property="Effect" Value="{DynamicResource ButtonPressedGlowEffect}" />
+                            <Setter TargetName="glow" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter TargetName="outerborder" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="{x:Type ToggleButton}">
         <Setter Property="Padding" Value="1"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
@@ -149,6 +186,7 @@
 	<Style TargetType="{x:Type CheckBox}">
   <Setter Property="SnapsToDevicePixels" Value="true"/>
   <Setter Property="OverridesDefaultStyle" Value="true"/>
+  <Setter Property="VerticalAlignment" Value="Center" />
   <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
   <Setter Property="Template">
     <Setter.Value>
