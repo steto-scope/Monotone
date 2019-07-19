@@ -3266,10 +3266,14 @@
                                 <VisualStateGroup.Transitions>
                                     <VisualTransition GeneratedDuration="0"/>
                                 </VisualStateGroup.Transitions>
-                                <VisualState x:Name="Active"/>
+                                <VisualState x:Name="Active">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="NormalText"/>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Inactive">
                                     <Storyboard>
-                                        <ColorAnimation Duration="0" To="{DynamicResource Base3Color}" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="NormalText"/>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="InactiveNormalText"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -3281,7 +3285,6 @@
                                 <VisualState x:Name="Today">
                                     <Storyboard>
                                         <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="TodayBackground"/>
-                                        <ColorAnimation Duration="0" To="{DynamicResource TextColor}" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="NormalText"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -3301,16 +3304,19 @@
                         <Rectangle x:Name="SelectedBackground" Fill="{StaticResource MenuHoverBrush}" Opacity="0" RadiusY="1" RadiusX="1"/>
                         <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
                         <Rectangle x:Name="HighlightBackground" Fill="{StaticResource MenuHoverBrush}" Opacity="0" RadiusY="1" RadiusX="1" />
-                        <ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="5,1,5,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="NormalText" Opacity="0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="5,1,5,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="InactiveNormalText" Opacity="0" TextBlock.Foreground="{DynamicResource BaseBorderBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="5,1,5,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Path x:Name="Blackout" Data="M8.1772461,11.029181 L10.433105,11.029181 L11.700684,12.801641 L12.973633,11.029181 L15.191895,11.029181 L12.844727,13.999395 L15.21875,17.060919 L12.962891,17.060919 L11.673828,15.256231 L10.352539,17.060919 L8.1396484,17.060919 L10.519043,14.042364 z" Fill="Yellow" HorizontalAlignment="Stretch" Margin="3" Opacity="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" VerticalAlignment="Stretch"/>
                         <Rectangle x:Name="DayButtonFocusVisual" IsHitTestVisible="false" RadiusY="1" RadiusX="1"  Visibility="Collapsed"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="TextElement.Foreground" TargetName="NormalText" Value="{DynamicResource SelectedBrush}" />
+                            <Setter Property="TextElement.Foreground" TargetName="InactiveNormalText" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="TextElement.Foreground" TargetName="NormalText" Value="{DynamicResource SelectedBrush}" />
+                            <Setter Property="TextElement.Foreground" TargetName="InactiveNormalText" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="TodayBackground" Value="Transparent"/>
@@ -3368,10 +3374,14 @@
                                 <VisualStateGroup.Transitions>
                                     <VisualTransition GeneratedDuration="0"/>
                                 </VisualStateGroup.Transitions>
-                                <VisualState x:Name="Active"/>
+                                <VisualState x:Name="Active">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="NormalText"/>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Inactive">
                                     <Storyboard>
-                                        <ColorAnimation Duration="0" To="{DynamicResource Base3Color}" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="NormalText"/>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="InactiveNormalText"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -3405,7 +3415,8 @@
                         </VisualStateManager.VisualStateGroups>
                         <Rectangle x:Name="SelectedBackground" Fill="{StaticResource MenuHoverBrush}"  Opacity="0" RadiusY="1" RadiusX="1"/>
                         <Rectangle x:Name="Background" Fill="{StaticResource MenuHoverBrush}" Opacity="0" RadiusY="1" RadiusX="1"/>
-                        <ContentPresenter x:Name="NormalText"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,0,1,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="NormalText" Opacity="0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="5,1,5,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="InactiveNormalText" Opacity="0" TextBlock.Foreground="{DynamicResource BaseBorderBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="5,1,5,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Rectangle x:Name="CalendarButtonFocusVisual" IsHitTestVisible="false" RadiusY="1" RadiusX="1"  Visibility="Collapsed"/>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -3414,6 +3425,7 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="TextElement.Foreground" TargetName="NormalText" Value="{DynamicResource SelectedBrush}" />
+                            <Setter Property="TextElement.Foreground" TargetName="InactiveNormalText" Value="{DynamicResource SelectedBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="SelectedBackground" Value="Transparent" />
